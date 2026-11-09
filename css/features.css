@@ -47,6 +47,7 @@
    ELIGE EL CONTROL CORRECTO
    ============================================================ */
 .controls{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:start}
+.controls > *{min-width:0}
 .control-list{display:grid;gap:6px}
 .control-item{display:flex;align-items:center;gap:.6rem;text-align:left;border:1px solid var(--line);background:#fff;border-radius:10px;padding:.55rem .7rem;font-size:.82rem;font-weight:650;color:var(--ink-soft);transition:border-color .15s,background .15s}
 .control-item:hover{border-color:var(--brand);color:var(--brand)}
@@ -66,7 +67,7 @@
 .cp-block h4{font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
 .cp-block p{font-size:.84rem;color:var(--ink-soft)}
 .cp-block.bad h4{color:var(--bad)}
-.cp-code{margin-top:12px;background:#11162b;color:#e7e5ff;border-radius:10px;padding:12px;font-size:.72rem;overflow-x:auto;white-space:pre;font-family:ui-monospace,"SFMono-Regular",Consolas,monospace}
+.cp-code{margin-top:12px;background:#11162b;color:#e7e5ff;border-radius:10px;padding:12px;font-size:.72rem;overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere;font-family:ui-monospace,"SFMono-Regular",Consolas,monospace}
 
 @media (max-width:1040px){
   .field-lab,.controls{grid-template-columns:1fr}
