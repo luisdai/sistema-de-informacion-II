@@ -524,11 +524,64 @@
   </div>
 </section>
 
+<!-- ================= VALIDACION EN TRES CAPAS ================= -->
+<section class="section" id="validacion">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">07 · Validación</span>
+      <h2>Tres puertas y una sola que no se salta.</h2>
+      <p>Validar no es poner un asterisco. El navegador ayuda, la aplicación aplica reglas de negocio y el servidor es la única defensa que nadie puede desactivar desde el inspector. Prueba el mismo envío con y sin las dos primeras capas.</p>
+    </div>
+
+    <div class="validation-lab">
+      <div class="layers" aria-label="Capas de validación">
+        <div class="layer" data-layer="browser">
+          <span class="layer-num" aria-hidden="true">1</span>
+          <div><b>Navegador</b><small>type, required, min</small></div>
+          <span class="layer-state" id="layerBrowser">Pendiente</span>
+        </div>
+        <div class="layer" data-layer="app">
+          <span class="layer-num" aria-hidden="true">2</span>
+          <div><b>Aplicación</b><small>reglas de negocio</small></div>
+          <span class="layer-state" id="layerApp">Pendiente</span>
+        </div>
+        <div class="layer" data-layer="server">
+          <span class="layer-num" aria-hidden="true">3</span>
+          <div><b>Servidor</b><small>la última palabra</small></div>
+          <span class="layer-state" id="layerServer">Pendiente</span>
+        </div>
+      </div>
+
+      <div class="val-stage">
+        <form id="valForm" novalidate>
+          <div class="val-field">
+            <label for="valCode">Código de artículo <span class="req" aria-hidden="true">*</span></label>
+            <input id="valCode" name="code" type="text" required pattern="ART-[0-9]{3}" placeholder="ART-101" autocomplete="off" aria-describedby="valCodeHint">
+            <span class="val-hint" id="valCodeHint">Formato ART-000. Prueba ART-101 o ART-999.</span>
+          </div>
+          <div class="val-field">
+            <label for="valQty">Cantidad <span class="req" aria-hidden="true">*</span></label>
+            <input id="valQty" name="qty" type="number" min="1" max="99" step="1" value="1" required>
+          </div>
+          <div class="val-actions">
+            <button type="submit" class="btn btn-primary">Enviar con validación</button>
+            <button type="button" class="btn btn-ghost" id="valBypass">Saltarme el navegador</button>
+          </div>
+        </form>
+        <div class="val-log" id="valLog" role="status">
+          <div class="val-empty">El resultado de cada capa aparece aquí.</div>
+        </div>
+        <pre class="val-payload"><code id="valPayload">Sin envíos todavía.</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= SALIDAS ================= -->
 <section class="section" id="salidas">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">07 · Diseño de salidas</span>
+      <span class="eyebrow">08 · Diseño de salidas</span>
       <h2>Más datos no es más información.</h2>
       <p>La salida tiene que cumplir un propósito, llegar a quien decide y hacerlo a tiempo. Cambia entre las dos versiones del mismo reporte: los números son idénticos; la capacidad de decidir, no.</p>
     </div>
@@ -596,7 +649,7 @@
 <section class="section section-alt" id="uxui">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">08 · UX y UI</span>
+      <span class="eyebrow">09 · UX y UI</span>
       <h2>La UX decide qué pasa; la UI decide cómo se ve.</h2>
       <p>Se confunden todo el tiempo. La <strong>experiencia</strong> es el recorrido: qué necesita la persona, en qué orden, qué ocurre si se equivoca. La <strong>interfaz</strong> es la capa que hace ese recorrido visible y operable.</p>
     </div>
@@ -659,7 +712,7 @@
 <section class="section" id="login">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">09 · Acceso y seguridad</span>
+      <span class="eyebrow">10 · Acceso y seguridad</span>
       <h2>La primera pantalla también se diseña.</h2>
       <p>El login no es un trámite: es la frontera entre la persona y el sistema. Debe autenticar sin filtrar información, explicar sin regañar y dejar claro qué hacer si algo falla.</p>
     </div>
@@ -754,7 +807,7 @@
 <section class="section section-alt" id="reto">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">10 · Reto visual</span>
+      <span class="eyebrow">11 · Reto visual</span>
       <h2>Encuentra los seis errores de esta pantalla.</h2>
       <p>Están escondidos a la vista, como en los sistemas reales: no son bugs, son decisiones de diseño. Toca cada punto y comprueba si detectaste el problema.</p>
     </div>
@@ -813,7 +866,7 @@
 <section class="section" id="quiz">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">11 · Cierre</span>
+      <span class="eyebrow">12 · Cierre</span>
       <h2>Comprueba lo que se te quedó.</h2>
       <p>Cinco preguntas rápidas, con explicación en cada respuesta. No hay nota: hay criterio.</p>
     </div>

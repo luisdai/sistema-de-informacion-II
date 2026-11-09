@@ -16,6 +16,7 @@ import { initQuiz } from './quiz.js';
 import { initChecklist } from './checklist.js';
 import { initCampo } from './campo.js';
 import { initControles } from './controles.js';
+import { initValidacion } from './validacion.js';
 
 mountSprite();
 initNav();
@@ -31,3 +32,4 @@ initQuiz();
 initChecklist();
 initCampo();
 initControles();
+initValidacion();
