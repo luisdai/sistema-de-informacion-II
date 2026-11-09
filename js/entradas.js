@@ -64,6 +64,7 @@ function initFlowAndSimulator() {
   const flowTag = qs('#flowTag');
   const feedback = qs('#simFeedback');
   let timers = [];
+  let submitButton = null;
 
   function clearTimers() {
     timers.forEach(clearTimeout);
@@ -89,6 +90,7 @@ function initFlowAndSimulator() {
   for (const node of nodes) {
     node.addEventListener('click', () => {
       clearTimers();
+      if (submitButton) submitButton.disabled = false;
       resetFlowStates();
       paintFlow(node.dataset.step);
       feedback.className = 'sim-feedback';
@@ -103,7 +105,7 @@ function initFlowAndSimulator() {
 
   const idInput = qs('#simId');
   const qtyInput = qs('#simQty');
-  const submit = form.querySelector('button[type="submit"]');
+  submitButton = form.querySelector('button[type="submit"]');
 
   function setFeedback(kind, html) {
     feedback.className = 'sim-feedback ' + kind;
@@ -122,7 +124,7 @@ function initFlowAndSimulator() {
     event.preventDefault();
     clearTimers();
     resetFlowStates();
-    submit.disabled = true;
+    submitButton.disabled = true;
     idInput.removeAttribute('aria-invalid');
 
     const id = idInput.value.trim().toUpperCase();
@@ -134,7 +136,7 @@ function initFlowAndSimulator() {
       idInput.focus();
       paintFlow(1);
       setFeedback('err', '<span aria-hidden="true">⚠️</span><span><strong>Falta la llave.</strong> Sin el ID del artículo no se puede recuperar el costo ni registrar la transacción.</span>');
-      submit.disabled = false;
+      submitButton.disabled = false;
       return;
     }
 
@@ -147,7 +149,7 @@ function initFlowAndSimulator() {
         if (node.dataset.step === '3') node.classList.add('is-error');
       }
       setFeedback('err', '<span aria-hidden="true">⚠️</span><span><strong>La llave no existe en el catálogo.</strong> Prueba con <strong>ART-101</strong>, <strong>ART-205</strong> o <strong>ART-310</strong>. El sistema no inventa el costo: lo busca.</span>');
-      submit.disabled = false;
+      submitButton.disabled = false;
       return;
     }
 
@@ -157,7 +159,7 @@ function initFlowAndSimulator() {
         if (node.dataset.step === '3') node.classList.add('is-error');
       }
       setFeedback('err', '<span aria-hidden="true">⚠️</span><span><strong>Cantidad fuera de rango.</strong> Debe ser un número entero entre 1 y 99. Validar en el origen evita registro basura.</span>');
-      submit.disabled = false;
+      submitButton.disabled = false;
       return;
     }
 
@@ -184,7 +186,7 @@ function initFlowAndSimulator() {
       flowTitle.textContent = '5. Almacenamiento y salida';
       flowTag.textContent = 'Listo';
       setFeedback('ok', '<span aria-hidden="true">✓</span><span><strong>Entrada registrada.</strong> ' + qty + ' × ' + item.name + ' (' + id + ') · costo recuperado ' + formatMoney(item.price) + ' · total ' + formatMoney(total) + '. Solo se capturaron dos datos: llave y cantidad.</span>');
-      submit.disabled = false;
+      submitButton.disabled = false;
     }, 1800));
   });
 }
