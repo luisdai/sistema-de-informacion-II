@@ -23,7 +23,11 @@
 }
 @media (max-width:860px){
   .nav-links{display:none}
+  .nav-links.is-open{display:flex;position:absolute;top:calc(100% + 10px);left:0;right:0;flex-direction:column;gap:2px;margin:0;padding:8px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg)}
+  .nav-links.is-open a{display:block;padding:.7rem .9rem;border-radius:12px;font-size:.9rem}
   .nav{justify-content:space-between}
+  .nav-toggle{display:grid}
+  .nav-links.is-open .nav-menu-cta{display:block;margin-top:4px;background:var(--brand);color:#fff;text-align:center;font-weight:750}
   .nav-cta{display:inline-flex}
   .lab,.login-wrap,.uxui,.grid-2,.grid-3{grid-template-columns:1fr}
   .section{padding:56px 0}
@@ -32,10 +36,13 @@
   .hero{padding:120px 0 70px}
   .hero-float{display:none}
 }
+@media (max-width:620px){
+  .nav-cta{display:none}
+}
 @media (max-width:560px){
   .wrap{padding:0 16px}
   .nav{width:calc(100% - 20px);padding:.4rem .45rem .4rem .7rem}
-  .nav-cta .btn{padding:.5rem .8rem;font-size:.78rem}
+  .nav-cta{padding:.5rem .8rem;font-size:.78rem}
   .hero h1{font-size:2.05rem}
   .hero p.lead{font-size:.98rem}
   .hero-actions .btn{width:100%}

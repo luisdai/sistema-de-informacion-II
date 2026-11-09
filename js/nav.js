@@ -20,6 +20,37 @@ export function initNav() {
   if (!progressBar) return;
 
   const navLinks = qsa('#navLinks a');
+  const menu = qs('#navLinks');
+  const toggle = qs('#navToggle');
+
+  function setMenu(open) {
+    if (!menu || !toggle) return;
+    menu.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú de secciones' : 'Abrir menú de secciones');
+  }
+
+  if (menu && toggle) {
+    toggle.addEventListener('click', () => {
+      setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenu(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setMenu(false);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.nav')) setMenu(false);
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 860) setMenu(false);
+    });
+  }
 
   function onScroll() {
     const doc = document.documentElement;
