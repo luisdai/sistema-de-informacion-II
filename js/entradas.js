@@ -128,7 +128,7 @@ function initFlowAndSimulator() {
     idInput.removeAttribute('aria-invalid');
 
     const id = idInput.value.trim().toUpperCase();
-    const qty = parseInt(qtyInput.value, 10);
+    const qty = Number(qtyInput.value);
     const item = CATALOG[id];
 
     if (!id) {
@@ -153,7 +153,7 @@ function initFlowAndSimulator() {
       return;
     }
 
-    if (!qty || qty < 1 || qty > 99) {
+    if (!Number.isInteger(qty) || qty < 1 || qty > 99) {
       paintFlow(3);
       for (const node of nodes) {
         if (node.dataset.step === '3') node.classList.add('is-error');

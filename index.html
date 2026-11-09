@@ -208,7 +208,7 @@
               </div>
               <div class="sim-field">
                 <label for="simQty">Cantidad <span class="opt">(variable)</span></label>
-                <input id="simQty" name="simQty" type="number" min="1" max="99" value="5" inputmode="numeric">
+                <input id="simQty" name="simQty" type="number" min="1" max="99" step="1" value="5" inputmode="numeric">
               </div>
               <div class="sim-field">
                 <label for="simCat">Motivo</label>
@@ -419,8 +419,8 @@
               </div>
               <div class="field" id="fQty">
                 <label for="goodQty">Cantidad <span class="req" aria-hidden="true">*</span></label>
-                <input id="goodQty" type="number" min="1" max="99" value="1" required aria-required="true" aria-describedby="goodQtyErr">
-                <span class="err" id="goodQtyErr">Debe ser un número entre 1 y 99.</span>
+                <input id="goodQty" type="number" min="1" max="99" step="1" value="1" required aria-required="true" aria-describedby="goodQtyErr">
+                <span class="err" id="goodQtyErr">Debe ser un número entero entre 1 y 99.</span>
               </div>
             </div>
 

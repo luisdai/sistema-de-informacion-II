@@ -29,8 +29,8 @@ function initGoodForm() {
   function validate() {
     const nameOK = name.value.trim().length >= 3;
     const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
-    const parsed = parseInt(qty.value, 10);
-    const qtyOK = !isNaN(parsed) && parsed >= 1 && parsed <= 99;
+    const parsed = Number(qty.value);
+    const qtyOK = Number.isInteger(parsed) && parsed >= 1 && parsed <= 99;
 
     setFieldState('fName', nameOK);
     setFieldState('fEmail', emailOK);
