@@ -127,13 +127,13 @@
 .class-score{font-size:.78rem;font-weight:750;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:99px;padding:.25rem .7rem}
 .class-rows{display:grid;gap:8px;margin-top:12px}
 .class-row{
-  display:grid;grid-template-columns:1.15fr 1fr;gap:12px;align-items:center;
+  display:grid;grid-template-columns:1fr;gap:8px;align-items:start;
   padding:.6rem .75rem;border:1px solid var(--line);border-radius:11px;background:#fff;
 }
 .class-row .field-desc{font-size:.84rem;display:flex;gap:.5rem;align-items:center;font-weight:600}
 .class-row .field-desc i{font-style:normal;font-size:.95rem}
 .class-row .field-desc small{display:block;font-weight:500;color:var(--muted);font-size:.72rem}
-.class-opts{display:flex;gap:5px;justify-content:flex-end;flex-wrap:wrap}
+.class-opts{display:flex;gap:5px;justify-content:flex-start;flex-wrap:wrap}
 .class-opt{
   border:1px solid var(--line-strong);background:#fff;border-radius:8px;
   font-size:.7rem;font-weight:700;padding:.3rem .5rem;color:var(--ink-soft);transition:all .15s;
