@@ -126,8 +126,8 @@
   padding:.55rem .75rem;font-size:.7rem;font-weight:700;box-shadow:0 18px 30px -18px rgba(0,0,0,.6);
   display:flex;align-items:center;gap:.45rem;border:1px solid #ece9f8;
 }
-.hero-float.a{left:-26px;bottom:64px;transform:rotate(-3deg)}
-.hero-float.b{right:-18px;top:34px;transform:rotate(3deg)}
+.hero-float.a{left:-30px;bottom:-16px;transform:rotate(-3deg)}
+.hero-float.b{right:-20px;top:-18px;transform:rotate(3deg)}
 .hero-float .ic{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;font-size:.7rem}
 .hero-float.a .ic{background:var(--good-soft);color:var(--good)}
 .hero-float.b .ic{background:var(--accent-soft);color:#a16207}

@@ -119,7 +119,6 @@ function initMethod() {
     result.innerHTML = '<span class="mr-ic" aria-hidden="true">' + icon(iconName) + '</span><div><h4>' + title + '</h4><p>' + text + '</p></div>';
   }
 
-  for (const select of [who, need, freq]) select.addEventListener('change', updateMethod);
+  // El botón es la acción: así el estado inicial del panel tiene sentido.
   qs('#mCalc').addEventListener('click', updateMethod);
-  updateMethod();
 }
