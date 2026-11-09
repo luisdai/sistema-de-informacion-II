@@ -9,6 +9,7 @@ const STOPS = [
   { id: 'controles', title: 'El control correcto' },
   { id: 'formularios', title: 'Malo contra bueno' },
   { id: 'reto', title: 'Encuentra los errores' },
+  { id: 'quiz', title: 'Audita el banco', audit: true },
 ];
 
 export function initPresentacion() {
@@ -30,6 +31,12 @@ export function initPresentacion() {
     index = Math.max(0, Math.min(STOPS.length - 1, target));
     step.textContent = 'Parada ' + (index + 1) + ' de ' + STOPS.length;
     title.textContent = STOPS[index].title;
+
+    if (STOPS[index].audit) {
+      const open = document.getElementById('auditOpen');
+      if (open) open.click();
+      return;
+    }
 
     const section = document.getElementById(STOPS[index].id);
     if (section) {
@@ -83,6 +90,8 @@ export function initPresentacion() {
 
   document.addEventListener('keydown', (event) => {
     if (!active) return;
+    const audit = document.getElementById('auditScreen');
+    if (audit && !audit.hidden) return;
     if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
 
     if (event.key === 'ArrowRight' || event.key === 'PageDown') {
