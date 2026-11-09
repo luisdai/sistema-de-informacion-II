@@ -1,7 +1,8 @@
 /**
- * Cuestionario final con explicación por respuesta.
+ * Cuestionario final con explicación por respuesta y memoria local.
  */
 import { qs } from './utils.js';
+import { load, save } from './storage.js';
 
 const QUESTIONS = [
   {
@@ -36,6 +37,8 @@ const QUESTIONS = [
   },
 ];
 
+const STORAGE_KEY = 'quiz';
+
 export function initQuiz() {
   const list = qs('#quizList');
   const scoreText = qs('#quizScoreText');
@@ -50,10 +53,25 @@ export function initQuiz() {
     bar.style.width = (score / 5 * 100) + '%';
   }
 
+  function applyAnswer(questionIndex, optionIndex) {
+    const block = list.querySelector('[data-qblock="' + questionIndex + '"]');
+    if (!block) return;
+
+    const buttons = Array.from(block.querySelectorAll('.quiz-opt'));
+    const item = QUESTIONS[questionIndex];
+
+    buttons.forEach((option, index) => {
+      option.disabled = true;
+      option.classList.remove('correct', 'wrong');
+      if (index === item.correct) option.classList.add('correct');
+    });
+
+    if (optionIndex !== item.correct && buttons[optionIndex]) buttons[optionIndex].classList.add('wrong');
+    block.querySelector('.quiz-exp').classList.add('show');
+  }
+
   function render() {
-    answered = {};
     score = 0;
-    updateScore();
 
     list.innerHTML = QUESTIONS.map((item, questionIndex) => {
       const options = item.opts.map((option, optionIndex) =>
@@ -66,6 +84,17 @@ export function initQuiz() {
         '<div class="quiz-exp" id="quizExp' + questionIndex + '">' + item.exp + '</div>' +
       '</div>';
     }).join('');
+
+    answered = load(STORAGE_KEY, {}) || {};
+
+    for (const [key, value] of Object.entries(answered)) {
+      const questionIndex = Number(key);
+      if (!QUESTIONS[questionIndex] || !Number.isInteger(value)) continue;
+      applyAnswer(questionIndex, value);
+      if (value === QUESTIONS[questionIndex].correct) score++;
+    }
+
+    updateScore();
   }
 
   list.addEventListener('click', (event) => {
@@ -73,28 +102,21 @@ export function initQuiz() {
     if (!button) return;
 
     const questionIndex = parseInt(button.dataset.q, 10);
-    if (answered[questionIndex]) return;
-    answered[questionIndex] = true;
+    const optionIndex = parseInt(button.dataset.o, 10);
+    if (answered[questionIndex] !== undefined) return;
 
-    const block = list.querySelector('[data-qblock="' + questionIndex + '"]');
-    const buttons = Array.from(block.querySelectorAll('.quiz-opt'));
-    const item = QUESTIONS[questionIndex];
-
-    buttons.forEach((option, index) => {
-      option.disabled = true;
-      if (index === item.correct) option.classList.add('correct');
-    });
-
-    if (parseInt(button.dataset.o, 10) !== item.correct) {
-      button.classList.add('wrong');
-    } else {
-      score++;
-    }
-
-    block.querySelector('.quiz-exp').classList.add('show');
+    answered[questionIndex] = optionIndex;
+    save(STORAGE_KEY, answered);
+    applyAnswer(questionIndex, optionIndex);
+    if (optionIndex === QUESTIONS[questionIndex].correct) score++;
     updateScore();
   });
 
-  qs('#quizReset').addEventListener('click', render);
+  qs('#quizReset').addEventListener('click', () => {
+    answered = {};
+    save(STORAGE_KEY, answered);
+    render();
+  });
+
   render();
 }
