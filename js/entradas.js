@@ -2,6 +2,7 @@
  * Sección de entradas: recorrido de una transacción, simulador y clasificador.
  */
 import { qs, qsa, formatMoney } from './utils.js';
+import { icon } from './icons.js';
 
 const FLOW_DATA = {
   1: {
@@ -40,12 +41,12 @@ const CATALOG = {
 const DEFAULT_FEEDBACK = '<span>El sistema te pedirá dos datos. El costo unitario <strong>no se captura</strong>: se busca en el catálogo con la llave.</span>';
 
 const CLASS_ITEMS = [
-  { icon: '🔢', label: 'Cantidad retirada', sub: '5 unidades', type: 'variable', exp: 'Cambia en cada transacción: es un dato variable.' },
-  { icon: '🏷️', label: 'ID del artículo', sub: 'ART-101', type: 'ident', exp: 'Identifica de forma única el artículo: es la llave.' },
-  { icon: '💲', label: 'Costo unitario', sub: '$18,50', type: 'recovered', exp: 'Ya está en el catálogo: se recupera con la llave, no se teclea.' },
-  { icon: '🧑', label: 'Nombre y teléfono del cliente', sub: 'ya registrado', type: 'recovered', exp: 'Viven en el maestro de clientes; se recuperan con su ID, no se vuelven a pedir.' },
-  { icon: '🕒', label: 'Fecha y hora de la transacción', sub: '09/11/2026 08:40', type: 'variable', exp: 'Es propia de cada operación: dato variable.' },
-  { icon: '📦', label: 'Descripción del artículo', sub: '"Teclado inalámbrico"', type: 'recovered', exp: 'Vive en el catálogo. Escribirla otra vez duplica datos y genera inconsistencias.' },
+  { icon: 'hash', label: 'Cantidad retirada', sub: '5 unidades', type: 'variable', exp: 'Cambia en cada transacción: es un dato variable.' },
+  { icon: 'tag', label: 'ID del artículo', sub: 'ART-101', type: 'ident', exp: 'Identifica de forma única el artículo: es la llave.' },
+  { icon: 'circle-dollar-sign', label: 'Costo unitario', sub: '$18,50', type: 'recovered', exp: 'Ya está en el catálogo: se recupera con la llave, no se teclea.' },
+  { icon: 'user', label: 'Nombre y teléfono del cliente', sub: 'ya registrado', type: 'recovered', exp: 'Viven en el maestro de clientes; se recuperan con su ID, no se vuelven a pedir.' },
+  { icon: 'clock', label: 'Fecha y hora de la transacción', sub: '09/11/2026 08:40', type: 'variable', exp: 'Es propia de cada operación: dato variable.' },
+  { icon: 'package', label: 'Descripción del artículo', sub: '"Teclado inalámbrico"', type: 'recovered', exp: 'Vive en el catálogo. Escribirla otra vez duplica datos y genera inconsistencias.' },
 ];
 
 const CLASS_LABELS = { variable: 'Variable', ident: 'Identificación', recovered: 'Recuperado' };
@@ -135,7 +136,7 @@ function initFlowAndSimulator() {
       idInput.setAttribute('aria-invalid', 'true');
       idInput.focus();
       paintFlow(1);
-      setFeedback('err', '<span aria-hidden="true">⚠️</span><span><strong>Falta la llave.</strong> Sin el ID del artículo no se puede recuperar el costo ni registrar la transacción.</span>');
+      setFeedback('err', icon('triangle-alert') + '<span><strong>Falta la llave.</strong> Sin el ID del artículo no se puede recuperar el costo ni registrar la transacción.</span>');
       submitButton.disabled = false;
       return;
     }
@@ -148,7 +149,7 @@ function initFlowAndSimulator() {
       for (const node of nodes) {
         if (node.dataset.step === '3') node.classList.add('is-error');
       }
-      setFeedback('err', '<span aria-hidden="true">⚠️</span><span><strong>La llave no existe en el catálogo.</strong> Prueba con <strong>ART-101</strong>, <strong>ART-205</strong> o <strong>ART-310</strong>. El sistema no inventa el costo: lo busca.</span>');
+      setFeedback('err', icon('triangle-alert') + '<span><strong>La llave no existe en el catálogo.</strong> Prueba con <strong>ART-101</strong>, <strong>ART-205</strong> o <strong>ART-310</strong>. El sistema no inventa el costo: lo busca.</span>');
       submitButton.disabled = false;
       return;
     }
@@ -158,12 +159,12 @@ function initFlowAndSimulator() {
       for (const node of nodes) {
         if (node.dataset.step === '3') node.classList.add('is-error');
       }
-      setFeedback('err', '<span aria-hidden="true">⚠️</span><span><strong>Cantidad fuera de rango.</strong> Debe ser un número entero entre 1 y 99. Validar en el origen evita registro basura.</span>');
+      setFeedback('err', icon('triangle-alert') + '<span><strong>Cantidad fuera de rango.</strong> Debe ser un número entero entre 1 y 99. Validar en el origen evita registro basura.</span>');
       submitButton.disabled = false;
       return;
     }
 
-    setFeedback('', '<span aria-hidden="true">⏳</span><span>Procesando <strong>' + qty + ' × ' + id + '</strong>…</span>');
+    setFeedback('', icon('loader-circle', 'spin') + '<span>Procesando <strong>' + qty + ' × ' + id + '</strong>…</span>');
 
     const sequence = [2, 3, 4, 5];
     sequence.forEach((step, index) => {
@@ -185,7 +186,7 @@ function initFlowAndSimulator() {
       flowDesc.textContent = 'Registro guardado. La llave ' + id + ' permitió recuperar "' + item.name + '" y su costo unitario. El total se calculó en el sistema: ' + formatMoney(total) + '. La salida inmediata es la confirmación y el descuento de existencias.';
       flowTitle.textContent = '5. Almacenamiento y salida';
       flowTag.textContent = 'Listo';
-      setFeedback('ok', '<span aria-hidden="true">✓</span><span><strong>Entrada registrada.</strong> ' + qty + ' × ' + item.name + ' (' + id + ') · costo recuperado ' + formatMoney(item.price) + ' · total ' + formatMoney(total) + '. Solo se capturaron dos datos: llave y cantidad.</span>');
+      setFeedback('ok', icon('check') + '<span><strong>Entrada registrada.</strong> ' + qty + ' × ' + item.name + ' (' + id + ') · costo recuperado ' + formatMoney(item.price) + ' · total ' + formatMoney(total) + '. Solo se capturaron dos datos: llave y cantidad.</span>');
       submitButton.disabled = false;
     }, 1800));
   });
@@ -208,7 +209,7 @@ function initClassifier() {
       row.className = 'class-row';
       row.dataset.idx = index;
       row.innerHTML =
-        '<div class="field-desc"><i aria-hidden="true">' + item.icon + '</i>' +
+        '<div class="field-desc"><i aria-hidden="true">' + icon(item.icon) + '</i>' +
           '<span>' + item.label + '<small>' + item.sub + '</small></span></div>' +
         '<div class="class-opts">' +
           ['variable', 'ident', 'recovered'].map((type) =>

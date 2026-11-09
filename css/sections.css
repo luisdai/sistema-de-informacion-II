@@ -132,7 +132,7 @@
   padding:.6rem .75rem;border:1px solid var(--line);border-radius:11px;background:#fff;
 }
 .class-row .field-desc{font-size:.84rem;display:flex;gap:.5rem;align-items:center;font-weight:600}
-.class-row .field-desc i{font-style:normal;font-size:.95rem}
+.class-row .field-desc i{font-style:normal;font-size:.95rem;color:var(--muted)}
 .class-row .field-desc small{display:block;font-weight:500;color:var(--muted);font-size:.72rem}
 .class-opts{display:flex;gap:5px;justify-content:flex-start;flex-wrap:wrap}
 .class-opt{

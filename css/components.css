@@ -3,6 +3,20 @@
    Botones, avisos, etiquetas y listas reutilizables.
    ============================================================ */
 
+/* Iconos SVG. Heredan el color del texto y se escalan con la tipografía. */
+.icon{width:1em;height:1em;display:inline-block;vertical-align:-.125em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.spin{animation:icon-spin 1s linear infinite}
+@keyframes icon-spin{to{transform:rotate(360deg)}}
+.hero-float .ic .icon{width:13px;height:13px}
+.tag .icon{width:13px;height:13px}
+.n-ic .icon{width:18px;height:18px}
+.sim-feedback .icon{width:16px;height:16px;margin-top:.15em}
+.risk .icon{width:15px;height:15px;margin-top:.15em}
+.secure .icon,.lg-secure .icon{width:14px;height:14px;margin-top:.15em}
+.mr-ic .icon{width:18px;height:18px}
+.dc-ic .icon{width:20px;height:20px}
+
+
 /* ---------- Botones ---------- */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.5rem;

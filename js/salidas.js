@@ -2,6 +2,7 @@
  * Sección de salidas: reporte comparativo y recomendador del método de salida.
  */
 import { qs, formatMoney, formatNumber } from './utils.js';
+import { icon } from './icons.js';
 
 const SALES = [
   { name: 'Marta Sosa', initials: 'MS', zone: 'Centro', ventas: 3750, meta: 3500, code: 'V-03' },
@@ -91,31 +92,31 @@ function initMethod() {
   function updateMethod() {
     let title = '';
     let text = '';
-    let icon = '💡';
+    let iconName = 'lightbulb';
 
     if (need.value === 'legal') {
-      icon = '🖨️';
+      iconName = 'printer';
       title = 'Documento impreso controlado (o PDF firmado equivalente)';
       text = 'Una norma exige el formato y su conservación. La guía recuerda que la ley puede dictar la tecnología de salida: no la sustituyas por una pantalla. Diseña el formulario pensando en que debe imprimirse y archivarse correctamente.';
     } else if (who.value === 'externo') {
-      icon = '🌐';
+      iconName = 'globe';
       title = 'Documento web o PDF descargable';
       text = 'Va hacia clientes o proveedores, probablemente muchos y en distintos lugares. Un documento web con el logotipo y los colores de la empresa llega a todos y cada quien decide si lo imprime. Para un comprobante puntual, la factura impresa sigue siendo válida.';
     } else if (freq.value === 'diaria') {
-      icon = '🖥️';
+      iconName = 'monitor';
       title = 'Salida en pantalla (panel en línea)';
       text = 'Se consulta con urgencia y muchas veces al día. La pantalla en línea permite ver el dato actualizado, filtrar y actuar. Complementa con exportación a PDF solo cuando alguien necesite archivar.';
     } else if (freq.value === 'ocasional') {
-      icon = '📄';
+      iconName = 'file-text';
       title = 'Reporte bajo demanda (pantalla o PDF)';
       text = 'Pocos usuarios y baja frecuencia. No hace falta imprimir por defecto ni mantener un panel permanente: genera el reporte cuando se pida, con filtros claros y fecha de corte. Revisa si conviene conservarlo por normativa.';
     } else {
-      icon = '📊';
+      iconName = 'chart-column';
       title = 'Reporte periódico en pantalla, con opción de imprimir';
       text = 'Uso interno y frecuencia semanal o mensual. Preséntalo en pantalla con resumen primero y detalle después; ofrece impresión o PDF para juntas. La guía insiste en no producir más papel del necesario.';
     }
 
-    result.innerHTML = '<span class="mr-ic" aria-hidden="true">' + icon + '</span><div><h4>' + title + '</h4><p>' + text + '</p></div>';
+    result.innerHTML = '<span class="mr-ic" aria-hidden="true">' + icon(iconName) + '</span><div><h4>' + title + '</h4><p>' + text + '</p></div>';
   }
 
   for (const select of [who, need, freq]) select.addEventListener('change', updateMethod);

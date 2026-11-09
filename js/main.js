@@ -2,6 +2,7 @@
  * Punto de entrada de la guía.
  * Cada módulo inicializa su sección y no falla si esa sección no existe.
  */
+import { mountSprite } from './icons.js';
 import { initNav } from './nav.js';
 import { initRuta } from './ruta.js';
 import { initEntradas } from './entradas.js';
@@ -14,6 +15,7 @@ import { initReto } from './reto.js';
 import { initQuiz } from './quiz.js';
 import { initChecklist } from './checklist.js';
 
+mountSprite();
 initNav();
 initRuta();
 initEntradas();

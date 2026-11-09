@@ -84,8 +84,8 @@
           </div>
           <div class="hero-btn">Registrar salida</div>
         </div>
-        <div class="hero-float a"><span class="ic">✓</span> Validación en línea</div>
-        <div class="hero-float b"><span class="ic">◆</span> Jerarquía clara</div>
+        <div class="hero-float a"><span class="ic"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span> Validación en línea</div>
+        <div class="hero-float b"><span class="ic"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-layers"></use></svg></span> Jerarquía clara</div>
       </div>
     </div>
   </div>
@@ -132,7 +132,7 @@
           <div><span class="lbl">Entregable</span><span class="val" id="routeDeliverable"></span></div>
           <div><span class="lbl">Pregunta clave</span><span class="val" id="routeQuestion"></span></div>
         </div>
-        <div class="risk" id="routeRisk"><span aria-hidden="true">⚠️</span><span id="routeRiskText"></span></div>
+        <div class="risk" id="routeRisk"><span aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-triangle-alert"></use></svg></span><span id="routeRiskText"></span></div>
       </div>
     </div>
 
@@ -163,31 +163,31 @@
           <ol class="flow" id="flow">
             <li class="flow-item">
               <button class="flow-node is-active" data-step="1">
-                <span class="n-ic" aria-hidden="true">📝</span><b>1. Captura</b><small>en el origen</small>
+                <span class="n-ic" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-square-pen"></use></svg></span><b>1. Captura</b><small>en el origen</small>
               </button>
               <span class="flow-arrow" aria-hidden="true"></span>
             </li>
             <li class="flow-item">
               <button class="flow-node" data-step="2">
-                <span class="n-ic" aria-hidden="true">⌨️</span><b>2. Ingreso</b><small>a la interfaz</small>
+                <span class="n-ic" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-keyboard"></use></svg></span><b>2. Ingreso</b><small>a la interfaz</small>
               </button>
               <span class="flow-arrow" aria-hidden="true"></span>
             </li>
             <li class="flow-item">
               <button class="flow-node" data-step="3">
-                <span class="n-ic" aria-hidden="true">◆</span><b>3. Validación</b><small>reglas de negocio</small>
+                <span class="n-ic" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-shield-check"></use></svg></span><b>3. Validación</b><small>reglas de negocio</small>
               </button>
               <span class="flow-arrow" aria-hidden="true"></span>
             </li>
             <li class="flow-item">
               <button class="flow-node" data-step="4">
-                <span class="n-ic" aria-hidden="true">⚙️</span><b>4. Cálculo</b><small>cálculos y cruces</small>
+                <span class="n-ic" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cpu"></use></svg></span><b>4. Cálculo</b><small>cálculos y cruces</small>
               </button>
               <span class="flow-arrow" aria-hidden="true"></span>
             </li>
             <li class="flow-item">
               <button class="flow-node" data-step="5">
-                <span class="n-ic" aria-hidden="true">🗄️</span><b>5. Almacenaje</b><small>registro y salida</small>
+                <span class="n-ic" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-database"></use></svg></span><b>5. Almacenaje</b><small>registro y salida</small>
               </button>
             </li>
           </ol>
@@ -218,7 +218,7 @@
                   <option value="devolucion">Devolución</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-primary sim-submit">Procesar ▶</button>
+              <button type="submit" class="btn btn-primary sim-submit">Procesar <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-play"></use></svg></button>
             </div>
             <div class="sim-feedback" id="simFeedback" role="status"><span>El sistema te pedirá dos datos. El costo unitario <strong>no se captura</strong>: se busca en el catálogo con la llave.</span></div>
             <div class="sim-catalog" aria-label="Catálogo de ejemplo">
@@ -338,7 +338,7 @@
         <h3 style="font-size:1.05rem;margin-bottom:.5rem">Reconocer, no memorizar.</h3>
         <p class="lede" style="font-size:.87rem">Usa iconos estándar y limita el vocabulario gráfico a unos <strong>20 símbolos</strong>. Para el usuario ocasional, al menos la mitad de la pantalla debe contener información útil: si no ayuda a decidir o actuar, sobra.</p>
         <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
-          <span class="tag">🏠 Inicio</span><span class="tag">💾 Guardar</span><span class="tag">🔍 Buscar</span><span class="tag">🗑️ Eliminar</span><span class="tag">↩️ Deshacer</span>
+          <span class="tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-house"></use></svg> Inicio</span><span class="tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-save"></use></svg> Guardar</span><span class="tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-search"></use></svg> Buscar</span><span class="tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-trash-2"></use></svg> Eliminar</span><span class="tag"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-undo-2"></use></svg> Deshacer</span>
         </div>
       </div>
     </div>
@@ -435,7 +435,7 @@
               <button type="button" class="btn btn-ghost" id="goodClear">Cancelar</button>
             </div>
             <div class="form-msg" id="goodFormMsg" role="status"></div>
-            <div class="secure"><span aria-hidden="true">🔒</span> Los errores se muestran junto al campo, no en una alerta aparte.</div>
+            <div class="secure"><span aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-lock"></use></svg></span> Los errores se muestran junto al campo, no en una alerta aparte.</div>
           </form>
         </div>
         <div class="lab-notes">
@@ -515,7 +515,7 @@
         <button type="button" class="btn btn-primary sim-submit" id="mCalc">Recomendar</button>
       </div>
       <div class="method-result" id="methodResult" role="status">
-        <span class="mr-ic" aria-hidden="true">💡</span>
+        <span class="mr-ic" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-lightbulb"></use></svg></span>
         <div><h4>Elige las tres respuestas</h4><p>Y te diré qué método conviene, con el criterio de la guía.</p></div>
       </div>
     </div>
@@ -571,7 +571,7 @@
         </div>
       </div>
       <div class="demo-card" id="demoCard">
-        <div class="dc-ic" aria-hidden="true">📦</div>
+        <div class="dc-ic" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-package"></use></svg></div>
         <h4>Confirmar retiro de inventario</h4>
         <p>3 artículos · 12 unidades · Bodega central. Revisa antes de registrar; esta acción descuenta existencias.</p>
         <div class="demo-actions">
@@ -657,7 +657,7 @@
             </div>
             <div class="lg-msg" id="goodLoginMsg" role="status"></div>
             <div class="lg-demo">Demo: <code>admin@empresa.com</code> / <code>Demo1234</code>. Cualquier otro par muestra el error genérico.</div>
-            <div class="lg-secure"><span aria-hidden="true">🔐</span> La contraseña se oculta mientras escribes; el sistema nunca confirma si un correo existe.</div>
+            <div class="lg-secure"><span aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-lock-keyhole"></use></svg></span> La contraseña se oculta mientras escribes; el sistema nunca confirma si un correo existe.</div>
           </form>
         </div>
         <div class="lab-notes">
