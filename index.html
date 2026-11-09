@@ -13,7 +13,7 @@
 </head>
 <body>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
-<div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+<div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
 
 <nav class="nav" id="nav" aria-label="Navegación principal">
   <a href="#top" class="brand" style="color:inherit;text-decoration:none">
@@ -101,30 +101,30 @@
     </div>
 
     <div class="route">
-      <div class="route-list" role="tablist" aria-label="Pasos del proceso de diseño">
-        <button class="route-step" role="tab" aria-selected="true" data-step="1">
+      <div class="route-list" role="tablist" aria-orientation="vertical" aria-label="Pasos del proceso de diseño">
+        <button class="route-step" id="routeTab1" role="tab" aria-selected="true" aria-controls="routePanel" tabindex="0" data-step="1">
           <span class="route-num">1</span>
           <span><b>Entender la transacción</b><span>Qué ocurre y qué datos nacen en ese momento</span></span>
         </button>
-        <button class="route-step" role="tab" aria-selected="false" data-step="2">
+        <button class="route-step" id="routeTab2" role="tab" aria-selected="false" aria-controls="routePanel" tabindex="-1" data-step="2">
           <span class="route-num">2</span>
           <span><b>Mapear el diálogo</b><span>Qué pantallas existen y cómo se conectan</span></span>
         </button>
-        <button class="route-step" role="tab" aria-selected="false" data-step="3">
+        <button class="route-step" id="routeTab3" role="tab" aria-selected="false" aria-controls="routePanel" tabindex="-1" data-step="3">
           <span class="route-num">3</span>
           <span><b>Prototipar entradas y salidas</b><span>Bocetos de pantalla y reportes, sin lógica final</span></span>
         </button>
-        <button class="route-step" role="tab" aria-selected="false" data-step="4">
+        <button class="route-step" id="routeTab4" role="tab" aria-selected="false" aria-controls="routePanel" tabindex="-1" data-step="4">
           <span class="route-num">4</span>
           <span><b>Probar con usuarios reales</b><span>Observar, no preguntar “¿te gusta?”</span></span>
         </button>
-        <button class="route-step" role="tab" aria-selected="false" data-step="5">
+        <button class="route-step" id="routeTab5" role="tab" aria-selected="false" aria-controls="routePanel" tabindex="-1" data-step="5">
           <span class="route-num">5</span>
           <span><b>Especificar y construir</b><span>Reglas, mensajes y permisos por escrito</span></span>
         </button>
       </div>
 
-      <div class="route-panel">
+      <div class="route-panel" id="routePanel" role="tabpanel" aria-labelledby="routeTab1" tabindex="0">
         <span class="step-index" id="routeIndex">Paso 1 de 5</span>
         <h3 id="routeTitle">Entender la transacción</h3>
         <p id="routeBody"></p>
@@ -160,37 +160,37 @@
           <span class="flow-hint">Haz clic en un paso para verlo por dentro</span>
         </div>
         <div class="flow-scroll">
-          <div class="flow" id="flow" role="list">
-            <div class="flow-item">
-              <button class="flow-node is-active" data-step="1" role="listitem">
+          <ol class="flow" id="flow">
+            <li class="flow-item">
+              <button class="flow-node is-active" data-step="1">
                 <span class="n-ic" aria-hidden="true">📝</span><b>1. Captura</b><small>en el origen</small>
               </button>
               <span class="flow-arrow" aria-hidden="true"></span>
-            </div>
-            <div class="flow-item">
-              <button class="flow-node" data-step="2" role="listitem">
+            </li>
+            <li class="flow-item">
+              <button class="flow-node" data-step="2">
                 <span class="n-ic" aria-hidden="true">⌨️</span><b>2. Ingreso</b><small>a la interfaz</small>
               </button>
               <span class="flow-arrow" aria-hidden="true"></span>
-            </div>
-            <div class="flow-item">
-              <button class="flow-node" data-step="3" role="listitem">
+            </li>
+            <li class="flow-item">
+              <button class="flow-node" data-step="3">
                 <span class="n-ic" aria-hidden="true">◆</span><b>3. Validación</b><small>reglas de negocio</small>
               </button>
               <span class="flow-arrow" aria-hidden="true"></span>
-            </div>
-            <div class="flow-item">
-              <button class="flow-node" data-step="4" role="listitem">
+            </li>
+            <li class="flow-item">
+              <button class="flow-node" data-step="4">
                 <span class="n-ic" aria-hidden="true">⚙️</span><b>4. Cálculo</b><small>cálculos y cruces</small>
               </button>
               <span class="flow-arrow" aria-hidden="true"></span>
-            </div>
-            <div class="flow-item">
-              <button class="flow-node" data-step="5" role="listitem">
+            </li>
+            <li class="flow-item">
+              <button class="flow-node" data-step="5">
                 <span class="n-ic" aria-hidden="true">🗄️</span><b>5. Almacenaje</b><small>registro y salida</small>
               </button>
-            </div>
-          </div>
+            </li>
+          </ol>
         </div>
 
         <div class="flow-detail" aria-live="polite">
@@ -233,7 +233,7 @@
       <div class="classifier">
         <div class="classifier-head">
           <h3>¿Se captura o se recupera?</h3>
-          <span class="class-score" id="classScore">0 de 6</span>
+          <span class="class-score" id="classScore" aria-live="polite">0 de 6</span>
         </div>
         <p class="lede" style="font-size:.85rem">Clasifica cada dato de una venta. Si te equivocas, el sistema te explica por qué.</p>
         <div class="class-rows" id="classRows"></div>
@@ -406,7 +406,7 @@
 
             <div class="field" id="fName">
               <label for="goodName">Nombre del artículo <span class="req" aria-hidden="true">*</span></label>
-              <input id="goodName" type="text" placeholder="Ej. Base para laptop" autocomplete="off" required aria-required="true" aria-describedby="goodNameErr">
+              <input id="goodName" type="text" placeholder="Ej. Base para laptop" autocomplete="off" required aria-required="true" aria-describedby="goodNameHint goodNameErr">
               <span class="hint" id="goodNameHint">Como aparecerá en el catálogo.</span>
               <span class="err" id="goodNameErr">Escribe al menos 3 caracteres.</span>
             </div>
@@ -426,8 +426,8 @@
 
             <div class="field">
               <label for="goodNotes">Observaciones <span style="font-weight:500;color:var(--muted)">(opcional)</span></label>
-              <input id="goodNotes" type="text" placeholder="Ej. urgente para el área de sistemas">
-              <span class="hint">Máximo 120 caracteres. No incluyas datos personales.</span>
+              <input id="goodNotes" type="text" placeholder="Ej. urgente para el área de sistemas" aria-describedby="goodNotesHint">
+              <span class="hint" id="goodNotesHint">Máximo 120 caracteres. No incluyas datos personales.</span>
             </div>
 
             <div class="fg-actions">
@@ -640,12 +640,12 @@
 
             <label class="lg-label" for="loginEmail">Correo corporativo</label>
             <div class="lg-field">
-              <input id="loginEmail" type="email" placeholder="nombre@empresa.com" autocomplete="username" aria-label="Correo corporativo">
+              <input id="loginEmail" type="email" placeholder="nombre@empresa.com" autocomplete="username">
             </div>
 
             <div class="lg-label"><label for="loginPass">Contraseña</label><a href="#login">¿La olvidaste?</a></div>
             <div class="lg-field">
-              <input id="loginPass" type="password" placeholder="Mínimo 8 caracteres" autocomplete="current-password" aria-label="Contraseña" aria-describedby="capsHint">
+              <input id="loginPass" type="password" placeholder="Mínimo 8 caracteres" autocomplete="current-password" aria-describedby="capsHint">
               <button type="button" class="lg-toggle" id="loginToggle" aria-label="Mostrar contraseña" aria-pressed="false">Mostrar</button>
             </div>
             <span class="lg-hint" id="capsHint"><span aria-hidden="true">⇪</span> Bloq Mayús está activado</span>
@@ -729,7 +729,7 @@
         <h3>Tu inspección</h3>
         <p>Toca los seis puntos del panel. Se irán marcando aquí.</p>
         <div class="game-hud">
-          <span class="game-count" id="gameCount">0 / 6 encontrados</span>
+          <span class="game-count" id="gameCount" aria-live="polite">0 / 6 encontrados</span>
           <button type="button" class="btn btn-soft btn-sm" id="gameReveal">Revelar todos</button>
         </div>
         <div class="game-list" id="gameList"></div>
@@ -752,7 +752,7 @@
       <div class="quiz">
         <div class="quiz-top">
           <h3>Ponte a prueba</h3>
-          <div class="quiz-score"><span id="quizScoreText">0 de 5</span><span class="qs-bar"><i id="quizBar"></i></span></div>
+          <div class="quiz-score"><span id="quizScoreText" aria-live="polite">0 de 5</span><span class="qs-bar" aria-hidden="true"><i id="quizBar"></i></span></div>
         </div>
         <div id="quizList"></div>
         <div class="quiz-actions">
@@ -764,7 +764,7 @@
       <div class="checklist">
         <h3>Checklist antes de construir</h3>
         <p>Marca lo que ya está resuelto en tu proyecto.</p>
-        <div class="check-progress"><span class="cp-bar"><i id="checkBar"></i></span><span id="checkText">0 / 10</span></div>
+        <div class="check-progress"><span class="cp-bar" aria-hidden="true"><i id="checkBar"></i></span><span id="checkText" aria-live="polite">0 / 10</span></div>
         <div class="check-items">
           <label class="check-item"><input type="checkbox" class="check-input"><span>Definí qué datos son variables, cuáles identifican y cuáles se recuperan.</span></label>
           <label class="check-item"><input type="checkbox" class="check-input"><span>Cada campo tiene etiqueta visible y un ejemplo de formato.</span></label>

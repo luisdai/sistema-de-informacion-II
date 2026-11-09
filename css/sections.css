@@ -17,6 +17,7 @@
   width:100%;
 }
 .route-step:hover{background:var(--surface-2);border-color:var(--line)}
+.route-step:focus-visible{outline:3px solid rgba(79,70,229,.35);outline-offset:2px}
 .route-step[aria-selected="true"]{background:var(--brand-soft);border-color:#ddd8ff}
 .route-num{
   width:34px;height:34px;border-radius:11px;flex-shrink:0;display:grid;place-items:center;
@@ -52,7 +53,7 @@
 .flow-top h3{font-size:1.05rem}
 .flow-hint{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:.4rem}
 .flow-scroll{overflow:visible;padding:10px 2px 4px}
-.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;align-items:stretch;min-width:0}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;align-items:stretch;min-width:0;margin:0;padding:0;list-style:none}
 .flow-item{display:block;min-width:0}
 .flow-node{
   width:100%;height:100%;background:#fff;border:1.5px solid var(--line-strong);border-radius:14px;

@@ -65,7 +65,10 @@ export function initNav() {
     }
 
     for (const link of navLinks) {
-      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      const active = link.getAttribute('href') === '#' + current;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
     }
   }
 

@@ -51,11 +51,16 @@ export function initRuta() {
   const deliverable = qs('#routeDeliverable');
   const question = qs('#routeQuestion');
   const risk = qs('#routeRiskText');
+  const panel = qs('#routePanel');
+  const list = qs('.route-list');
 
   function setRoute(step) {
     for (const button of steps) {
-      button.setAttribute('aria-selected', String(button.dataset.step === String(step)));
+      const active = button.dataset.step === String(step);
+      button.setAttribute('aria-selected', String(active));
+      button.tabIndex = active ? 0 : -1;
     }
+    if (panel) panel.setAttribute('aria-labelledby', 'routeTab' + step);
 
     const data = ROUTE_DATA[step];
     index.textContent = 'Paso ' + step + ' de 5';
@@ -68,6 +73,24 @@ export function initRuta() {
 
   for (const button of steps) {
     button.addEventListener('click', () => setRoute(button.dataset.step));
+  }
+
+  if (list) {
+    list.addEventListener('keydown', (event) => {
+      const keys = ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Home', 'End'];
+      if (!keys.includes(event.key)) return;
+      event.preventDefault();
+
+      const current = steps.findIndex((button) => button.getAttribute('aria-selected') === 'true');
+      let next = current;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (current + 1) % steps.length;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (current - 1 + steps.length) % steps.length;
+      if (event.key === 'Home') next = 0;
+      if (event.key === 'End') next = steps.length - 1;
+
+      setRoute(steps[next].dataset.step);
+      steps[next].focus();
+    });
   }
 
   setRoute(1);

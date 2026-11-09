@@ -53,6 +53,7 @@ function initGoodLogin() {
     const active = event && typeof event.getModifierState === 'function'
       ? event.getModifierState('CapsLock')
       : false;
+    capsHint.classList.toggle('caps', active);
     capsHint.style.display = active ? 'flex' : 'none';
   }
 
