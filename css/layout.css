@@ -101,6 +101,7 @@
 .hero-demo-bar .url{
   margin-left:auto;font-size:.66rem;color:#8a8fa6;background:#f2f0fa;
   border-radius:99px;padding:.18rem .6rem;font-weight:600;
+  width:auto;height:auto;max-width:45%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .hero-screen{background:#fbfaff;border:1px solid #ebe8f6;border-radius:14px;padding:16px}
 .hero-screen-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
