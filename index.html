@@ -343,6 +343,30 @@
         </div>
       </div>
     </div>
+    <div class="contrast">
+      <div class="contrast-head">
+        <h3>Comprueba el contraste</h3>
+        <p>El color no se elige a ojo. WCAG pide 4,5:1 para texto normal y 3:1 para texto grande. Cambia los colores y mira el resultado real.</p>
+      </div>
+      <div class="contrast-grid">
+        <div class="contrast-sample" id="contrastSample" style="background:#ffffff;color:#6a7288">
+          <span>Texto normal de ejemplo</span>
+          <b>Texto grande de ejemplo</b>
+        </div>
+        <div class="contrast-controls">
+          <label for="ctText">Color del texto</label>
+          <input type="color" id="ctText" value="#6a7288">
+          <label for="ctBg">Color del fondo</label>
+          <input type="color" id="ctBg" value="#ffffff">
+          <div class="contrast-presets" role="group" aria-label="Ejemplos de contraste">
+            <button type="button" class="chip" data-preset="bad">Bajo</button>
+            <button type="button" class="chip" data-preset="aa">AA</button>
+            <button type="button" class="chip" data-preset="aaa">AAA</button>
+          </div>
+        </div>
+        <div class="contrast-result" id="contrastResult" role="status"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -705,6 +729,10 @@
     </div>
 
     <div class="note amber" style="margin-top:22px"><strong>Ni UX sin UI, ni UI sin UX.</strong><p>Una interfaz preciosa con un flujo confuso frustra; un flujo correcto con una interfaz ilegible también. El diseño de sistemas los une: la salida, la entrada y el diálogo son una sola conversación entre la persona y la computadora.</p></div>
+    <div class="css-demo-actions">
+      <button type="button" class="btn btn-ghost" id="noCssBtn">Ver la página sin CSS</button>
+      <span class="lede" style="font-size:.82rem">El mismo HTML sin la capa visual. Si sigue siendo legible, la estructura está bien.</span>
+    </div>
   </div>
 </section>
 

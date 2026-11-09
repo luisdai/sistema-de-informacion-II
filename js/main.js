@@ -17,6 +17,8 @@ import { initChecklist } from './checklist.js';
 import { initCampo } from './campo.js';
 import { initControles } from './controles.js';
 import { initValidacion } from './validacion.js';
+import { initContraste } from './contraste.js';
+import { initSinCss } from './sin-css.js';
 
 mountSprite();
 initNav();
@@ -33,3 +35,5 @@ initChecklist();
 initCampo();
 initControles();
 initValidacion();
+initContraste();
+initSinCss();
