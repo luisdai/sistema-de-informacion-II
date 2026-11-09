@@ -234,7 +234,8 @@ p{text-wrap:pretty}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .split{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:start}
-.split > *,.lab > *,.grid-2 > *,.grid-3 > *,.game > *,.anatomy > *,.login-wrap > *,.uxui > *,.route > *{min-width:0}
+.entry-lab{display:grid;gap:22px;margin-bottom:24px}
+.split > *,.entry-lab > *,.lab > *,.grid-2 > *,.grid-3 > *,.game > *,.anatomy > *,.login-wrap > *,.uxui > *{min-width:0}
 .flow-card,.classifier,.flow-scroll{min-width:0;max-width:100%}
 .note{
   background:var(--info-soft);border:1px solid #cae9f8;border-left:4px solid var(--info);
@@ -265,55 +266,44 @@ ul.crosses{list-style:none;display:grid;gap:.55rem;font-size:.9rem;color:var(--i
 ul.crosses li{display:flex;gap:.55rem;align-items:flex-start}
 ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-radius:50%;background:var(--bad-soft);color:var(--bad);font-size:.65rem;font-weight:900;display:grid;place-items:center;margin-top:.15rem}
 
-/* ============================================================
-   4. RUTA DE DISEÑO (stepper)
-   ============================================================ */
-.route{
-  display:grid;grid-template-columns:minmax(280px,.9fr) 1.1fr;gap:26px;
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-xl);
-  padding:22px;box-shadow:var(--shadow-md);
-}
-.route-list{display:flex;flex-direction:column;gap:6px}
-.route-step{
-  display:flex;align-items:center;gap:.85rem;text-align:left;
-  background:transparent;border:1px solid transparent;border-radius:var(--r-md);
-  padding:.8rem .85rem;transition:background .2s,border-color .2s;
-  width:100%;
-}
-.route-step:hover{background:var(--surface-2);border-color:var(--line)}
-.route-step[aria-selected="true"]{background:var(--brand-soft);border-color:#ddd8ff}
-.route-num{
-  width:34px;height:34px;border-radius:11px;flex-shrink:0;display:grid;place-items:center;
-  font-weight:800;font-size:.85rem;background:#f1effa;color:#6b6489;
-  border:1px solid #e7e3f5;
-}
-.route-step[aria-selected="true"] .route-num{background:var(--brand);color:#fff;border-color:var(--brand);box-shadow:0 6px 14px -8px rgba(79,70,229,.9)}
-.route-step b{display:block;font-size:.92rem;line-height:1.25}
-.route-step span{font-size:.76rem;color:var(--muted)}
-.route-panel{
-  background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-lg);
-  padding:26px;display:flex;flex-direction:column;min-height:330px;
-}
-.route-panel .step-index{font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
-.route-panel h3{font-size:1.35rem;margin:.35rem 0 .6rem}
-.route-panel p{color:var(--ink-soft);font-size:.94rem}
-.route-panel .deliverable{
-  margin-top:auto;padding-top:1.1rem;border-top:1px dashed var(--line-strong);
-  display:grid;gap:.5rem;font-size:.85rem;
-}
-.route-panel .deliverable div{display:flex;gap:.6rem;align-items:flex-start}
-.route-panel .deliverable .lbl{font-weight:750;color:var(--ink);min-width:112px;flex-shrink:0}
-.route-panel .deliverable .val{color:var(--muted)}
-.risk{
-  margin-top:1rem;background:#fff8e8;border:1px solid #f9e2b3;border-radius:12px;
-  padding:.7rem .85rem;font-size:.83rem;color:#7a4c04;display:flex;gap:.55rem;
-}
-.risk b{color:#653d00}
+/* Listas del modo resumido */
+.steps{list-style:none;counter-reset:s;display:grid;gap:8px;max-width:840px;margin:0}
+.steps li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:11px 16px}
+.steps li::before{content:counter(s);flex-shrink:0;width:27px;height:27px;border-radius:9px;background:var(--brand-soft);color:var(--brand-dark);font-weight:800;font-size:.78rem;display:grid;place-items:center;margin-top:.12rem}
+.steps b{display:block;font-size:.94rem;line-height:1.3}
+.steps span{display:block;color:var(--ink-soft);font-size:.85rem;line-height:1.4}
+.tip-line{margin-top:14px;font-size:.9rem;color:var(--ink-soft);border-left:3px solid var(--brand);padding-left:12px;max-width:840px}
+ul.mini-list{list-style:none;display:grid;gap:.42rem;font-size:.88rem;color:var(--ink-soft);margin-top:.65rem;padding:0}
+ul.mini-list li{display:flex;gap:.5rem;align-items:flex-start}
+ul.mini-list li::before{content:"•";color:currentColor;opacity:.55;font-weight:900;flex-shrink:0}
+.note .mini-list{color:inherit;margin-top:.5rem}
+
+/* Laboratorios plegables */
+.lab-fold{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);overflow:hidden}
+.lab-fold>summary{display:flex;align-items:center;gap:14px;padding:13px 18px;cursor:pointer;list-style:none;transition:background .2s}
+.lab-fold>summary::-webkit-details-marker{display:none}
+.lab-fold>summary::marker{content:""}
+.lab-fold>summary:hover{background:var(--surface-2)}
+.lab-fold>summary:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
+.fold-ico{width:36px;height:36px;border-radius:11px;background:var(--brand-soft);display:grid;place-items:center;font-size:1rem;flex-shrink:0}
+.fold-txt{min-width:0}
+.fold-txt b{display:block;font-size:.95rem;line-height:1.3}
+.fold-txt small{display:block;color:var(--muted);font-size:.79rem;line-height:1.35}
+.fold-cta{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:.78rem;font-weight:750;color:var(--brand-dark);background:var(--brand-soft);border-radius:999px;padding:.35rem .7rem;flex-shrink:0}
+.fold-cta .when-open{display:none}
+.lab-fold[open] .fold-cta .when-open{display:inline}
+.lab-fold[open] .fold-cta .when-closed{display:none}
+.chev{display:inline-block;transition:transform .2s;font-size:.8rem}
+.lab-fold[open] .chev{transform:rotate(180deg)}
+.fold-body{padding:0 18px 18px;border-top:1px solid var(--line)}
+.fold-body>:first-child{margin-top:18px}
+@media(max-width:560px){.fold-txt small{display:none}.fold-cta{padding:.3rem .55rem}}
+
 
 /* ============================================================
    5. FLUJO DE ENTRADAS
    ============================================================ */
-.flow-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-xl);padding:24px;box-shadow:var(--shadow-md)}
+.flow-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-xl);padding:26px 30px;box-shadow:var(--shadow-md)}
 .flow-top{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:space-between;align-items:center;margin-bottom:14px}
 .flow-top h3{font-size:1.05rem}
 .flow-hint{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:.4rem}
@@ -321,33 +311,33 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
 .flow{display:flex;align-items:center;gap:0;min-width:860px}
 .flow-item{display:flex;align-items:center;flex:1 1 0;min-width:0}
 .flow-node{
-  flex:1 1 auto;background:#fff;border:1.5px solid var(--line-strong);border-radius:14px;
-  padding:.7rem .6rem;text-align:center;transition:all .25s ease;position:relative;
-  min-width:118px;
+  flex:1 1 auto;background:#fff;border:1.5px solid var(--line-strong);border-radius:16px;
+  padding:1rem .85rem;text-align:center;transition:all .4s ease;position:relative;
+  min-width:150px;
 }
 .flow-node:hover{border-color:var(--brand);transform:translateY(-2px);box-shadow:var(--shadow-md)}
-.flow-node .n-ic{font-size:1.05rem;margin-bottom:.2rem}
-.flow-node b{display:block;font-size:.78rem;line-height:1.25}
-.flow-node small{display:block;font-size:.64rem;color:var(--muted);margin-top:.15rem;line-height:1.3}
+.flow-node .n-ic{font-size:1.28rem;margin-bottom:.3rem}
+.flow-node b{display:block;font-size:.9rem;line-height:1.25}
+.flow-node small{display:block;font-size:.73rem;color:var(--muted);margin-top:.2rem;line-height:1.3}
 .flow-node.is-active{border-color:var(--brand);background:var(--brand);color:#fff;box-shadow:0 14px 26px -16px rgba(79,70,229,.95)}
 .flow-node.is-active small{color:#d9d5ff}
 .flow-node.is-error{border-color:var(--bad);background:var(--bad);color:#fff}
 .flow-node.is-error small{color:#ffd7e1}
 .flow-node.is-done{border-color:#b9e8d6;background:var(--good-soft)}
 .flow-node.is-done .n-ic{filter:saturate(1)}
-.flow-arrow{flex:0 0 26px;height:2px;background:var(--line-strong);position:relative}
+.flow-arrow{flex:0 0 32px;height:2px;background:var(--line-strong);position:relative}
 .flow-arrow::after{
   content:"";position:absolute;right:-1px;top:-3px;border-left:6px solid var(--line-strong);
   border-top:4px solid transparent;border-bottom:4px solid transparent;
 }
 .flow-detail{
-  margin-top:14px;background:var(--surface-2);border:1px solid var(--line);
-  border-left:4px solid var(--brand);border-radius:0 12px 12px 0;padding:1rem 1.1rem;min-height:104px;
+  margin-top:16px;background:var(--surface-2);border:1px solid var(--line);
+  border-left:4px solid var(--brand);border-radius:0 12px 12px 0;padding:1.1rem 1.25rem;min-height:112px;
   transition:background .2s;
 }
-.flow-detail .fd-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.3rem;flex-wrap:wrap}
-.flow-detail h4{font-size:.98rem}
-.flow-detail p{font-size:.88rem;color:var(--ink-soft)}
+.flow-detail .fd-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.35rem;flex-wrap:wrap}
+.flow-detail h4{font-size:1.05rem}
+.flow-detail p{font-size:.92rem;color:var(--ink-soft)}
 
 .sim{
   margin-top:18px;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
@@ -391,13 +381,22 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
 .catalog-item .price{font-weight:750;color:var(--brand);white-space:nowrap}
 
 /* Clasificador */
-.classifier{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px}
-.classifier-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:4px}
-.classifier-head h3{font-size:1rem}
+.classifier{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 28px}
+.classifier-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:6px}
+.classifier-head h3{font-size:1.15rem}
+.classifier-head .kicker{display:block;margin-bottom:4px}
 .class-score{font-size:.78rem;font-weight:750;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:99px;padding:.25rem .7rem}
-.class-rows{display:grid;gap:8px;margin-top:12px}
+.classifier-lede{font-size:.92rem;color:var(--ink-soft);max-width:92ch;margin-top:4px}
+.classifier-guide{display:grid;grid-template-columns:1.25fr .75fr;gap:14px;margin:16px 0 18px}
+.classifier-legend{display:grid;gap:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.classifier-legend span{font-size:.84rem;color:var(--ink-soft);display:flex;gap:8px;align-items:flex-start}
+.classifier-legend b{color:var(--ink);min-width:100px;flex-shrink:0}
+.classifier-example{background:var(--brand-soft);border:1px solid #dcd7ff;border-radius:12px;padding:14px 16px;font-size:.84rem;color:#3f3865}
+.classifier-example b{display:block;margin-bottom:4px;color:var(--brand-dark)}
+.classifier-example strong{color:var(--brand-dark)}
+.class-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .class-row{
-  display:grid;grid-template-columns:1.15fr 1fr;gap:12px;align-items:center;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;
   padding:.6rem .75rem;border:1px solid var(--line);border-radius:11px;background:#fff;
 }
 .class-row .field-desc{font-size:.84rem;display:flex;gap:.5rem;align-items:center;font-weight:600}
@@ -413,6 +412,10 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
 .class-opt.correct{background:var(--good-soft);border-color:#9adcc3;color:#076a4d}
 .class-opt.wrong{background:var(--bad-soft);border-color:#f3b7c7;color:#9c1537}
 .class-row.solved{border-color:#b9e8d6;background:#fbfffd}
+.classifier-foot{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-top:14px;flex-wrap:wrap}
+.class-feedback{font-size:.84rem;color:var(--muted);flex:1;min-width:220px}
+.class-feedback.ok{color:var(--good)}
+.class-feedback.bad{color:var(--bad)}
 
 /* ============================================================
    6. ANATOMÍA DE PANTALLA
@@ -845,12 +848,12 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
   .hero-demo{max-width:430px;margin:0 auto;transform:rotate(.6deg)}
   .hero-float.a{left:-8px;bottom:52px}
   .hero-float.b{right:-6px}
-  .route{grid-template-columns:1fr}
   .split{grid-template-columns:1fr}
   .anatomy{grid-template-columns:1fr}
   .game{grid-template-columns:1fr}
   .strip-demo{grid-template-columns:1fr}
   .sim-grid{grid-template-columns:1fr 1fr}
+  .classifier-guide,.class-rows{grid-template-columns:1fr}
   .method-grid{grid-template-columns:1fr 1fr}
   .method-grid .sim-submit{grid-column:1/-1}
   .nav-links a{padding:.4rem .55rem;font-size:.78rem}
@@ -883,7 +886,7 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
   .method-grid{grid-template-columns:1fr}
   .flow{min-width:760px}
   .r-top{flex-direction:column}
-  .quiz,.checklist,.route{padding:16px}
+  .quiz,.checklist{padding:16px}
   .hero-meta{gap:.8rem}
   .report-toolbar{gap:.6rem}
 }
@@ -924,7 +927,7 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
       <div>
         <div class="hero-badge"><span class="dot"></span> Sistemas de Información II · Módulo III</div>
         <h1>Diseñar antes de programar:<br><em>entradas, salidas y pantallas</em> que se entienden solas.</h1>
-        <p class="lead">Una guía interactiva para ver qué pasa por dentro cuando alguien llena un formulario, cómo se construye un reporte y por qué dos pantallas con los mismos datos pueden ser una pesadilla o una delicia.</p>
+        <p class="lead">Entradas, salidas y pantallas explicadas en listas cortas, con ejemplos que puedes probar.</p>
         <div class="hero-actions">
           <a href="#ruta" class="btn btn-primary">Empezar por el proceso</a>
           <a href="#formularios" class="btn btn-ghost">Comparar malo vs. bueno</a>
@@ -975,50 +978,17 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
     <div class="section-head">
       <span class="eyebrow">01 · Antes de tocar código</span>
       <h2>Primero el plano; después los píxeles.</h2>
-      <p>El diseño de sistemas especifica <strong>cómo</strong> se resuelve el problema: qué se captura, cómo se valida, cómo se presenta y quién puede hacer qué. Saltarse el plano produce el error más caro: programar una pantalla que nadie entiende y reconstruirla después.</p>
+      <p>Antes del código: qué se captura, cómo se valida y quién puede hacer qué.</p>
     </div>
 
-    <div class="route">
-      <div class="route-list" role="tablist" aria-label="Pasos del proceso de diseño">
-        <button class="route-step" role="tab" aria-selected="true" data-step="1">
-          <span class="route-num">1</span>
-          <span><b>Entender la transacción</b><span>Qué ocurre y qué datos nacen en ese momento</span></span>
-        </button>
-        <button class="route-step" role="tab" aria-selected="false" data-step="2">
-          <span class="route-num">2</span>
-          <span><b>Mapear el diálogo</b><span>Qué pantallas existen y cómo se conectan</span></span>
-        </button>
-        <button class="route-step" role="tab" aria-selected="false" data-step="3">
-          <span class="route-num">3</span>
-          <span><b>Prototipar entradas y salidas</b><span>Bocetos de pantalla y reportes, sin lógica final</span></span>
-        </button>
-        <button class="route-step" role="tab" aria-selected="false" data-step="4">
-          <span class="route-num">4</span>
-          <span><b>Probar con usuarios reales</b><span>Observar, no preguntar “¿te gusta?”</span></span>
-        </button>
-        <button class="route-step" role="tab" aria-selected="false" data-step="5">
-          <span class="route-num">5</span>
-          <span><b>Especificar y construir</b><span>Reglas, mensajes y permisos por escrito</span></span>
-        </button>
-      </div>
-
-      <div class="route-panel">
-        <span class="step-index" id="routeIndex">Paso 1 de 5</span>
-        <h3 id="routeTitle">Entender la transacción</h3>
-        <p id="routeBody"></p>
-        <div class="deliverable">
-          <div><span class="lbl">Entregable</span><span class="val" id="routeDeliverable"></span></div>
-          <div><span class="lbl">Pregunta clave</span><span class="val" id="routeQuestion"></span></div>
-        </div>
-        <div class="risk" id="routeRisk"><span aria-hidden="true">⚠️</span><span id="routeRiskText"></span></div>
-      </div>
-    </div>
-
-    <div class="grid-3" style="margin-top:22px">
-      <div class="note amber"><strong>No es solo “hacer bonito”.</strong><p>El diseño de sistemas define archivos, bases de datos, controles y procedimientos. La interfaz es la punta visible de todo eso.</p></div>
-      <div class="note"><strong>Las entradas deben alcanzar para las salidas.</strong><p>Si una salida necesita un dato, la entrada tiene que capturarlo… o el sistema debe poder recuperarlo.</p></div>
-      <div class="note good"><strong>El usuario se prueba, no se adivina.</strong><p>La guía insiste: los usuarios participan en el diseño, dan retroalimentación de cada prototipo y vuelven a probar.</p></div>
-    </div>
+    <ol class="steps" aria-label="Pasos del proceso de diseño">
+      <li><b>Entiende la transacción</b><span>Quién la hace y qué datos nacen en ese momento.</span></li>
+      <li><b>Dibuja el mapa</b><span>Pantallas, conexiones y cómo volver atrás.</span></li>
+      <li><b>Prototipa primero</b><span>Bocetos de entrada y salida; la salida define los datos.</span></li>
+      <li><b>Pruébalo con alguien</b><span>Observa la tarea real; no preguntes si le gusta.</span></li>
+      <li><b>Especifica y construye</b><span>Reglas, mensajes y permisos por escrito.</span></li>
+    </ol>
+    <p class="tip-line"><strong>Regla:</strong> si la salida necesita un dato, la entrada debe capturarlo o el sistema debe recuperarlo.</p>
   </div>
 </section>
 
@@ -1028,14 +998,14 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
     <div class="section-head">
       <span class="eyebrow">02 · Diseño de entradas</span>
       <h2>Capturar no es lo mismo que ingresar.</h2>
-      <p>La <strong>captura</strong> identifica y adquiere el dato donde ocurre la transacción; el <strong>ingreso</strong> lo traduce a un formato que la computadora puede leer. Entre ambos hay documentos fuente, pantallas, validaciones y una regla de oro: <span class="hl">captura solo lo que cambia o identifica; lo demás se recupera</span>.</p>
+      <p><strong>Captura</strong> es tomar el dato donde ocurre; <strong>ingreso</strong> es traducirlo para la computadora. Regla de oro: <span class="hl">captura lo que cambia o identifica; lo demás se recupera</span>.</p>
     </div>
 
-    <div class="split" style="margin-bottom:24px">
+    <div class="entry-lab">
       <div class="flow-card">
         <div class="flow-top">
           <h3>Recorrido de una entrada</h3>
-          <span class="flow-hint">Haz clic en un paso para verlo por dentro</span>
+          <span class="flow-hint">Toca un paso · avance lento</span>
         </div>
         <div class="flow-scroll">
           <div class="flow" id="flow" role="list">
@@ -1073,7 +1043,7 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
 
         <div class="flow-detail" aria-live="polite">
           <div class="fd-head"><h4 id="flowTitle">Captura de datos</h4><span class="tag" id="flowTag">Origen</span></div>
-          <p id="flowDesc">El dato se identifica y se adquiere tan pronto como sea posible: al vender, al recibir mercancía, al registrar un cliente. Históricamente fue un documento fuente de papel; hoy suele ser una pantalla táctil, un lector de código de barras o una tarjeta.</p>
+          <p id="flowDesc">Se toma el dato donde ocurre: vender, recibir mercancía o registrar un cliente. Capturar tarde es capturar mal.</p>
         </div>
 
         <form class="sim" id="simForm" novalidate>
@@ -1098,7 +1068,7 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
               </div>
               <button type="submit" class="btn btn-primary sim-submit">Procesar ▶</button>
             </div>
-            <div class="sim-feedback" id="simFeedback" role="status">El sistema te pedirá dos datos. El costo unitario <strong>no se captura</strong>: se busca en el catálogo con la llave.</div>
+            <div class="sim-feedback" id="simFeedback" role="status">Solo dos datos: llave y cantidad. El costo <strong>se recupera</strong> del catálogo.</div>
             <div class="sim-catalog" aria-label="Catálogo de ejemplo">
               <button type="button" class="catalog-item" data-id="ART-101"><span><b>ART-101</b><br>Base para laptop</span><span class="price">$18,50</span></button>
               <button type="button" class="catalog-item" data-id="ART-205"><span><b>ART-205</b><br>Teclado USB</span><span class="price">$32,00</span></button>
@@ -1108,32 +1078,31 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
         </form>
       </div>
 
-      <div class="classifier">
+      <div class="classifier" aria-labelledby="classifierTitle">
         <div class="classifier-head">
-          <h3>¿Se captura o se recupera?</h3>
+          <div>
+            <span class="kicker">Práctica guiada</span>
+            <h3 id="classifierTitle">Clasifica el dato: variable, identificación o recuperado</h3>
+          </div>
           <span class="class-score" id="classScore">0 de 6</span>
         </div>
-        <p class="lede" style="font-size:.85rem">Clasifica cada dato de una venta. Si te equivocas, el sistema te explica por qué.</p>
+        <p class="classifier-lede"><strong>Qué hace:</strong> toma cada dato de una venta y te pide decidir qué tipo es. No se escribe nada: solo se clasifica. Así ves qué datos aporta la persona y qué datos ya tiene el sistema.</p>
+        <div class="classifier-guide">
+          <div class="classifier-legend" aria-label="Los tres tipos de dato">
+            <span><b>Variable</b> cambia en cada operación: cantidad, fecha, vendedor.</span>
+            <span><b>Identificación</b> es la llave única: ID del artículo o del cliente.</span>
+            <span><b>Recuperado</b> ya está en la base: costo, nombre, existencias.</span>
+          </div>
+          <div class="classifier-example">
+            <b>Ejemplo práctico</b>
+            <p>Vendes 5 bases ART-101. Escribes <strong>5</strong> (variable) y <strong>ART-101</strong> (identificación); el sistema recupera el costo de $18,50 y la descripción. Si escribieras el costo, podrías contradecir el catálogo.</p>
+          </div>
+        </div>
         <div class="class-rows" id="classRows"></div>
-        <button type="button" class="btn btn-ghost btn-sm" id="classReset" style="margin-top:12px">Reiniciar clasificación</button>
-      </div>
-    </div>
-
-    <div class="grid-3">
-      <div class="card" style="padding:20px">
-        <div class="mini-title">Dato variable</div>
-        <h3 style="font-size:1rem;margin-bottom:.35rem">Cambia en cada transacción</h3>
-        <p class="lede" style="font-size:.85rem">Cantidad, fecha, vendedor, motivo. Sin él, la transacción no se puede reconstruir.</p>
-      </div>
-      <div class="card" style="padding:20px">
-        <div class="mini-title">Dato de identificación</div>
-        <h3 style="font-size:1rem;margin-bottom:.35rem">La llave que apunta al registro</h3>
-        <p class="lede" style="font-size:.85rem">ID del artículo, del cliente o de la factura. Debe ser único: una descripción puede repetirse y provocar errores.</p>
-      </div>
-      <div class="card" style="padding:20px">
-        <div class="mini-title">Dato recuperado</div>
-        <h3 style="font-size:1rem;margin-bottom:.35rem">Ya vive en la base de datos</h3>
-        <p class="lede" style="font-size:.85rem">Costo unitario, nombre del cliente, existencias. Pedirlo otra vez es trabajo doble y una nueva fuente de errores.</p>
+        <div class="classifier-foot">
+          <button type="button" class="btn btn-ghost btn-sm" id="classReset">Reiniciar clasificación</button>
+          <p class="class-feedback" id="classFeedback" role="status" aria-live="polite">Elige un tipo en cada fila. Si fallas, te explico por qué.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1145,7 +1114,7 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
     <div class="section-head">
       <span class="eyebrow">03 · Diseño de pantallas</span>
       <h2>Una pantalla no es un lienzo: es un mapa.</h2>
-      <p>La guía recomienda dividirla en zonas estables: <strong>encabezado</strong> arriba, <strong>cuerpo</strong> al centro, <strong>mensajes e instrucciones</strong> abajo y la <strong>explicación</strong> en el cuadrante superior izquierdo, la zona más visible. Mínimo esfuerzo, máxima claridad.</p>
+      <p>Zonas estables: <strong>encabezado</strong> arriba, <strong>cuerpo</strong> al centro, <strong>mensajes</strong> abajo y <strong>ayuda</strong> en la esquina superior izquierda.</p>
     </div>
 
     <div class="anatomy">
@@ -1200,7 +1169,11 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
       <div class="card" style="padding:22px">
         <div class="mini-title">Reglas de color de la guía</div>
         <h3 style="font-size:1.05rem;margin-bottom:.5rem">El color señala; no decora.</h3>
-        <p class="lede" style="font-size:.87rem">Máximo <strong>4 colores</strong> para usuarios principiantes y <strong>7</strong> para expertos. Contraste alto entre texto y fondo; nunca rojo sobre verde ni azul sobre rojo.</p>
+        <ul class="mini-list">
+          <li>Máximo <strong>4 colores</strong> para principiantes y <strong>7</strong> para expertos.</li>
+          <li>Contraste alto; nunca rojo sobre verde ni azul sobre rojo.</li>
+          <li>El color cambia de significado según la cultura.</li>
+        </ul>
         <div class="color-strip">
           <span class="color-chip" style="background:#ffeb3b;color:#000">Negro / amarillo</span>
           <span class="color-chip" style="background:#fff;color:#0b6b32;border-color:#0b6b32">Verde / blanco</span>
@@ -1209,12 +1182,14 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
           <span class="color-chip" style="background:#111;color:#ffeb3b">Amarillo / negro</span>
           <span class="color-chip" style="background:#1f8a44;color:#d21f3c;text-decoration:line-through">Rojo / verde ✕</span>
         </div>
-        <p class="lede" style="font-size:.78rem;margin-top:.8rem">Y ojo con la cultura: el rojo no siempre significa “peligro”.</p>
       </div>
       <div class="card" style="padding:22px">
         <div class="mini-title">Iconos y sencillez</div>
         <h3 style="font-size:1.05rem;margin-bottom:.5rem">Reconocer, no memorizar.</h3>
-        <p class="lede" style="font-size:.87rem">Usa iconos estándar y limita el vocabulario gráfico a unos <strong>20 símbolos</strong>. Para el usuario ocasional, al menos la mitad de la pantalla debe contener información útil: si no ayuda a decidir o actuar, sobra.</p>
+        <ul class="mini-list">
+          <li>Iconos estándar: máximo <strong>20 símbolos</strong>.</li>
+          <li>Al menos la mitad de la pantalla debe contener información útil.</li>
+        </ul>
         <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
           <span class="tag">🏠 Inicio</span><span class="tag">💾 Guardar</span><span class="tag">🔍 Buscar</span><span class="tag">🗑️ Eliminar</span><span class="tag">↩️ Deshacer</span>
         </div>
@@ -1229,10 +1204,17 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
     <div class="section-head">
       <span class="eyebrow">04 · Laboratorio de entrada</span>
       <h2>El mismo formulario, dos destinos.</h2>
-      <p>Los dos piden exactamente lo mismo. La diferencia no es estética: cambia el tiempo, los errores y la confianza. Llena ambos y observa qué te hace sentir cada uno.</p>
+      <p>Los mismos campos, dos resultados. Llena ambos y siente la diferencia.</p>
     </div>
 
-    <div class="lab">
+      <details class="lab-fold">
+  <summary>
+    <span class="fold-ico" aria-hidden="true">🧪</span>
+    <span class="fold-txt"><b>Laboratorio de formularios</b><small>Llena los dos formularios y compara.</small></span>
+    <span class="fold-cta"><span class="when-closed">Abrir</span><span class="when-open">Cerrar</span><span class="chev" aria-hidden="true">▾</span></span>
+  </summary>
+  <div class="fold-body">
+<div class="lab">
       <div class="lab-panel bad">
         <div class="lab-head">
           <span class="badge" aria-hidden="true">✕</span>
@@ -1328,7 +1310,9 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
       </div>
     </div>
 
-    <div class="note" style="margin-top:22px"><strong>Regla práctica:</strong><p>Un formulario no es un interrogatorio. Pide lo mínimo, en el orden en que la persona piensa, con el teclado y el tipo de dato correctos. Cada campo extra es una oportunidad de abandonar.</p></div>
+    <div class="note" style="margin-top:22px"><strong>Regla práctica:</strong><p>Pide lo mínimo, en el orden en que la persona piensa. Cada campo extra es una oportunidad de abandonar.</p></div>
+  </div>
+</details>
   </div>
 </section>
 
@@ -1338,10 +1322,17 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
     <div class="section-head">
       <span class="eyebrow">05 · Diseño de salidas</span>
       <h2>Más datos no es más información.</h2>
-      <p>La salida tiene que cumplir un propósito, llegar a quien decide y hacerlo a tiempo. Cambia entre las dos versiones del mismo reporte: los números son idénticos; la capacidad de decidir, no.</p>
+      <p>Cada salida tiene un propósito y alguien que decide. Los números son iguales; la claridad, no.</p>
     </div>
 
-    <div class="report-toolbar">
+      <details class="lab-fold">
+  <summary>
+    <span class="fold-ico" aria-hidden="true">📊</span>
+    <span class="fold-txt"><b>Laboratorio de reportes</b><small>Mismos datos, dos versiones y el recomendador de salida.</small></span>
+    <span class="fold-cta"><span class="when-closed">Abrir</span><span class="when-open">Cerrar</span><span class="chev" aria-hidden="true">▾</span></span>
+  </summary>
+  <div class="fold-body">
+<div class="report-toolbar">
       <p><strong>Reporte de ventas · Octubre 2026</strong> — mismos datos, dos presentaciones</p>
       <div class="segmented" role="group" aria-label="Versión del reporte">
         <button type="button" id="reportBadBtn" aria-pressed="true">Versión sin jerarquía</button>
@@ -1354,17 +1345,25 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
     <div class="grid-2" style="margin-top:20px">
       <div class="note bad">
         <strong>Lo que falla arriba</strong>
-        <p>Sin título ni periodo, todo pesa igual, los montos no tienen unidades ni alineación, y el reporte incluye filas que nadie usa. La persona tiene que hacer el análisis que el sistema debería haber hecho.</p>
+        <ul class="mini-list">
+          <li>Sin título ni periodo.</li>
+          <li>Todo pesa igual; montos sin unidades ni alineación.</li>
+          <li>Filas que nadie usa.</li>
+        </ul>
       </div>
       <div class="note good">
         <strong>Lo que mejora abajo</strong>
-        <p>Resumen primero, detalle después: tres indicadores, una tabla ordenada, unidades, totales y una excepción resaltada. La salida cuenta una historia y señala dónde actuar.</p>
+        <ul class="mini-list">
+          <li>Resumen primero: tres indicadores.</li>
+          <li>Tabla ordenada, con unidades y totales.</li>
+          <li>La excepción resaltada.</li>
+        </ul>
       </div>
     </div>
 
     <div class="method">
       <h3>¿Impreso, en pantalla o documento web?</h3>
-      <p>La guía propone diez factores. Estos tres bastan para una primera decisión.</p>
+      <p>Tres factores bastan para decidir.</p>
       <div class="method-grid">
         <div class="method-field">
           <label for="mWho">¿Quién la usa?</label>
@@ -1398,6 +1397,8 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
       </div>
     </div>
   </div>
+</details>
+  </div>
 </section>
 
 <!-- ================= UI / UX ================= -->
@@ -1406,14 +1407,14 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
     <div class="section-head">
       <span class="eyebrow">06 · UX y UI</span>
       <h2>La UX decide qué pasa; la UI decide cómo se ve.</h2>
-      <p>Se confunden todo el tiempo. La <strong>experiencia</strong> es el recorrido: qué necesita la persona, en qué orden, qué ocurre si se equivoca. La <strong>interfaz</strong> es la capa que hace ese recorrido visible y operable.</p>
+      <p><strong>UX</strong> es el recorrido; <strong>UI</strong>, la capa que lo hace visible y operable.</p>
     </div>
 
     <div class="uxui">
       <div class="uxui-card ux">
         <span class="uic-tag">UX · Experiencia</span>
         <h3>El plano del recorrido</h3>
-        <p>Se diseña antes de la pantalla. Empieza por la tarea real y termina cuando la persona logra su objetivo sin fricción.</p>
+        <p>Se diseña antes de la pantalla, desde la tarea real.</p>
         <div class="uic-list">
           <span>Qué datos necesita y en qué orden</span>
           <span>Qué pasa cuando algo falla</span>
@@ -1425,7 +1426,7 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
       <div class="uxui-card ui">
         <span class="uic-tag">UI · Interfaz</span>
         <h3>La superficie que se toca</h3>
-        <p>Traduce ese recorrido en jerarquía visual, tipografía, color, espacio, controles y mensajes consistentes.</p>
+        <p>Traduce el recorrido en jerarquía, color y controles.</p>
         <div class="uic-list">
           <span>Jerarquía: qué se lee primero</span>
           <span>Contraste y legibilidad</span>
@@ -1439,7 +1440,7 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
     <div class="strip-demo">
       <div>
         <h3>Quítale la capa visual</h3>
-        <p>Si el recorrido está bien pensado, la pantalla sigue teniendo sentido sin color ni sombras. Si desaparece todo, probablemente había decoración donde debía haber estructura.</p>
+        <p>Sin color ni sombras, la estructura debe seguir siendo clara.</p>
         <div class="toggle-row">
           <label class="switch">
             <input type="checkbox" id="stripToggle">
@@ -1459,7 +1460,7 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
       </div>
     </div>
 
-    <div class="note amber" style="margin-top:22px"><strong>Ni UX sin UI, ni UI sin UX.</strong><p>Una interfaz preciosa con un flujo confuso frustra; un flujo correcto con una interfaz ilegible también. El diseño de sistemas los une: la salida, la entrada y el diálogo son una sola conversación entre la persona y la computadora.</p></div>
+    <div class="note amber" style="margin-top:22px"><strong>Ni UX sin UI, ni UI sin UX.</strong><p>Un buen flujo con una pantalla ilegible también falla.</p></div>
   </div>
 </section>
 
@@ -1469,10 +1470,17 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
     <div class="section-head">
       <span class="eyebrow">07 · Acceso y seguridad</span>
       <h2>La primera pantalla también se diseña.</h2>
-      <p>El login no es un trámite: es la frontera entre la persona y el sistema. Debe autenticar sin filtrar información, explicar sin regañar y dejar claro qué hacer si algo falla.</p>
+      <p>Autentica sin revelar si una cuenta existe y explica el error sin culpar.</p>
     </div>
 
-    <div class="login-wrap">
+      <details class="lab-fold">
+  <summary>
+    <span class="fold-ico" aria-hidden="true">🔐</span>
+    <span class="fold-txt"><b>Laboratorio de login</b><small>Prueba el acceso seguro frente al descuidado.</small></span>
+    <span class="fold-cta"><span class="when-closed">Abrir</span><span class="when-open">Cerrar</span><span class="chev" aria-hidden="true">▾</span></span>
+  </summary>
+  <div class="fold-body">
+<div class="login-wrap">
       <div class="lab-panel bad">
         <div class="lab-head">
           <span class="badge" aria-hidden="true">✕</span>
@@ -1550,11 +1558,16 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
       </div>
     </div>
 
-    <div class="grid-3" style="margin-top:22px">
-      <div class="note"><strong>Autenticar ≠ autorizar.</strong><p>Autenticar es saber quién eres; autorizar es decidir qué puedes hacer. La guía recomienda privilegios por rol, no por individuo.</p></div>
-      <div class="note amber"><strong>Menos fricción, no menos seguridad.</strong><p>Ideal: una sola identidad para la red y el sistema. Si la persona no tiene que memorizar cinco claves, no las pegará en un papel.</p></div>
-      <div class="note good"><strong>El error también se diseña.</strong><p>Un mensaje debe decir qué pasó, dónde y cómo seguir. Y nunca culpar a la persona por un fallo del sistema.</p></div>
+    <div class="note" style="margin-top:22px">
+      <strong>Tres ideas para recordar</strong>
+      <ul class="mini-list">
+        <li><strong>Autenticar ≠ autorizar:</strong> quién eres vs. qué puedes hacer.</li>
+        <li><strong>Una identidad, no cinco claves.</strong></li>
+        <li><strong>El error también se diseña:</strong> qué pasó, dónde y cómo seguir.</li>
+      </ul>
     </div>
+  </div>
+</details>
   </div>
 </section>
 
@@ -1564,7 +1577,7 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
     <div class="section-head">
       <span class="eyebrow">08 · Reto visual</span>
       <h2>Encuentra los seis errores de esta pantalla.</h2>
-      <p>Están escondidos a la vista, como en los sistemas reales: no son bugs, son decisiones de diseño. Toca cada punto y comprueba si detectaste el problema.</p>
+      <p>Seis decisiones de diseño, no bugs. Toca cada punto.</p>
     </div>
 
     <div class="game">
@@ -1623,7 +1636,7 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
     <div class="section-head">
       <span class="eyebrow">09 · Cierre</span>
       <h2>Comprueba lo que se te quedó.</h2>
-      <p>Cinco preguntas rápidas, con explicación en cada respuesta. No hay nota: hay criterio.</p>
+      <p>Cinco preguntas con explicación. No hay nota: hay criterio.</p>
     </div>
 
     <div class="split">
@@ -1712,87 +1725,28 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
   onScroll();
 
   /* ============================================================
-     B. RUTA DE DISEÑO
-     ============================================================ */
-  var routeData = {
-    1: {
-      title: 'Entender la transacción',
-      body: 'Antes de dibujar una pantalla, describe la transacción en voz alta: quién la ejecuta, dónde ocurre, qué datos nacen en ese momento y cuáles ya existen en el sistema. La guía lo llama identificar datos variables (cambian en cada operación) y datos de identificación (la llave única). El costo, el nombre del cliente y las existencias no se capturan: se recuperan.',
-      deliverable: 'Lista de campos con su origen: variable, llave o recuperado.',
-      question: '¿Cuál es el dato mínimo que identifica esta transacción?',
-      risk: 'Si saltas este paso, la pantalla pedirá datos que el sistema ya tiene y el usuario tecleará el doble.'
-    },
-    2: {
-      title: 'Mapear el diálogo',
-      body: 'Una interfaz típica tiene muchas pantallas: se abren en cierto orden, se alternan y algunas solo aparecen bajo condiciones. Dibuja el mapa antes de programar: qué pantalla lleva a cuál, dónde se cancela, qué pasa si el usuario se equivoca y cómo vuelve. Así evitas callejones sin salida y ventanas huérfanas.',
-      deliverable: 'Mapa de pantallas y transiciones, con estados de error y cancelación.',
-      question: '¿Puede la persona volver atrás sin perder lo que escribió?',
-      risk: 'Sin mapa aparecen los clásicos: dos pantallas que hacen lo mismo, un “guardar” que cierra todo y un error sin salida.'
-    },
-    3: {
-      title: 'Prototipar entradas y salidas',
-      body: 'Construye bocetos rápidos de formularios, reportes y mensajes. Un prototipo no necesita seguridad ni toda la lógica: sirve para conversar. La guía advierte que estos prototipos rara vez son funcionales; justamente por eso son baratos de cambiar. Diseña la salida antes de la entrada: la salida define qué datos hacen falta capturar.',
-      deliverable: 'Prototipo navegable (aunque sea en papel) de cada pantalla clave.',
-      question: '¿Esta salida se puede producir con los datos que planeo capturar?',
-      risk: 'Prototipar solo la pantalla bonita y dejar el reporte para el final produce entradas incompletas y retrabajo.'
-    },
-    4: {
-      title: 'Probar con usuarios reales',
-      body: 'Pon el prototipo frente a alguien que hará el trabajo, no frente a quien lo encargó. Pídele que complete una tarea y observa dónde duda, qué lee primero y qué error comete. La retroalimentación del usuario es esencial: no preguntes “¿te gusta?”, pide que lo use. Después vuelve al mapa y al prototipo con lo aprendido.',
-      deliverable: 'Registro de observaciones y lista priorizada de cambios.',
-      question: '¿La persona terminó la tarea sin que le explicaras cómo?',
-      risk: 'Validar con el jefe o con el equipo de sistemas confirma tus suposiciones, no la usabilidad real.'
-    },
-    5: {
-      title: 'Especificar y construir',
-      body: 'Documenta lo que el prototipo no muestra: reglas de validación, mensajes exactos, longitud de campos, permisos por rol, quién puede ver qué y qué ocurre ante cada error. La guía incluye aquí procedimientos de entrada, manejo de errores, seguridad y respaldo. Con esa especificación, programar es traducir, no adivinar.',
-      deliverable: 'Especificación de interfaz y reglas, más criterios de prueba.',
-      question: '¿Un programador podría construir esto sin preguntarte nada?',
-      risk: 'Dejar la validación “para después” termina en reglas distintas en cada pantalla y datos inconsistentes.'
-    }
-  };
-
-  var routeSteps = Array.prototype.slice.call(document.querySelectorAll('.route-step'));
-  function setRoute(step){
-    routeSteps.forEach(function(b){
-      b.setAttribute('aria-selected', String(b.dataset.step === String(step)));
-    });
-    var d = routeData[step];
-    document.getElementById('routeIndex').textContent = 'Paso ' + step + ' de 5';
-    document.getElementById('routeTitle').textContent = d.title;
-    document.getElementById('routeBody').textContent = d.body;
-    document.getElementById('routeDeliverable').textContent = d.deliverable;
-    document.getElementById('routeQuestion').textContent = d.question;
-    document.getElementById('routeRiskText').textContent = d.risk;
-  }
-  routeSteps.forEach(function(b){
-    b.addEventListener('click', function(){ setRoute(b.dataset.step); });
-  });
-  setRoute(1);
-
-  /* ============================================================
      C. FLUJO DE ENTRADAS + SIMULADOR
      ============================================================ */
   var flowData = {
     1: {
       title:'1. Captura de datos', tag:'Origen',
-      desc:'El dato se identifica y se adquiere lo más cerca posible del momento en que ocurre: al vender, al recibir mercancía o al registrar un cliente. Puede ser un documento fuente de papel, una pantalla táctil, un lector de código de barras o una tarjeta. Capturar tarde es capturar mal.'
+      desc:'Se toma el dato donde ocurre: vender, recibir mercancía o registrar un cliente. Capturar tarde es capturar mal.'
     },
     2: {
       title:'2. Ingreso de datos', tag:'Interfaz',
-      desc:'Es traducir lo capturado a un formato legible por la computadora. Aquí entra el diseño de entrada: teclado, ratón, menús, casillas y listas. Cada control debe reducir la posibilidad de error, no aumentarla: elegir de una lista es más seguro que teclear un código libre.'
+      desc:'Se traduce a un formato legible: teclado, listas, lectores. Elegir es más seguro que teclear.'
     },
     3: {
       title:'3. Validación', tag:'Control',
-      desc:'El sistema comprueba campos obligatorios, formato, rangos y reglas de negocio. La guía habla de controles de edición para garantizar la exactitud. Un buen mensaje dice qué campo falló, por qué y cómo corregirlo; nunca solo “datos inválidos”.'
+      desc:'Se comprueban formato, rangos y reglas. El mensaje dice qué falló y cómo corregirlo.'
     },
     4: {
       title:'4. Procesamiento', tag:'Cálculo',
-      desc:'Con la llave, el sistema recupera lo que ya sabe (costo, existencias, nombre del cliente), calcula totales, aplica descuentos y cruza la transacción con otras tablas. El usuario no hace estas cuentas: el sistema las hace y las muestra para confirmar.'
+      desc:'Con la llave se recupera costo, nombre y existencias; el sistema calcula los totales.'
     },
     5: {
       title:'5. Almacenamiento y salida', tag:'Persistencia',
-      desc:'El registro se guarda con su llave y sus datos variables. Inmediatamente se produce una salida: un comprobante, una confirmación en pantalla o una actualización del inventario. La salida de esta fase puede ser la entrada de la siguiente.'
+      desc:'Se guarda el registro y se genera una salida: comprobante, confirmación o inventario actualizado.'
     }
   };
 
@@ -1801,6 +1755,7 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
   var flowDesc = document.getElementById('flowDesc');
   var flowTag = document.getElementById('flowTag');
   var flowTimers = [];
+  var FLOW_STEP_MS = 1000;
 
   function clearFlowTimers(){ flowTimers.forEach(clearTimeout); flowTimers = []; }
   function paintFlow(step){
@@ -1821,8 +1776,10 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
       clearFlowTimers();
       resetFlowStates();
       paintFlow(n.dataset.step);
+      simBtn.disabled = false;
+      simId.removeAttribute('aria-invalid');
       document.getElementById('simFeedback').className = 'sim-feedback';
-      document.getElementById('simFeedback').innerHTML = 'El sistema te pedirá dos datos. El costo unitario <strong>no se captura</strong>: se busca en el catálogo con la llave.';
+      document.getElementById('simFeedback').innerHTML = 'Solo dos datos: llave y cantidad. El costo <strong>se recupera</strong> del catálogo.';
     });
   });
   paintFlow(1);
@@ -1870,7 +1827,7 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
       simId.setAttribute('aria-invalid','true');
       simId.focus();
       paintFlow(1);
-      setSimFeedback('err','<span aria-hidden="true">⚠️</span><span><strong>Falta la llave.</strong> Sin el ID del artículo no se puede recuperar el costo ni registrar la transacción.</span>');
+      setSimFeedback('err','<span aria-hidden="true">⚠️</span><span><strong>Falta la llave.</strong> Sin ID no hay costo ni registro.</span>');
       simBtn.disabled = false;
       return;
     }
@@ -1880,14 +1837,14 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
       });
       paintFlow(3);
       flowNodes.forEach(function(n){ if (n.dataset.step === '3') n.classList.add('is-error'); });
-      setSimFeedback('err','<span aria-hidden="true">⚠️</span><span><strong>La llave no existe en el catálogo.</strong> Prueba con <strong>ART-101</strong>, <strong>ART-205</strong> o <strong>ART-310</strong>. El sistema no inventa el costo: lo busca.</span>');
+      setSimFeedback('err','<span aria-hidden="true">⚠️</span><span><strong>Llave inexistente.</strong> Prueba ART-101, ART-205 o ART-310.</span>');
       simBtn.disabled = false;
       return;
     }
     if (!qty || qty < 1 || qty > 99){
       paintFlow(3);
       flowNodes.forEach(function(n){ if (n.dataset.step === '3') n.classList.add('is-error'); });
-      setSimFeedback('err','<span aria-hidden="true">⚠️</span><span><strong>Cantidad fuera de rango.</strong> Debe ser un número entero entre 1 y 99. Validar en el origen evita registro basura.</span>');
+      setSimFeedback('err','<span aria-hidden="true">⚠️</span><span><strong>Cantidad inválida.</strong> Debe ser un entero entre 1 y 99.</span>');
       simBtn.disabled = false;
       return;
     }
@@ -1901,40 +1858,43 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
           if (parseInt(n.dataset.step,10) < step) n.classList.add('is-done');
         });
         paintFlow(step);
-      }, 350 * (i + 1)));
+      }, FLOW_STEP_MS * (i + 1)));
     });
 
     flowTimers.push(setTimeout(function(){
       var total = qty * cat.price;
       flowNodes.forEach(function(n){ n.classList.add('is-done'); n.classList.remove('is-active'); });
-      flowDesc.textContent = 'Registro guardado. La llave ' + id + ' permitió recuperar "' + cat.name + '" y su costo unitario. El total se calculó en el sistema: ' + money(total) + '. La salida inmediata es la confirmación y el descuento de existencias.';
+      flowDesc.textContent = 'Registro guardado: ' + cat.name + ' y su costo, recuperados con la llave ' + id + '. Total ' + money(total) + '.';
       flowTitle.textContent = '5. Almacenamiento y salida';
       flowTag.textContent = 'Listo';
-      setSimFeedback('ok','<span aria-hidden="true">✓</span><span><strong>Entrada registrada.</strong> ' + qty + ' × ' + cat.name + ' (' + id + ') · costo recuperado ' + money(cat.price) + ' · total ' + money(total) + '. Solo se capturaron dos datos: llave y cantidad.</span>');
+      setSimFeedback('ok','<span aria-hidden="true">✓</span><span><strong>Registrado:</strong> ' + qty + ' × ' + cat.name + ' · total ' + money(total) + '. Solo capturaste llave y cantidad.</span>');
       simBtn.disabled = false;
-    }, 1800));
+    }, FLOW_STEP_MS * (sequence.length + 1)));
   });
 
   /* ============================================================
      D. CLASIFICADOR: VARIABLE / IDENTIFICACIÓN / RECUPERADO
      ============================================================ */
   var classItems = [
-    {icon:'🔢', label:'Cantidad retirada', sub:'5 unidades', type:'variable', exp:'Cambia en cada transacción: es un dato variable.'},
-    {icon:'🏷️', label:'ID del artículo', sub:'ART-101', type:'ident', exp:'Identifica de forma única el artículo: es la llave.'},
-    {icon:'💲', label:'Costo unitario', sub:'$18,50', type:'recovered', exp:'Ya está en el catálogo: se recupera con la llave, no se teclea.'},
-    {icon:'🧑', label:'Nombre y teléfono del cliente', sub:'ya registrado', type:'recovered', exp:'Viven en el maestro de clientes; se recuperan con su ID, no se vuelven a pedir.'},
-    {icon:'🕒', label:'Fecha y hora de la transacción', sub:'09/11/2026 08:40', type:'variable', exp:'Es propia de cada operación: dato variable.'},
-    {icon:'📦', label:'Descripción del artículo', sub:'"Teclado inalámbrico"', type:'recovered', exp:'Vive en el catálogo. Escribirla otra vez duplica datos y genera inconsistencias.'}
+    {icon:'🔢', label:'Cantidad retirada', sub:'5 unidades', type:'variable', exp:'Cambia en cada transacción.'},
+    {icon:'🏷️', label:'ID del artículo', sub:'ART-101', type:'ident', exp:'Es la llave única.'},
+    {icon:'💲', label:'Costo unitario', sub:'$18,50', type:'recovered', exp:'Ya está en el catálogo.'},
+    {icon:'🧑', label:'Nombre y teléfono del cliente', sub:'ya registrado', type:'recovered', exp:'Ya están en el maestro de clientes.'},
+    {icon:'🕒', label:'Fecha y hora de la transacción', sub:'09/11/2026 08:40', type:'variable', exp:'Propia de cada operación.'},
+    {icon:'📦', label:'Descripción del artículo', sub:'"Teclado inalámbrico"', type:'recovered', exp:'Ya está en el catálogo; no se reescribe.'}
   ];
   var classLabels = {variable:'Variable', ident:'Identificación', recovered:'Recuperado'};
   var classSolved = {};
   var classRows = document.getElementById('classRows');
   var classScoreEl = document.getElementById('classScore');
+  var classFeedbackEl = document.getElementById('classFeedback');
 
   function renderClassifier(){
     classRows.innerHTML = '';
     classSolved = {};
     classScoreEl.textContent = '0 de 6';
+    classFeedbackEl.className = 'class-feedback';
+    classFeedbackEl.textContent = 'Elige un tipo en cada fila. Si fallas, te explico por qué.';
     classItems.forEach(function(item, idx){
       var row = document.createElement('div');
       row.className = 'class-row';
@@ -1968,8 +1928,12 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
       row.querySelector('.field-desc small').style.color = 'var(--good)';
       var count = Object.keys(classSolved).length;
       classScoreEl.textContent = count + ' de 6' + (count === 6 ? ' · ¡completo!' : '');
+      classFeedbackEl.className = 'class-feedback ok';
+      classFeedbackEl.textContent = item.label + ': ' + item.exp + (count === 6 ? ' Clasificación completa: ya distingues lo que aporta la persona de lo que recupera el sistema.' : '');
     } else {
       btn.classList.add('wrong');
+      classFeedbackEl.className = 'class-feedback bad';
+      classFeedbackEl.textContent = 'Todavía no. ' + item.label + ': ' + item.exp;
       setTimeout(function(){ btn.classList.remove('wrong'); }, 900);
     }
   });
@@ -1982,27 +1946,27 @@ ul.crosses li::before{content:"✕";flex-shrink:0;width:19px;height:19px;border-
   var anatomyData = {
     header: {
       tag:'Encabezado', title:'Dónde estoy y qué puedo hacer',
-      body:'El encabezado identifica el software, el archivo abierto y las acciones disponibles. Debe responder en un vistazo: ¿en qué pantalla estoy?, ¿cuál es el contexto?, ¿cómo salgo de aquí?',
+      body:'Identifica la pantalla, el archivo y las acciones disponibles.',
       list:['Título de la pantalla y del archivo abierto.','Menús, iconos y accesos a tareas específicas.','Se coloca siempre en la parte superior, sin excepciones.']
     },
     help: {
       tag:'Explicación', title:'La esquina que más se mira',
-      body:'La guía señala que la esquina superior izquierda es la zona más visible de la pantalla. Ahí van los encabezados y, si hacen falta, las explicaciones sobre la información presentada. No es una zona para adornos.',
+      body:'La esquina superior izquierda es lo primero que se mira: úsala para explicar, no para decorar.',
       list:['Explica qué significa un dato o una columna.','Debe ser breve: una frase, no un manual.','Nunca tapa el contenido principal.']
     },
     body: {
       tag:'Cuerpo', title:'El orden de lectura ya está decidido',
-      body:'El cuerpo contiene la captura de datos y se organiza de izquierda a derecha y de arriba hacia abajo, porque así leemos. Los títulos y las pistas ayudan a teclear el dato correcto en el lugar correcto.',
+      body:'Se organiza de izquierda a derecha y de arriba abajo, como leemos.',
       list:['Agrupa campos relacionados.','Etiqueta arriba y ejemplo dentro del campo.','La ayuda contextual aparece junto al campo que la necesita.']
     },
     messages: {
       tag:'Mensajes', title:'Habla abajo, pero claro',
-      body:'Los mensajes e instrucciones se ubican en la parte inferior de la pantalla. Deben ser consistentes: el mismo lugar, el mismo tono y el mismo formato para el mismo tipo de aviso. Un error no es una decoración roja.',
+      body:'Siempre en el mismo lugar, con el mismo tono y formato.',
       list:['Confirma lo que el sistema hizo.','Explica qué falló y cómo continuar.','Nunca uses solo color para comunicar un estado.']
     },
     status: {
       tag:'Barra de estado', title:'El sistema también respira',
-      body:'La línea de estado informa lo que ocurre por dentro: un proceso en marcha, una impresión, una tecla activada. No necesita detalle, pero sí consistencia y una ubicación que llame la atención sin gritar.',
+      body:'Informa procesos, conexión o Bloq Mayús sin interrumpir.',
       list:['Muestra procesos en curso.','Avisa de Bloq Mayús, conexión o guardado.','Se mantiene en el mismo lugar siempre.']
     }
   };
