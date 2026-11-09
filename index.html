@@ -924,6 +924,15 @@
           <button type="button" class="btn btn-ghost btn-sm" id="rubricPrint">Imprimir</button>
           <button type="button" class="btn btn-soft btn-sm" id="rubricReset">Reiniciar</button>
         </div>
+        <div class="audit-cta">
+          <span class="audit-label">Ahora ponlo en práctica</span>
+          <h4>Audita un formulario bancario</h4>
+          <p>Diez afirmaciones: siete son problemas reales y tres son cosas que están bien. Al terminar ves qué encontraste, qué se te pasó y qué marcaste de más.</p>
+          <button type="button" class="btn btn-primary" id="auditOpen">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-scan-line"></use></svg>
+            Abrir la auditoría
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1001,6 +1010,66 @@
     <button type="button" id="hudPrev" aria-label="Parada anterior">&#8249;</button>
     <button type="button" id="hudNext" aria-label="Parada siguiente">&#8250;</button>
     <button type="button" id="hudExit">Salir</button>
+  </div>
+</div>
+
+<div class="audit-screen" id="auditScreen" hidden role="dialog" aria-modal="true" aria-labelledby="auditTitle">
+  <div class="audit-shell">
+    <header class="audit-head">
+      <div>
+        <span class="eyebrow">Auditoría · Banco del Sur</span>
+        <h2 id="auditTitle">Encuentra los problemas de este formulario.</h2>
+        <p>Es la pantalla de acceso y de transferencia de un banco. Marca solo lo que sea un problema: hay tres cosas que están bien y no debes marcar.</p>
+      </div>
+      <button type="button" class="audit-close" id="auditClose" aria-label="Cerrar la auditoría">
+        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"></use></svg>
+      </button>
+    </header>
+
+    <div class="audit-body">
+      <div class="audit-preview" aria-label="Formulario del banco">
+        <div class="bank">
+          <div class="bank-bar">
+            <span class="bank-mark" aria-hidden="true">BS</span>
+            <div><b>Banco del Sur</b><small>Banca en línea</small></div>
+            <span class="bank-secure">Conexión segura</span>
+          </div>
+          <div class="bank-grid">
+            <section class="bank-card">
+              <div class="bank-title">ACCESO AL SISTEMA</div>
+              <p class="bank-sub">Ingrese sus credenciales para continuar</p>
+              <input class="bank-input" placeholder="usuario" tabindex="-1" readonly aria-label="Usuario">
+              <input class="bank-input" type="password" placeholder="clave" tabindex="-1" readonly aria-label="Clave">
+              <div class="bank-links"><span>¿Olvidó su clave?</span><span>Registrarse</span></div>
+              <div class="bank-error">El usuario ingresado no existe.</div>
+              <div class="bank-actions"><span class="bank-btn">ACEPTAR</span><span class="bank-btn">LIMPIAR</span></div>
+              <div class="bank-foot">Sistema de información · Versión 1.0</div>
+            </section>
+            <section class="bank-card">
+              <div class="bank-title">TRANSFERENCIA</div>
+              <p class="bank-sub">Complete los datos de la operación</p>
+              <div class="bank-field"><span>Titular</span><b>Juan Pérez</b></div>
+              <input class="bank-input" placeholder="cuenta de origen" tabindex="-1" readonly aria-label="Cuenta de origen">
+              <input class="bank-input" placeholder="cuenta de destino" tabindex="-1" readonly aria-label="Cuenta de destino">
+              <input class="bank-input" placeholder="monto" tabindex="-1" readonly aria-label="Monto">
+              <input class="bank-input" placeholder="concepto" tabindex="-1" readonly aria-label="Concepto">
+              <p class="bank-note">RECUERDE VERIFICAR TODOS LOS DATOS ANTES DE CONTINUAR. LA OPERACIÓN NO SE PUEDE REVERTIR.</p>
+              <div class="bank-actions"><span class="bank-btn">CONFIRMAR</span><span class="bank-btn">CANCELAR</span></div>
+            </section>
+          </div>
+          <p class="bank-help">El saldo disponible y el costo de la operación se muestran en la siguiente pantalla.</p>
+        </div>
+      </div>
+
+      <div class="audit-panel">
+        <div class="audit-list" id="auditList" role="group" aria-label="Afirmaciones sobre el formulario"></div>
+        <div class="audit-actions">
+          <button type="button" class="btn btn-primary" id="auditSubmit">Ver resultado</button>
+          <button type="button" class="btn btn-ghost" id="auditReset" hidden>Reintentar</button>
+        </div>
+        <div class="audit-result" id="auditResult" role="status" aria-live="polite"></div>
+      </div>
+    </div>
   </div>
 </div>
 
