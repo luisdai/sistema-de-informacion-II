@@ -1,0 +1,38 @@
+# Entorno y secretos
+.env
+.env.*
+!.env.example
+
+# Dependencias
+node_modules/
+vendor/
+.pnp.*
+
+# Builds y artefactos
+dist/
+build/
+out/
+coverage/
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Bases de datos locales
+*.sqlite
+*.sqlite3
+*.db
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*~
+
+# Herramientas locales del sandbox
+.tools/

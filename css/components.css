@@ -1,0 +1,65 @@
+/* ============================================================
+   COMPONENTES
+   Botones, avisos, etiquetas y listas reutilizables.
+   ============================================================ */
+
+/* Iconos SVG. Heredan el color del texto y se escalan con la tipografía. */
+.icon{width:1em;height:1em;display:inline-block;vertical-align:-.125em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.spin{animation:icon-spin 1s linear infinite}
+@keyframes icon-spin{to{transform:rotate(360deg)}}
+.hero-float .ic .icon{width:13px;height:13px}
+.tag .icon{width:13px;height:13px}
+.n-ic .icon{width:18px;height:18px}
+.sim-feedback .icon{width:16px;height:16px;margin-top:.15em}
+.risk .icon{width:15px;height:15px;margin-top:.15em}
+.secure .icon,.lg-secure .icon{width:14px;height:14px;margin-top:.15em}
+.mr-ic .icon{width:18px;height:18px}
+.dc-ic .icon{width:20px;height:20px}
+
+
+/* ---------- Botones ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  border:1px solid transparent;border-radius:999px;
+  padding:.72rem 1.25rem;font-weight:650;font-size:.95rem;
+  transition:transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s;
+  text-decoration:none;white-space:nowrap;
+}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn:focus-visible{outline:3px solid rgba(79,70,229,.35);outline-offset:2px}
+.btn-primary{background:linear-gradient(135deg,var(--brand),#6d5cf0);color:#fff;box-shadow:0 12px 24px -12px rgba(79,70,229,.75)}
+.btn-primary:hover{box-shadow:0 16px 30px -12px rgba(79,70,229,.85)}
+.btn-ghost{background:#fff;border-color:var(--line-strong);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
+.btn-soft{background:var(--brand-soft);color:var(--brand-dark)}
+.btn-soft:hover{background:#e3e0ff}
+.btn-sm{padding:.5rem .9rem;font-size:.85rem}
+.btn-block{width:100%}
+
+.note{
+  background:var(--info-soft);border:1px solid #cae9f8;border-left:4px solid var(--info);
+  border-radius:0 var(--r-md) var(--r-md) 0;padding:1rem 1.15rem;color:#075a86;font-size:.9rem;
+}
+.note strong{color:#064a6f}
+.note.amber{background:var(--accent-soft);border-color:#fbe3af;border-left-color:#d97706;color:#7c4a03}
+.note.amber strong{color:#5f3802}
+.note.good{background:var(--good-soft);border-color:#c3efdd;border-left-color:var(--good);color:#08674b}
+.note.good strong{color:#06513b}
+.note.bad{background:var(--bad-soft);border-color:#f8cdd9;border-left-color:var(--bad);color:#8c1233}
+.note.bad strong{color:#6f0c27}
+.note p + p{margin-top:.5rem}
+.tag{
+  display:inline-flex;align-items:center;gap:.35rem;font-size:.7rem;font-weight:750;
+  padding:.22rem .55rem;border-radius:99px;background:#f0eefb;color:#4d456f;letter-spacing:.02em;
+}
+.tag.good{background:var(--good-soft);color:#087a55}
+.tag.bad{background:var(--bad-soft);color:#a11338}
+.tag.amber{background:var(--accent-soft);color:#92600a}
+.mini-title{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+ul.ticks{list-style:none;display:grid;gap:.55rem;font-size:.9rem;color:var(--ink-soft)}
+ul.ticks li{position:relative;display:block;padding-left:1.9rem}
+ul.ticks li::before{content:"✓";position:absolute;left:0;top:.15rem;width:19px;height:19px;border-radius:50%;background:var(--good-soft);color:var(--good);font-size:.7rem;font-weight:900;display:grid;place-items:center}
+ul.crosses{list-style:none;display:grid;gap:.55rem;font-size:.9rem;color:var(--ink-soft)}
+ul.crosses li{position:relative;display:block;padding-left:1.9rem}
+ul.crosses li::before{content:"✕";position:absolute;left:0;top:.15rem;width:19px;height:19px;border-radius:50%;background:var(--bad-soft);color:var(--bad);font-size:.65rem;font-weight:900;display:grid;place-items:center}
