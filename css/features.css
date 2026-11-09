@@ -206,4 +206,5 @@ body.presenting .present-fab{display:none}
 /* En modo clase la navegación la lleva el HUD; la barra queda limpia. */
 @media (min-width:900px){
   html.presenting-root .nav-links{display:none}
+  html.presenting-root .nav{justify-content:space-between}
 }
