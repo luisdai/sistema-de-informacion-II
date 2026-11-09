@@ -202,3 +202,8 @@ body.presenting .present-fab{display:none}
 .snippet summary::-webkit-details-marker{display:none}
 .snippet summary::before{content:"";width:0;height:0;border-left:6px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .2s}
 .snippet[open] summary::before{transform:rotate(90deg)}
+
+/* En modo clase la navegación la lleva el HUD; la barra queda limpia. */
+@media (min-width:900px){
+  html.presenting-root .nav-links{display:none}
+}
