@@ -8,12 +8,19 @@ const SECTION_IDS = [
   'entradas',
   'pantalla',
   'formularios',
+  'campo',
+  'controles',
+  'validacion',
   'salidas',
   'uxui',
   'login',
   'reto',
   'quiz',
+  'herramientas',
 ];
+
+// Las secciones nuevas de formularios se agrupan bajo el mismo enlace.
+const NAV_GROUP = { campo: 'formularios', controles: 'formularios', validacion: 'formularios' };
 
 export function initNav() {
   const progressBar = qs('#progressBar');
@@ -65,7 +72,7 @@ export function initNav() {
     }
 
     for (const link of navLinks) {
-      const active = link.getAttribute('href') === '#' + current;
+      const active = link.getAttribute('href') === '#' + (NAV_GROUP[current] || current);
       link.classList.toggle('active', active);
       if (active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');

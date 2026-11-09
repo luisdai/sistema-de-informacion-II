@@ -180,3 +180,25 @@ body.presenting .present-fab{display:none}
 .rubric-btn[data-value="1"].is-active{background:var(--accent);border-color:var(--accent);color:#3d2800}
 .rubric-btn[data-value="2"].is-active{background:var(--good);border-color:var(--good)}
 .rubric-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+
+/* ============================================================
+   HERRAMIENTAS
+   ============================================================ */
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tool-group{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.tool-step{font-size:.64rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.tool-group h3{font-size:1rem;margin:.3rem 0 .7rem}
+.tool-group ul{list-style:none;display:grid;gap:.7rem}
+.tool-group li{font-size:.82rem;color:var(--muted)}
+.tool-group li a{font-weight:700;display:inline-flex;align-items:center;gap:.25rem}
+.tool-group li a .icon{width:12px;height:12px}
+.tool-group li span{display:block;font-size:.78rem;color:var(--muted);margin-top:1px}
+.tools-note{margin-top:14px;font-size:.78rem;color:var(--muted)}
+@media (max-width:1040px){.tools{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.tools{grid-template-columns:1fr}}
+
+/* Acordeón del código */
+.snippet summary{list-style:none;display:flex;align-items:center;gap:.5rem}
+.snippet summary::-webkit-details-marker{display:none}
+.snippet summary::before{content:"";width:0;height:0;border-left:6px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .2s}
+.snippet[open] summary::before{transform:rotate(90deg)}
