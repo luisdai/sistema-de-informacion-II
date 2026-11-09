@@ -31,6 +31,7 @@
     <a href="#login">Login</a>
     <a href="#reto">Reto</a>
     <a href="#quiz" class="nav-menu-cta">Ponte a prueba</a>
+    <button type="button" class="nav-menu-cta" id="presentMenu" aria-pressed="false">Modo clase</button>
   </div>
   <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menú de secciones">
     <span class="nav-toggle-bars" aria-hidden="true"></span>
@@ -913,20 +914,14 @@
       </div>
 
       <div class="checklist">
-        <h3>Checklist antes de construir</h3>
-        <p>Marca lo que ya está resuelto en tu proyecto.</p>
-        <div class="check-progress"><span class="cp-bar" aria-hidden="true"><i id="checkBar"></i></span><span id="checkText" aria-live="polite">0 / 10</span></div>
-        <div class="check-items">
-          <label class="check-item"><input type="checkbox" class="check-input"><span>Definí qué datos son variables, cuáles identifican y cuáles se recuperan.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>Cada campo tiene etiqueta visible y un ejemplo de formato.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>Los campos obligatorios están marcados y explicados.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>La validación dice qué corregir, junto al campo.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>Hay una sola acción primaria por pantalla.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>La pantalla respeta encabezado, cuerpo, mensajes y ayuda.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>La salida tiene título, periodo, unidades y totales.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>Eliminé columnas y datos que nadie usa para decidir.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>El login oculta la contraseña y no revela si la cuenta existe.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>Probé el flujo con una persona real antes de programarlo.</span></label>
+        <h3>Rúbrica antes de construir</h3>
+        <p>Puntúa cada criterio: 0 pendiente, 1 aceptable, 2 sólido. El total te dice dónde poner el esfuerzo antes de programar.</p>
+        <div class="check-progress"><span class="cp-bar" aria-hidden="true"><i id="checkBar"></i></span><span id="checkText" aria-live="polite">0 / 20</span></div>
+        <div class="rubric" id="rubricList"></div>
+        <div class="rubric-actions">
+          <button type="button" class="btn btn-ghost btn-sm" id="rubricCopy">Copiar resultado</button>
+          <button type="button" class="btn btn-ghost btn-sm" id="rubricPrint">Imprimir</button>
+          <button type="button" class="btn btn-soft btn-sm" id="rubricReset">Reiniciar</button>
         </div>
       </div>
     </div>
@@ -934,6 +929,22 @@
 </section>
 
 </main>
+
+<button type="button" class="present-fab" id="presentBtn" aria-pressed="false" aria-label="Activar modo clase" title="Modo clase">
+  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-presentation"></use></svg>
+</button>
+
+<div class="class-hud" id="classHud" hidden>
+  <div class="hud-text">
+    <span id="hudStep">Parada 1 de 5</span>
+    <strong id="hudTitle">El plano antes del píxel</strong>
+  </div>
+  <div class="hud-actions">
+    <button type="button" id="hudPrev" aria-label="Parada anterior">&#8249;</button>
+    <button type="button" id="hudNext" aria-label="Parada siguiente">&#8250;</button>
+    <button type="button" id="hudExit">Salir</button>
+  </div>
+</div>
 
 <footer class="footer">
   <div class="wrap">

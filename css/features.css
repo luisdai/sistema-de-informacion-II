@@ -129,3 +129,54 @@
 .cr-badge .icon{width:12px;height:12px}
 .css-demo-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:18px}
 @media (max-width:860px){.contrast-grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   MODO CLASE
+   ============================================================ */
+.present-fab{position:fixed;right:18px;bottom:18px;z-index:108;width:48px;height:48px;border-radius:50%;border:1px solid var(--line-strong);background:#fff;color:var(--brand);display:grid;place-items:center;box-shadow:var(--shadow-md);transition:background .2s,color .2s,transform .2s}
+.present-fab:hover{background:var(--brand);color:#fff;border-color:var(--brand);transform:translateY(-2px)}
+.present-fab .icon{width:20px;height:20px}
+body.presenting .present-fab{display:none}
+.class-hud{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:115;display:flex;align-items:center;gap:16px;background:#11162b;color:#fff;border-radius:999px;padding:10px 12px 10px 20px;box-shadow:var(--shadow-lg);width:max-content;max-width:calc(100% - 24px)}
+.class-hud[hidden]{display:none}
+.hud-text{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.hud-text span{font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:#9da3bd}
+.hud-text strong{font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:44vw}
+.hud-actions{display:flex;align-items:center;gap:6px}
+.hud-actions button{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;display:grid;place-items:center;font-size:1rem;cursor:pointer}
+.hud-actions button:hover{background:rgba(255,255,255,.18)}
+#hudExit{width:auto;border-radius:999px;padding:0 14px;font-size:.78rem;font-weight:700}
+@media (min-width:900px){
+  html.presenting-root{font-size:112%}
+}
+@media (max-width:560px){
+  .class-hud{left:12px;right:12px;transform:none;width:auto;max-width:none;border-radius:18px;gap:8px;padding:10px 12px}
+  .hud-text strong{max-width:48vw}
+}
+
+@media print{
+  .nav,.progress-track,.present-fab,.class-hud,.skip-link,.footer{display:none !important}
+  .section{padding:18px 0}
+  .section + .section{border-top:1px solid #ccc}
+  details{display:none}
+  .quiz,.game,.controls,.val-stage,.field-lab,.snippet{break-inside:avoid}
+}
+
+/* ============================================================
+   RÚBRICA
+   ============================================================ */
+.rubric{display:grid;gap:8px}
+.rubric-item{border:1px solid var(--line);border-radius:10px;padding:.55rem .65rem;background:#fff;transition:border-color .2s,background .2s}
+.rubric-item.is-done{border-color:#b9e8d6;background:#fbfffd}
+.rubric-top{display:flex;gap:.6rem;align-items:flex-start;justify-content:space-between}
+.rubric-title{font-size:.79rem;font-weight:650;color:var(--ink-soft);line-height:1.35}
+.rubric-score{font-size:.7rem;font-weight:800;color:var(--muted);white-space:nowrap}
+.rubric-item.is-done .rubric-score{color:var(--good)}
+.rubric-levels{display:flex;gap:4px;margin-top:6px}
+.rubric-btn{border:1px solid var(--line-strong);background:#fff;border-radius:7px;padding:.22rem .5rem;font-size:.68rem;font-weight:750;color:var(--muted);transition:background .15s,color .15s,border-color .15s}
+.rubric-btn:hover{border-color:var(--brand);color:var(--brand)}
+.rubric-btn.is-active{background:var(--brand);border-color:var(--brand);color:#fff}
+.rubric-btn[data-value="0"].is-active{background:var(--bad);border-color:var(--bad)}
+.rubric-btn[data-value="1"].is-active{background:var(--accent);border-color:var(--accent);color:#3d2800}
+.rubric-btn[data-value="2"].is-active{background:var(--good);border-color:var(--good)}
+.rubric-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
