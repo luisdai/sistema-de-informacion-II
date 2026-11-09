@@ -37,7 +37,7 @@ const CATALOG = {
   'ART-310': { name: 'Monitor 24"', price: 149.0 },
 };
 
-const DEFAULT_FEEDBACK = 'El sistema te pedirá dos datos. El costo unitario <strong>no se captura</strong>: se busca en el catálogo con la llave.';
+const DEFAULT_FEEDBACK = '<span>El sistema te pedirá dos datos. El costo unitario <strong>no se captura</strong>: se busca en el catálogo con la llave.</span>';
 
 const CLASS_ITEMS = [
   { icon: '🔢', label: 'Cantidad retirada', sub: '5 unidades', type: 'variable', exp: 'Cambia en cada transacción: es un dato variable.' },
