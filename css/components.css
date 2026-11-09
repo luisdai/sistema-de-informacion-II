@@ -56,9 +56,7 @@
 .tag.good{background:var(--good-soft);color:#087a55}
 .tag.bad{background:var(--bad-soft);color:#a11338}
 .tag.amber{background:var(--accent-soft);color:#92600a}
-.kicker{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
 .mini-title{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
-ol.clean,ul.clean{list-style:none;display:grid;gap:.6rem}
 ul.ticks{list-style:none;display:grid;gap:.55rem;font-size:.9rem;color:var(--ink-soft)}
 ul.ticks li{position:relative;display:block;padding-left:1.9rem}
 ul.ticks li::before{content:"✓";position:absolute;left:0;top:.15rem;width:19px;height:19px;border-radius:50%;background:var(--good-soft);color:var(--good);font-size:.7rem;font-weight:900;display:grid;place-items:center}

@@ -79,7 +79,16 @@ export function initNav() {
     }
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
+  let frame = null;
+  function requestScroll() {
+    if (frame) return;
+    frame = requestAnimationFrame(() => {
+      frame = null;
+      onScroll();
+    });
+  }
+
+  window.addEventListener('scroll', requestScroll, { passive: true });
+  window.addEventListener('resize', requestScroll);
   onScroll();
 }
