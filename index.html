@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/features.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
@@ -454,11 +455,80 @@
   </div>
 </section>
 
+<!-- ================= ANATOMIA DE UN CAMPO ================= -->
+<section class="section" id="campo">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">05 · Anatomía de un campo</span>
+      <h2>Un campo no es una caja: es un contrato.</h2>
+      <p>Cada parte del campo le dice a la persona qué esperar y qué hacer si se equivoca. Cuando falta una, el error no es del usuario: es del diseño. Toca cada parte, cambia el estado y mira lo que ve el navegador.</p>
+    </div>
+
+    <div class="field-lab">
+      <div class="field-stage">
+        <form class="demo-field" id="demoField" novalidate>
+          <div class="df-row">
+            <label class="df-label" for="dfEmail">Correo corporativo <span class="req" data-part="required" aria-hidden="true">*</span></label>
+            <input class="df-input" id="dfEmail" name="email" type="email" placeholder="nombre@empresa.com"
+                   autocomplete="email" required aria-required="true" aria-describedby="dfHint dfError" data-part="control">
+            <span class="df-hint" id="dfHint" data-part="hint">Lo usamos para enviarte el comprobante. No compartimos tu correo.</span>
+            <span class="df-error" id="dfError" data-part="error">Escribe un correo con el formato nombre@empresa.com.</span>
+          </div>
+          <div class="df-actions">
+            <button type="submit" class="btn btn-primary">Continuar</button>
+          </div>
+          <div class="df-msg" id="dfMsg" role="status"></div>
+        </form>
+        <div class="state-row" role="group" aria-label="Estado del campo">
+          <button type="button" class="chip is-active" data-state="normal">Normal</button>
+          <button type="button" class="chip" data-state="error">Con error</button>
+          <button type="button" class="chip" data-state="ok">Con éxito</button>
+        </div>
+      </div>
+
+      <div class="field-aside">
+        <div class="part-list" role="group" aria-label="Partes del campo">
+          <button type="button" class="part" data-part="label">1. Etiqueta</button>
+          <button type="button" class="part" data-part="control">2. Control</button>
+          <button type="button" class="part" data-part="hint">3. Ayuda</button>
+          <button type="button" class="part" data-part="error">4. Error</button>
+          <button type="button" class="part" data-part="required">5. Obligatorio</button>
+        </div>
+        <div class="part-info">
+          <h3 id="partTitle">La etiqueta</h3>
+          <p id="partBody">Se lee antes del control y debe estar siempre visible. El placeholder puede imitar una etiqueta, pero desaparece cuando la persona escribe; por eso no lo reemplaza.</p>
+          <div class="inspector" id="fieldInspector" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+    <details class="snippet">
+      <summary>Ver el HTML de este campo</summary>
+      <pre><code id="fieldSnippet"></code></pre>
+    </details>
+  </div>
+</section>
+
+<!-- ================= ELIGE EL CONTROL CORRECTO ================= -->
+<section class="section section-alt" id="controles">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">06 · Elige el control correcto</span>
+      <h2>El teclado también se diseña.</h2>
+      <p>El mismo dato se puede pedir de cinco formas. La elección cambia el teclado del teléfono, la validación disponible y la cantidad de errores. Elige un caso y compara el control recomendado con el error típico.</p>
+    </div>
+    <div class="controls">
+      <div class="control-list" id="controlList" role="group" aria-label="Casos de uso"></div>
+      <div class="control-preview" id="controlPreview"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= SALIDAS ================= -->
 <section class="section" id="salidas">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">05 · Diseño de salidas</span>
+      <span class="eyebrow">07 · Diseño de salidas</span>
       <h2>Más datos no es más información.</h2>
       <p>La salida tiene que cumplir un propósito, llegar a quien decide y hacerlo a tiempo. Cambia entre las dos versiones del mismo reporte: los números son idénticos; la capacidad de decidir, no.</p>
     </div>
@@ -526,7 +596,7 @@
 <section class="section section-alt" id="uxui">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">06 · UX y UI</span>
+      <span class="eyebrow">08 · UX y UI</span>
       <h2>La UX decide qué pasa; la UI decide cómo se ve.</h2>
       <p>Se confunden todo el tiempo. La <strong>experiencia</strong> es el recorrido: qué necesita la persona, en qué orden, qué ocurre si se equivoca. La <strong>interfaz</strong> es la capa que hace ese recorrido visible y operable.</p>
     </div>
@@ -589,7 +659,7 @@
 <section class="section" id="login">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">07 · Acceso y seguridad</span>
+      <span class="eyebrow">09 · Acceso y seguridad</span>
       <h2>La primera pantalla también se diseña.</h2>
       <p>El login no es un trámite: es la frontera entre la persona y el sistema. Debe autenticar sin filtrar información, explicar sin regañar y dejar claro qué hacer si algo falla.</p>
     </div>
@@ -684,7 +754,7 @@
 <section class="section section-alt" id="reto">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">08 · Reto visual</span>
+      <span class="eyebrow">10 · Reto visual</span>
       <h2>Encuentra los seis errores de esta pantalla.</h2>
       <p>Están escondidos a la vista, como en los sistemas reales: no son bugs, son decisiones de diseño. Toca cada punto y comprueba si detectaste el problema.</p>
     </div>
@@ -743,7 +813,7 @@
 <section class="section" id="quiz">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">09 · Cierre</span>
+      <span class="eyebrow">11 · Cierre</span>
       <h2>Comprueba lo que se te quedó.</h2>
       <p>Cinco preguntas rápidas, con explicación en cada respuesta. No hay nota: hay criterio.</p>
     </div>

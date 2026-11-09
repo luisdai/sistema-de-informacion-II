@@ -14,6 +14,8 @@ import { initLogin } from './login.js';
 import { initReto } from './reto.js';
 import { initQuiz } from './quiz.js';
 import { initChecklist } from './checklist.js';
+import { initCampo } from './campo.js';
+import { initControles } from './controles.js';
 
 mountSprite();
 initNav();
@@ -27,3 +29,5 @@ initLogin();
 initReto();
 initQuiz();
 initChecklist();
+initCampo();
+initControles();
