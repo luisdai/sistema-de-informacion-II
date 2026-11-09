@@ -13,7 +13,7 @@ Al terminar, cada estudiante debe poder tomar un formulario real y justificar po
 3. Comprueba que el proyector muestra el texto a tamaño cómodo. La tecla `Escape` sale del modo.
 4. Ten a mano la rúbrica impresa o en pantalla. La sección de cierre la genera y permite copiarla.
 
-El modo clase tiene cinco paradas y se recorre con las flechas izquierda y derecha. Las secciones fuera de la ruta quedan para consulta.
+El modo clase tiene seis paradas y se recorre con las flechas izquierda y derecha. Las secciones fuera de la ruta quedan para consulta.
 
 ## Guion
 
@@ -65,7 +65,7 @@ Sección **Validación**.
 - Pulsa **Saltarme el navegador** con un campo vacío. El servidor vuelve a rechazar.
 - Mensaje clave: lo que se puede desactivar desde el inspector no es una defensa.
 
-### 70 a 85 minutos · Parada 5: el reto
+### 70 a 80 minutos · Parada 5: el reto
 
 Sección **Reto visual**.
 
@@ -73,7 +73,18 @@ Sección **Reto visual**.
 - Al revelar cada punto, no leas la explicación: pide que la digan ellos.
 - Cierra con el error de contraste y el del mensaje de error. Son los que más se repiten en los proyectos.
 
-### 85 a 90 minutos · Cierre
+### 80 a 88 minutos · Parada 6: auditoría del banco
+
+Sección **Cierre**, botón **Abrir la auditoría**.
+
+- Proyecta el formulario del Banco del Sur. Son dos pantallas: acceso y transferencia.
+- La lista tiene diez afirmaciones: siete describen problemas reales y tres son cosas que están bien. La instrucción es marcar solo lo que sea un problema.
+- Deja tres o cuatro minutos para que cada uno marque. En parejas funciona mejor: tienen que justificar cada marca.
+- Pulsa **Ver resultado** y lee el desglose. El puntaje resta los falsos positivos: marcar todo no sirve.
+- Detente en los tres señuelos. Que expliquen por qué el enlace de recuperación, el aviso de conexión segura y el titular precargado no son problemas.
+- Cierra con la idea: una auditoría mide dos cosas, lo que encuentras y lo que descartas.
+
+### 88 a 90 minutos · Cierre
 
 Sección **Cierre**.
 
@@ -93,6 +104,8 @@ Sección **Cierre**.
 ## Evaluación sugerida
 
 Usa la rúbrica de la página (10 criterios, 0 a 2 puntos, total 20). La puntuación no es una nota final: es un diagnóstico de dónde poner el esfuerzo antes de programar.
+
+La auditoría del banco sirve como evaluación rápida de la clase: cobertura de los siete problemas y precisión al descartar los tres señuelos. El resultado queda guardado en el navegador del estudiante.
 
 Criterios que suelen fallar en los proyectos:
 

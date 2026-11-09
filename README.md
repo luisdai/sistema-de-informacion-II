@@ -44,6 +44,7 @@ js/
   reto.js           Reto de los seis errores
   quiz.js           Cuestionario final
   rubrica.js        Rúbrica de diez criterios
+  auditoria.js      Auditoría del formulario bancario
   presentacion.js   Modo clase
 docs/
   GUIA-DOCENTE.md   Guion de clase de 90 minutos
@@ -54,7 +55,8 @@ docs/
 - Nueve secciones de contenido y cuatro demos de formularios: anatomía del campo, selector de controles, validación en tres capas y laboratorio malo contra bueno.
 - Simulador de entrada, clasificador de datos, reporte comparativo, login, reto de seis errores, cuestionario y rúbrica.
 - Verificador de contraste WCAG y modo sin CSS.
-- Modo clase con cinco paradas, navegación con flechas y salida con `Escape`.
+- Modo clase con seis paradas, navegación con flechas y salida con `Escape`.
+- Auditoría de un formulario bancario con siete problemas reales y tres señuelos, con resultado por cobertura y precisión.
 - Progreso de la rúbrica y del cuestionario guardado en el navegador.
 
 ## Accesibilidad
