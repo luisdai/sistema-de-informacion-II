@@ -1407,6 +1407,7 @@ body.auth-open{overflow-y:hidden}
 }
 
 /* Vistas separadas: inicio y módulos */
+[hidden]{display:none !important}
 #modulesView{display:none}
 html[data-view="home"],html[data-view="home"] body{background:var(--ink)}
 html[data-view="modules"] #homeView{display:none}
@@ -1514,7 +1515,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
 
 <div class="view" id="modulesView">
 <!-- ================= RUTA DE DISEÑO ================= -->
-<section class="section" id="ruta">
+<section class="section" id="ruta" data-module-section="entradas">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">01 · Antes de tocar código</span>
@@ -1576,7 +1577,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
 </section>
 
 <!-- ================= ENTRADAS ================= -->
-<section class="section section-alt" id="entradas">
+<section class="section section-alt" id="entradas" data-module-section="entradas">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">02 · Diseño de entradas</span>
@@ -1686,7 +1687,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
 </section>
 
 <!-- ================= ANATOMÍA DE PANTALLA ================= -->
-<section class="section" id="pantalla">
+<section class="section" id="pantalla" data-module-section="interfaces">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">03 · Diseño de pantallas</span>
@@ -1776,7 +1777,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
 </section>
 
 <!-- ================= FORMULARIOS ================= -->
-<section class="section section-alt" id="formularios">
+<section class="section section-alt" id="formularios" data-module-section="entradas">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">04 · Laboratorio de entrada</span>
@@ -1894,7 +1895,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
 </section>
 
 <!-- ================= SALIDAS ================= -->
-<section class="section" id="salidas">
+<section class="section" id="salidas" data-module-section="salidas">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">05 · Diseño de salidas</span>
@@ -1979,7 +1980,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
 </section>
 
 <!-- ================= UI / UX ================= -->
-<section class="section section-alt" id="uxui">
+<section class="section section-alt" id="uxui" data-module-section="interfaces">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">06 · UX y UI</span>
@@ -2042,7 +2043,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
 </section>
 
 <!-- ================= LOGIN ================= -->
-<section class="section" id="login">
+<section class="section" id="login" data-module-section="interfaces">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">07 · Acceso y seguridad</span>
@@ -2151,7 +2152,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
 </section>
 
 <!-- ================= RETO ================= -->
-<section class="section section-alt" id="reto">
+<section class="section section-alt" id="reto" data-module-section="interfaces">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">08 · Reto visual</span>
@@ -2276,8 +2277,8 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
     </div>
 
     <div class="module-hub-foot">
-      <p><strong>¿Listo para comprobarlo?</strong> El quiz final tiene cinco preguntas con explicación.</p>
-      <a href="#quiz" class="module-quiz">Ir al quiz final <span aria-hidden="true">→</span></a>
+      <p><strong>¿Listo para comprobarlo?</strong> Cada módulo tiene sus preguntas de cierre con explicación.</p>
+      <a href="#quiz" class="module-quiz">Ir a las preguntas <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -2286,16 +2287,16 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
 <section class="section" id="quiz">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">09 · Cierre</span>
-      <h2>Comprueba lo que se te quedó.</h2>
-      <p>Cinco preguntas con explicación. No hay nota: hay criterio.</p>
+      <span class="eyebrow" id="quizEyebrow">09 · Cierre de entradas</span>
+      <h2 id="quizTitle">Comprueba lo de entradas.</h2>
+      <p id="quizSub">Dos preguntas sobre captura, llaves y formularios.</p>
     </div>
 
     <div class="split">
       <div class="quiz">
         <div class="quiz-top">
-          <h3>Quiz final</h3>
-          <div class="quiz-score"><span id="quizScoreText">0 de 5</span><span class="qs-bar"><i id="quizBar"></i></span></div>
+          <h3 id="quizCardTitle">Preguntas del módulo</h3>
+          <div class="quiz-score"><span id="quizScoreText">0 de 2</span><span class="qs-bar"><i id="quizBar"></i></span></div>
         </div>
         <div id="quizList"></div>
         <div class="quiz-actions">
@@ -3074,47 +3075,63 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
      ============================================================ */
   var quiz = [
     {
+      module:'entradas',
       q:'¿Cuál de estos datos NO debería capturarse en una venta?',
       opts:['Cantidad vendida','Costo unitario del artículo','ID del artículo','Fecha de la transacción'],
       correct:1,
       exp:'El costo ya vive en el catálogo: se recupera con la llave. Pedirlo otra vez duplica el trabajo y crea inconsistencias.'
     },
     {
+      module:'entradas',
       q:'Captura de datos es…',
       opts:['Teclear la información en la computadora','Identificar y adquirir el dato en su origen','Validar que el formulario esté completo','Imprimir el comprobante de la transacción'],
       correct:1,
       exp:'La captura ocurre donde nace el dato (la venta, la recepción). El ingreso es traducirlo a un formato legible por la computadora.'
     },
     {
+      module:'salidas',
       q:'La “regla del propósito” en el diseño de salidas dice que…',
       opts:['Toda salida debe imprimirse para tener valor','Si la salida no es funcional, no debe crearse','Cuantos más datos incluya, mejor','El color es más importante que el contenido'],
       correct:1,
       exp:'Cada salida cuesta tiempo y recursos. Si nadie decide o actúa con ella, sobra. Más no siempre es mejor.'
     },
     {
+      module:'interfaces',
       q:'Según el diseño de pantallas, la zona más visible es…',
       opts:['La esquina inferior derecha','El centro exacto de la pantalla','La esquina superior izquierda','La barra inferior de estado'],
       correct:2,
       exp:'Por eso allí van los encabezados y las explicaciones importantes. Los mensajes e instrucciones se ubican abajo.'
     },
     {
+      module:'interfaces',
       q:'Ante un inicio de sesión fallido, lo correcto es…',
       opts:['Decir “ese usuario no existe” para ser claro','Mostrar un mensaje genérico y no confirmar si la cuenta existe','Pedir la contraseña dos veces','Desactivar la cuenta tras un intento'],
       correct:1,
       exp:'Un mensaje específico le confirma a un atacante qué cuentas son válidas. Autentica sin filtrar información.'
     }
   ];
+  var quizModuleMeta = {
+    entradas: {eyebrow:'09 · Cierre de entradas', title:'Comprueba lo de entradas.', sub:'Dos preguntas sobre captura, llaves y formularios.'},
+    salidas: {eyebrow:'09 · Cierre de salidas', title:'Comprueba lo de salidas.', sub:'Una pregunta sobre el propósito de una salida.'},
+    interfaces: {eyebrow:'09 · Cierre de interfaces', title:'Comprueba lo de interfaces.', sub:'Dos preguntas sobre pantallas y acceso.'}
+  };
   var quizList = document.getElementById('quizList');
   var quizScoreText = document.getElementById('quizScoreText');
   var quizBar = document.getElementById('quizBar');
+  var quizEyebrow = document.getElementById('quizEyebrow');
+  var quizTitle = document.getElementById('quizTitle');
+  var quizSub = document.getElementById('quizSub');
   var quizAnswered = {};
   var quizScore = 0;
+  var activeQuizModule = 'entradas';
+  var currentQuiz = quiz.filter(function(item){ return item.module === activeQuizModule; });
 
   function renderQuiz(){
+    currentQuiz = quiz.filter(function(item){ return item.module === activeQuizModule; });
     quizAnswered = {};
     quizScore = 0;
     updateQuizScore();
-    quizList.innerHTML = quiz.map(function(item, qi){
+    quizList.innerHTML = currentQuiz.map(function(item, qi){
       var opts = item.opts.map(function(opt, oi){
         return '<button type="button" class="quiz-opt" data-q="' + qi + '" data-o="' + oi + '"><span class="qo-letter">' + String.fromCharCode(65+oi) + '</span><span>' + opt + '</span><span class="qo-mark" aria-hidden="true"></span></button>';
       }).join('');
@@ -3126,8 +3143,17 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
     }).join('');
   }
   function updateQuizScore(){
-    quizScoreText.textContent = quizScore + ' de 5';
-    quizBar.style.width = (quizScore / 5 * 100) + '%';
+    quizScoreText.textContent = quizScore + ' de ' + currentQuiz.length;
+    quizBar.style.width = (currentQuiz.length ? (quizScore / currentQuiz.length * 100) : 0) + '%';
+  }
+  function setQuizModule(key){
+    var meta = quizModuleMeta[key];
+    if (!meta) return;
+    activeQuizModule = key;
+    if (quizEyebrow) quizEyebrow.textContent = meta.eyebrow;
+    if (quizTitle) quizTitle.textContent = meta.title;
+    if (quizSub) quizSub.textContent = meta.sub;
+    renderQuiz();
   }
   quizList.addEventListener('click', function(e){
     var btn = e.target.closest('.quiz-opt');
@@ -3137,7 +3163,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
     quizAnswered[qi] = true;
     var block = quizList.querySelector('[data-qblock="' + qi + '"]');
     var buttons = Array.prototype.slice.call(block.querySelectorAll('.quiz-opt'));
-    var item = quiz[qi];
+    var item = currentQuiz[qi];
     var chosen = parseInt(btn.dataset.o, 10);
     buttons.forEach(function(b, i){
       b.disabled = true;
@@ -3185,6 +3211,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
   };
   var moduleCards = Array.prototype.slice.call(document.querySelectorAll('.module-card'));
   var moduleDetail = document.getElementById('moduleDetail');
+  var moduleSections = Array.prototype.slice.call(document.querySelectorAll('[data-module-section]'));
   var reduceModuleMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function renderModuleDetail(key){
@@ -3214,6 +3241,10 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
       if (state) state.textContent = active ? 'Elegido ✓' : 'Elegir';
     });
     renderModuleDetail(key);
+    moduleSections.forEach(function(section){
+      section.hidden = section.dataset.moduleSection !== key;
+    });
+    setQuizModule(key);
     if (scrollToDetail && moduleDetail && window.matchMedia('(max-width: 900px)').matches){
       moduleDetail.scrollIntoView({behavior: reduceModuleMotion ? 'auto' : 'smooth', block:'start'});
     }
@@ -3227,7 +3258,33 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
       if (next) setModule(next.dataset.next, false);
     });
   }
-  setModule('entradas', false);
+  function moduleForHash(hash){
+    if (hash === 'salidas') return 'salidas';
+    if (['pantalla', 'uxui', 'login', 'reto'].indexOf(hash) !== -1) return 'interfaces';
+    if (['ruta', 'entradas', 'formularios'].indexOf(hash) !== -1) return 'entradas';
+    return null;
+  }
+  var initialHash = window.location.hash.replace('#', '');
+  var initialModule = moduleForHash(initialHash) || 'entradas';
+  setModule(initialModule, false);
+
+  function applyModuleFromHash(){
+    if (document.documentElement.getAttribute('data-view') !== 'modules') return;
+    var hash = window.location.hash.replace('#', '');
+    var key = moduleForHash(hash);
+    if (!key) return;
+    setModule(key, false);
+    var target = document.getElementById(hash);
+    if (target){
+      setTimeout(function(){
+        try { target.scrollIntoView({behavior:'instant', block:'start'}); }
+        catch (error) { target.scrollIntoView(); }
+      }, 120);
+    }
+  }
+  if (document.readyState === 'complete') applyModuleFromHash();
+  else window.addEventListener('load', applyModuleFromHash, {once:true});
+  window.addEventListener('hashchange', applyModuleFromHash);
 
   /* ============================================================
      L. CHECKLIST
