@@ -163,15 +163,7 @@ p{text-wrap:pretty}
   -webkit-mask-image:radial-gradient(ellipse at 60% 20%,#000 20%,transparent 75%);
 }
 .hero .wrap{position:relative;z-index:2}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);
-  border-radius:999px;padding:.38rem .85rem;font-size:.76rem;font-weight:650;
-  letter-spacing:.04em;color:#d1fae8;margin-bottom:1.2rem;
-}
-.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:#7bf1c2;box-shadow:0 0 0 4px rgba(123,241,194,.18)}
-.hero h1{font-size:clamp(2.15rem,5vw,3.65rem);letter-spacing:-.035em;margin-bottom:1.1rem}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}.hero h1{font-size:clamp(2.15rem,5vw,3.65rem);letter-spacing:-.035em;margin-bottom:1.1rem}
 .hero h1 em{font-style:normal;color:#a7f3d0}
 .hero p.lead{font-size:1.08rem;color:#c7dcd6;max-width:58ch;margin-bottom:1.8rem}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:2rem}
@@ -998,7 +990,7 @@ ul.mini-list li::before{content:"•";color:currentColor;opacity:.55;font-weight
   .nav{justify-content:space-between}
   .nav-cta{display:inline-flex}
   .lab,.login-wrap,.uxui,.grid-2,.grid-3{grid-template-columns:1fr}
-  .section{padding:56px 0}
+  .section{padding:78px 0}
   .kpis{grid-template-columns:1fr 1fr}
   .report-stage.good .r-table-good{font-size:.78rem}
   .hero{padding:120px 0 70px}
@@ -1052,7 +1044,6 @@ h4{line-height:1.3;letter-spacing:-.01em;font-weight:600}
 .brand small{font-weight:500;letter-spacing:.02em}
 .brand-mark,.login-good .lg-mark{font-weight:700}
 .nav-links a{font-weight:600;letter-spacing:.005em}
-.hero-badge{font-weight:600;letter-spacing:.05em}
 .hero-meta b{font-weight:600}
 .hero-pill{font-weight:650}
 .hero-btn{font-weight:600;letter-spacing:.01em}
@@ -1157,13 +1148,6 @@ label,.lg-label,.sim-field label,.method-field label,.hero-field label{font-weig
 .module-hub-head{max-width:820px;margin-bottom:32px}
 .module-hub-head p{color:#b9d8d0;font-size:1.02rem;max-width:64ch;margin-top:.65rem}
 .module-hub h2{color:#fff;font-size:clamp(2rem,4.4vw,3.25rem);line-height:1.08;letter-spacing:-.03em;margin:.8rem 0 0;text-wrap:balance}
-.module-kicker{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.32rem .78rem;border-radius:999px;
-  background:rgba(167,243,208,.1);border:1px solid rgba(167,243,208,.26);
-  color:#d9f3ea;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-}
-.module-kicker .dot{width:7px;height:7px;border-radius:50%;background:#a7f3d0;box-shadow:0 0 0 4px rgba(167,243,208,.12);flex-shrink:0}
 .module-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .module-card{
   position:relative;display:flex;flex-direction:column;align-items:flex-start;
@@ -1233,7 +1217,7 @@ label,.lg-label,.sim-field label,.method-field label,.hero-field label{font-weig
   .module-detail-side{border-left:0;border-top:1px solid rgba(167,243,208,.16);padding-left:0;padding-top:18px}
 }
 @media (max-width:560px){
-  .module-hub{padding:58px 0 54px}
+  .module-hub{padding:84px 0 54px}
   .module-hub-head{margin-bottom:24px}
   .module-hub h2{font-size:2rem}
   .module-card{padding:16px}
@@ -1296,8 +1280,6 @@ label,.lg-label,.sim-field label,.method-field label,.hero-field label{font-weig
 .hero::after{z-index:1;animation:heroGridDrift 34s linear infinite}
 .hero .wrap{z-index:2}
 
-.hero-badge{animation:heroRise .7s cubic-bezier(.2,.8,.2,1) .05s both}
-.hero-badge .dot{animation:heroPulse 2.8s ease-in-out infinite}
 .hero h1{animation:heroRise .85s cubic-bezier(.2,.8,.2,1) .12s both}
 .hero h1 em{
   background:linear-gradient(100deg,#a7f3d0 0%,#7bf1c2 32%,#d1fae8 58%,#a7f3d0 100%);
@@ -1356,7 +1338,7 @@ label,.lg-label,.sim-field label,.method-field label,.hero-field label{font-weig
   .hero-glow-b{width:260px;height:260px;bottom:-130px;left:-120px}
 }
 @media (prefers-reduced-motion:reduce){
-  .hero-badge,.hero-badge .dot,.hero h1,.hero h1 em,.hero .lead,.hero-meta,.hero-about,.hero-about li,.hero-about-note,.hero-glow,.hero::after{animation:none !important}
+  .hero h1,.hero h1 em,.hero .lead,.hero-meta,.hero-about,.hero-about li,.hero-about-note,.hero-glow,.hero::after{animation:none !important}
 }
 
 @media (max-width:1040px){
@@ -1437,9 +1419,10 @@ body.auth-open{overflow-y:hidden}
 .auth-head{display:flex;align-items:center;gap:12px;padding-right:34px;margin-bottom:18px}
 .auth-mark{
   width:42px;height:42px;border-radius:13px;display:grid;place-items:center;flex-shrink:0;
-  background:linear-gradient(145deg,var(--brand),#0b7a5c);color:#fff;
-  font-size:1.2rem;font-weight:800;box-shadow:0 8px 18px -10px rgba(3,98,76,.8);
+  background:#fff;color:var(--brand-dark);border:1px solid #d9e8e4;
+  box-shadow:0 8px 18px -12px rgba(3,98,76,.6);
 }
+.auth-mark svg{width:34px;height:34px;display:block}
 .auth-eyebrow{display:block;color:var(--brand);font-size:.66rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
 .auth-head h2{font-size:1.4rem;line-height:1.15;margin-top:2px}
 .auth-session{
@@ -1506,6 +1489,72 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
 }
+
+/* ============================================================
+   CENTRADO EN PANTALLAS PEQUEÑAS
+   En movil el contenido se centra para que no quede pegado
+   a la izquierda: cabeceras, hero, modulos, acceso y cierre.
+   ============================================================ */
+@media (max-width:860px){
+  /* Cabeceras de seccion */
+  .section-head{text-align:center;margin-left:auto;margin-right:auto}
+  .section-head p{margin-left:auto;margin-right:auto}
+  .section-head .lede{margin-left:auto;margin-right:auto}
+
+  /* Hero */
+  .hero .wrap{text-align:center}
+  .hero-actions,.hero-meta{justify-content:center}
+  .hero p.lead{margin-left:auto;margin-right:auto}
+  .hero-about{text-align:center}
+  .hero-about h2{margin-left:auto;margin-right:auto}
+  .hero-about-note{margin-left:auto;margin-right:auto}
+  .hero-about li{justify-content:center;text-align:left}
+
+  /* Modulos */
+  .module-hub-head{text-align:center;margin-left:auto;margin-right:auto}
+  .module-hub-head p{margin-left:auto;margin-right:auto}
+  .module-card{align-items:center;text-align:center}
+  .module-card-top{justify-content:center}
+  .module-state{margin-left:0}
+  .module-tags{justify-content:center}
+  .module-desc{max-width:none}
+  .module-detail{text-align:center}
+  .module-detail .module-detail-head{justify-content:center}
+  .module-detail .module-tags{justify-content:center}
+
+  /* Acceso y registro */
+  .auth-panel{text-align:center}
+  .auth-panel .auth-form{text-align:left}
+  .auth-panel .auth-switch{justify-content:center}
+  .auth-panel .btn{justify-content:center}
+
+  /* Cierre, quiz y rubrica */
+  .quiz-top{justify-content:center;text-align:center}
+  .quiz-actions{justify-content:center;text-align:center}
+  .checklist h3,.checklist > p{text-align:center}
+  .check-progress{justify-content:center}
+  .game-hud{justify-content:center}
+  .game-side h3,.game-side > p{text-align:center}
+  .game-side .game-actions{justify-content:center}
+  .audit-cta{text-align:center}
+
+  /* Reto: maqueta en una columna */
+  .gm-body{grid-template-columns:1fr}
+  .gm-buttons{margin-top:8px}
+  .game-mock{padding:14px}
+
+  /* Avisos y pie */
+  .note{text-align:center}
+  .footer .wrap{text-align:center}
+  .footer .f-links{justify-content:center}
+  .f-note{margin-left:auto;margin-right:auto}
+
+  /* Botones y grupos de accion */
+  .fg-actions,.lg-actions,.sim-submit{justify-content:center}
+  .lab-head{justify-content:center;text-align:center}
+  .flow-top{justify-content:center;text-align:center}
+}
+
 </style>
 <script>
   document.documentElement.dataset.view = new URLSearchParams(window.location.search).get('view') === 'modulos' ? 'modules' : 'home';
@@ -1572,7 +1621,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
         <ul>
           <li><span>01</span><div><strong>Entradas</strong><small>Cómo capturar datos, elegir controles y validar sin fricción.</small></div></li>
           <li><span>02</span><div><strong>Salidas</strong><small>Cómo presentar reportes y resultados para que se entiendan.</small></div></li>
-          <li><span>03</span><div><strong>Interfaces</strong><small>Jerarquía, navegación, accesibilidad y decisiones de diseño.</small></div></li>
+          <li><span>03</span><div><strong>Interfaces</strong><small>La frontera con el usuario: tipos, pantallas y el login.</small></div></li>
         </ul>
         <p class="hero-about-note">Recorre los módulos desde <strong>Ponte a prueba</strong>. Login y registro guardan tu cuenta en este navegador.</p>
       </aside>
@@ -1734,13 +1783,130 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
   </div>
 </section>
 
+<!-- ================= QUÉ ES LA INTERFAZ ================= -->
+<section class="section" id="uxui" data-module-section="interfaces">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">03 · ¿Qué es la interfaz?</span>
+      <h2>La frontera donde el sistema se vuelve real.</h2>
+      <p>La interfaz es <strong>la frontera entre el usuario y la aplicación</strong>: el punto donde la persona y la computadora se encuentran. No es decoración: decide la <strong>eficiencia</strong> y la <strong>frecuencia de errores</strong> de quien la usa.</p>
+    </div>
+
+    <div class="uxui" style="margin-top:6px">
+      <div class="uxui-card ux">
+        <span class="uic-tag">Objetivo 1 · Ordenar</span>
+        <h3>Decirle al sistema qué hacer</h3>
+        <p>Seleccionar acciones de procesamiento, introducir, cambiar o recuperar datos y moverse entre las funciones del sistema.</p>
+      </div>
+      <div class="uxui-card ui">
+        <span class="uic-tag">Objetivo 2 · Facilitar</span>
+        <h3>Que la persona lo logre sin fricción</h3>
+        <p>Permitir las acciones de manera eficiente. Si la pantalla cuesta, el usuario se equivoca, pierde tiempo y abandona.</p>
+      </div>
+    </div>
+
+    <div class="uxui" style="margin-top:22px">
+      <div class="uxui-card ux">
+        <span class="uic-tag">UX · Experiencia</span>
+        <h3>El plano del recorrido</h3>
+        <p>La UX es lo que se vive: se diseña antes de la pantalla, desde la tarea real.</p>
+        <div class="uic-list">
+          <span>Qué datos necesita y en qué orden</span>
+          <span>Qué pasa cuando algo falla</span>
+          <span>Cuántos pasos y clics cuesta terminar</span>
+          <span>Qué ve un principiante y qué un experto</span>
+          <span>Qué permisos tiene cada rol</span>
+        </div>
+      </div>
+      <div class="uxui-card ui">
+        <span class="uic-tag">UI · Interfaz</span>
+        <h3>La superficie que se toca</h3>
+        <p>La UI es lo que se ve: la capa que traduce el recorrido en jerarquía, color y controles. Es una parte de la UX.</p>
+        <div class="uic-list">
+          <span>Jerarquía: qué se lee primero</span>
+          <span>Contraste y legibilidad</span>
+          <span>Etiquetas, botones y estados</span>
+          <span>Espaciado y agrupación de campos</span>
+          <span>Iconos estándar y ayuda contextual</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="strip-demo">
+      <div>
+        <h3>Quítale la capa visual</h3>
+        <p>Sin color ni sombras, la estructura debe seguir siendo clara.</p>
+        <div class="toggle-row">
+          <label class="switch">
+            <input type="checkbox" id="stripToggle">
+            <span class="track" aria-hidden="true"></span>
+            <span class="sw-label">Modo “sin UI”</span>
+          </label>
+        </div>
+      </div>
+      <div class="demo-card" id="demoCard">
+        <div class="dc-ic" aria-hidden="true">📦</div>
+        <h4>Confirmar retiro de inventario</h4>
+        <p>3 artículos · 12 unidades · Bodega central. Revisa antes de registrar; esta acción descuenta existencias.</p>
+        <div class="demo-actions">
+          <span class="a1">Confirmar retiro</span>
+          <span class="a2">Revisar de nuevo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="note amber" style="margin-top:22px"><strong>Ni UX sin UI, ni UI sin UX.</strong><p>Un flujo impecable con una pantalla ilegible también falla. La meta no es que se vea bonito: es que <strong>se sienta fácil</strong>.</p></div>
+  </div>
+</section>
+
+<!-- ================= CINCO TIPOS DE INTERFAZ ================= -->
+<section class="section section-alt" id="tipos" data-module-section="interfaces">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">04 · Los cinco tipos</span>
+      <h2>No hay una interfaz mejor: hay una mejor para cada caso.</h2>
+      <p>La guía clasifica cinco tipos. Cada uno tiene su usuario y su tarea ideal: <strong>primero sabes para quién y para qué, y después eliges el tipo.</strong></p>
+    </div>
+
+    <div class="input-cards">
+      <article class="input-card">
+        <div class="input-card-top"><span class="input-ic" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-keyboard"></use></svg></span><h4>Lenguaje natural</h4></div>
+        <p>Le hablas a la computadora como a una persona: Siri, Alexa o ChatGPT. No exige comandos, pero el lenguaje es ambiguo.</p>
+        <p class="input-examples"><b>Ideal:</b> pedir y buscar · novatos</p>
+      </article>
+      <article class="input-card">
+        <div class="input-card-top"><span class="input-ic" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-check-circle"></use></svg></span><h4>Pregunta y respuesta</h4></div>
+        <p>La computadora pregunta y el usuario responde hasta acotar la tarea: el instalador de un programa, abrir una cuenta.</p>
+        <p class="input-examples"><b>Ideal:</b> pasos guiados · novatos</p>
+      </article>
+      <article class="input-card">
+        <div class="input-card-top"><span class="input-ic" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-layout"></use></svg></span><h4>Menús</h4></div>
+        <p>Te muestran una lista y eliges, como el cajero automático. No necesitas saber cómo funciona el sistema, solo qué quieres hacer.</p>
+        <p class="input-examples"><b>Ideal:</b> opciones limitadas · cualquiera</p>
+      </article>
+      <article class="input-card">
+        <div class="input-card-top"><span class="input-ic" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-file"></use></svg></span><h4>Formularios</h4></div>
+        <p>Campos para llenar, casi siempre imitando el papel: facturación, registros. Permite meter muchos datos, pero es la más propensa a errores.</p>
+        <p class="input-examples"><b>Ideal:</b> captura de datos · el login</p>
+      </article>
+      <article class="input-card">
+        <div class="input-card-top"><span class="input-ic" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-gear"></use></svg></span><h4>Lenguaje de comandos</h4></div>
+        <p>El usuario escribe instrucciones: la terminal, SQL. Hay que memorizar la sintaxis, pero el experto trabaja mucho más rápido.</p>
+        <p class="input-examples"><b>Ideal:</b> tareas repetitivas · expertos</p>
+      </article>
+    </div>
+
+    <div class="note" style="margin-top:22px"><strong>Y para quién se diseña: experto y novato.</strong><p>El <strong>experto</strong> usa el sistema todos los días, quiere atajos y rapidez con la menor cantidad de clics. El <strong>novato</strong> lo usa de vez en cuando y necesita menús claros, instrucciones y ayuda visible. La buena interfaz le da el atajo al experto y le deja el camino guiado al novato.</p></div>
+  </div>
+</section>
+
 <!-- ================= ANATOMÍA DE PANTALLA ================= -->
 <section class="section" id="pantalla" data-module-section="interfaces">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">03 · Diseño de pantallas</span>
+      <span class="eyebrow">05 · Reglas de pantalla</span>
       <h2>Una pantalla no es un lienzo: es un mapa.</h2>
-      <p>Zonas estables: <strong>encabezado</strong> arriba, <strong>cuerpo</strong> al centro, <strong>mensajes</strong> abajo y <strong>ayuda</strong> en la esquina superior izquierda.</p>
+      <p>Zonas estables: <strong>encabezado</strong> arriba, <strong>cuerpo</strong> al centro, <strong>mensajes</strong> abajo y <strong>ayuda</strong> en la esquina superior izquierda. La regla que lo resume todo: <span class="hl">la pantalla se explica sola</span>.</p>
     </div>
 
     <div class="anatomy">
@@ -1799,6 +1965,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
           <li>Máximo <strong>4 colores</strong> para principiantes y <strong>7</strong> para expertos.</li>
           <li>Contraste alto; nunca rojo sobre verde ni azul sobre rojo.</li>
           <li>El color cambia de significado según la cultura.</li>
+          <li>Nunca puede ser la única señal: el error también lleva icono o texto.</li>
         </ul>
         <div class="color-strip">
           <span class="color-chip" style="background:#ffeb3b;color:#000">Negro / amarillo</span>
@@ -2037,76 +2204,14 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
   </div>
 </section>
 
-<!-- ================= UI / UX ================= -->
-<section class="section section-alt" id="uxui" data-module-section="interfaces">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">06 · UX y UI</span>
-      <h2>La UX decide qué pasa; la UI decide cómo se ve.</h2>
-      <p><strong>UX</strong> es el recorrido; <strong>UI</strong>, la capa que lo hace visible y operable.</p>
-    </div>
-
-    <div class="uxui">
-      <div class="uxui-card ux">
-        <span class="uic-tag">UX · Experiencia</span>
-        <h3>El plano del recorrido</h3>
-        <p>Se diseña antes de la pantalla, desde la tarea real.</p>
-        <div class="uic-list">
-          <span>Qué datos necesita y en qué orden</span>
-          <span>Qué pasa cuando algo falla</span>
-          <span>Cuántos pasos y clics cuesta terminar</span>
-          <span>Qué ve un principiante y qué un experto</span>
-          <span>Qué permisos tiene cada rol</span>
-        </div>
-      </div>
-      <div class="uxui-card ui">
-        <span class="uic-tag">UI · Interfaz</span>
-        <h3>La superficie que se toca</h3>
-        <p>Traduce el recorrido en jerarquía, color y controles.</p>
-        <div class="uic-list">
-          <span>Jerarquía: qué se lee primero</span>
-          <span>Contraste y legibilidad</span>
-          <span>Etiquetas, botones y estados</span>
-          <span>Espaciado y agrupación de campos</span>
-          <span>Iconos estándar y ayuda contextual</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="strip-demo">
-      <div>
-        <h3>Quítale la capa visual</h3>
-        <p>Sin color ni sombras, la estructura debe seguir siendo clara.</p>
-        <div class="toggle-row">
-          <label class="switch">
-            <input type="checkbox" id="stripToggle">
-            <span class="track" aria-hidden="true"></span>
-            <span class="sw-label">Modo “sin UI”</span>
-          </label>
-        </div>
-      </div>
-      <div class="demo-card" id="demoCard">
-        <div class="dc-ic" aria-hidden="true">📦</div>
-        <h4>Confirmar retiro de inventario</h4>
-        <p>3 artículos · 12 unidades · Bodega central. Revisa antes de registrar; esta acción descuenta existencias.</p>
-        <div class="demo-actions">
-          <span class="a1">Confirmar retiro</span>
-          <span class="a2">Revisar de nuevo</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="note amber" style="margin-top:22px"><strong>Ni UX sin UI, ni UI sin UX.</strong><p>Un buen flujo con una pantalla ilegible también falla.</p></div>
-  </div>
-</section>
 
 <!-- ================= LOGIN ================= -->
 <section class="section" id="login" data-module-section="interfaces">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">07 · Acceso y seguridad</span>
+      <span class="eyebrow">06 · Acceso y seguridad</span>
       <h2>La primera pantalla también se diseña.</h2>
-      <p>Autentica sin revelar si una cuenta existe y explica el error sin culpar.</p>
+      <p>La puerta responde tres preguntas: <strong>¿quién eres?</strong> (autenticación), <strong>¿qué te dejo hacer?</strong> (autorización) y <strong>¿cómo te ayudo?</strong> (recuperación y ayuda).</p>
     </div>
 
       <details class="lab-fold">
@@ -2205,7 +2310,57 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
   </div>
 </details>
 
+    <div class="grid-2" style="margin-top:26px">
+      <div class="card" style="padding:20px">
+        <div class="mini-title">Detrás de la pantalla</div>
+        <h3 style="font-size:1.02rem;margin-bottom:.4rem">Seis pasos que el usuario no ve</h3>
+        <ul class="mini-list">
+          <li><strong>1 · HTTPS:</strong> las credenciales viajan cifradas.</li>
+          <li><strong>2 · Hash + sal:</strong> no se guarda la contraseña, se guarda su huella matemática.</li>
+          <li><strong>3 · Sesión:</strong> una cookie segura que dice “ya entraste”.</li>
+          <li><strong>4 · Rol:</strong> se cargan los permisos del usuario y se arma la pantalla.</li>
+          <li><strong>5 · Límite de intentos:</strong> los fallos se cuentan y se bloquean: frena la fuerza bruta.</li>
+          <li><strong>6 · Auditoría:</strong> quién entró, cuándo y desde dónde.</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:20px">
+        <div class="mini-title">Permisos por rol</div>
+        <h3 style="font-size:1.02rem;margin-bottom:.4rem">Esconder un botón no es seguridad</h3>
+        <ul class="mini-list">
+          <li>Los privilegios se asignan a <strong>roles</strong>, no a personas: la gente cambia de cargo y se va.</li>
+          <li>El cajero cobra, el supervisor anula, el administrador crea usuarios.</li>
+          <li>Ocultar en gris es usabilidad; el servidor debe validar los permisos en cada petición.</li>
+          <li>Si el botón solo se esconde, igual se puede llamar la función por otro lado.</li>
+        </ul>
+      </div>
+    </div>
 
+  </div>
+</section>
+
+<!-- ================= CÓMO SE DISEÑA ================= -->
+<section class="section" id="proceso" data-module-section="interfaces">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">07 · Cómo se diseña</span>
+      <h2>Mapa, prototipo y prueba: tres pasos, un solo objetivo.</h2>
+      <p>El diseño no se valida en la cabeza del diseñador; se valida <strong>en la mano del usuario</strong>.</p>
+    </div>
+
+    <div class="input-cards">
+      <article class="input-card">
+        <div class="input-card-top"><span class="input-ic" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-link"></use></svg></span><h4>1 · Mapa del diálogo</h4></div>
+        <p>Cuántas pantallas hay, en qué orden aparecen, cuáles dependen de una condición y cómo se vuelve atrás. Sin mapa terminan pantallas que no se conectan.</p>
+      </article>
+      <article class="input-card">
+        <div class="input-card-top"><span class="input-ic" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-layout"></use></svg></span><h4>2 · Prototipo</h4></div>
+        <p>Se dibuja la interfaz antes de programarla: en papel, Figma o Balsamiq. Equivocarse en un boceto es barato; equivocarse en producción, no.</p>
+      </article>
+      <article class="input-card">
+        <div class="input-card-top"><span class="input-ic" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" focusable="false"><use href="#i-hand"></use></svg></span><h4>3 · Prueba con usuarios</h4></div>
+        <p>Se le pide al usuario real que complete la tarea y se observa dónde se tranca. No se pregunta “¿te gusta?”: se lo pone a usar. Después se vuelve a los pasos 1 y 2.</p>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -2215,33 +2370,33 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
     <div class="section-head">
       <span class="eyebrow">08 · Reto visual</span>
       <h2>Encuentra los seis errores de esta pantalla.</h2>
-      <p>Seis decisiones de diseño, no bugs. Toca cada punto.</p>
+      <p>Seis decisiones de diseño hechas mal, no bugs. Toca cada punto y di qué regla se rompe.</p>
     </div>
 
     <div class="game">
       <div class="game-stage">
         <div class="game-mock" id="gameMock">
           <div class="gm-top">
-            <div class="gm-title-missing">panel de ventas</div>
+            <div class="gm-title-missing" data-mark="0">panel de ventas</div>
             <div class="gm-nav" aria-hidden="true"><i></i><i></i><i></i></div>
           </div>
           <div class="gm-kpis">
             <div class="gm-kpi"><span>Ventas</span><b>12.480</b></div>
             <div class="gm-kpi"><span>Meta</span><b>15.000</b></div>
-            <div class="gm-kpi low-contrast"><span>Cumplimiento</span><b>83%</b></div>
+            <div class="gm-kpi low-contrast" data-mark="1"><span>Cumplimiento</span><b>83%</b></div>
           </div>
           <div class="gm-body">
             <div class="gm-table" aria-hidden="true">
-              <div class="gm-tr"><b>Ana Ruiz</b><span class="amt">4820</span></div>
+              <div class="gm-tr"><b>Ana Ruiz</b><span class="amt" data-mark="3">4820</span></div>
               <div class="gm-tr"><b>Luis Prado</b><span class="amt">3910</span></div>
               <div class="gm-tr"><b>Marta Sosa</b><span class="amt">3750</span></div>
             </div>
             <div>
-              <div class="gm-buttons" aria-hidden="true"><button type="button">Actualizar</button><button type="button">Exportar</button><button type="button">Filtrar</button><button type="button">Ver</button></div>
-              <div class="gm-caps">RECUERDE REVISAR TODOS LOS REGISTROS ANTES DE ENVIAR EL REPORTE AL ÁREA CONTABLE</div>
+              <div class="gm-buttons" data-mark="2" aria-hidden="true"><button type="button">Actualizar</button><button type="button">Exportar</button><button type="button">Filtrar</button><button type="button">Ver</button></div>
+              <div class="gm-caps" data-mark="5">RECUERDE REVISAR TODOS LOS REGISTROS ANTES DE ENVIAR EL REPORTE AL ÁREA CONTABLE</div>
             </div>
           </div>
-          <div class="gm-alert">Error: no se pudo guardar</div>
+          <div class="gm-alert" data-mark="4">Error: no se pudo guardar</div>
           <div class="gm-textlow">Datos actualizados hace poco</div>
 
           <button type="button" class="hotspot" data-issue="0" style="left:16%;top:11%" aria-label="Punto 1"><span class="hs-num">1</span></button>
@@ -2273,7 +2428,6 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
   <div class="module-bg" aria-hidden="true"><span class="module-orb a"></span><span class="module-orb b"></span></div>
   <div class="wrap">
     <div class="module-hub-head">
-      <span class="module-kicker"><span class="dot" aria-hidden="true"></span> Ponte a prueba</span>
       <h2 id="modulesTitle">Elige un módulo y repásalo por partes.</h2>
       <p>Tres recorridos cortos para volver sobre lo importante. Elige una tarjeta para ver qué incluye cada módulo y sigue por donde quieras.</p>
     </div>
@@ -2311,8 +2465,8 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
         </span>
         <span class="module-card-kicker">Interfaz y experiencia</span>
         <strong>Diseño de interfaces</strong>
-        <span class="module-desc">Ordena la pantalla para que se entienda sin manual: navegación, jerarquía y estados claros.</span>
-        <span class="module-tags"><span>Pantallas</span><span>Accesibilidad</span><span>Estados</span></span>
+        <span class="module-desc">La interfaz es la frontera con el usuario: cinco tipos, cuatro reglas y un login que también se diseña.</span>
+        <span class="module-tags"><span>La frontera</span><span>Cinco tipos</span><span>Login</span></span>
       </button>
     </div>
 
@@ -2390,7 +2544,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
     <button type="button" class="auth-close" id="authClose" aria-label="Cerrar ventana de acceso">&times;</button>
 
     <div class="auth-head">
-      <span class="auth-mark" aria-hidden="true">D</span>
+      <span class="auth-mark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="72 76 368 368" width="512" height="512" aria-hidden="true" focusable="false"><path fill="#8CCB4A" d="M256 92A168 168 0 0 0 88 260H168A88 88 0 0 1 256 172Z"/><path fill="#0A7A4B" d="M88 260A168 168 0 0 0 256 428A168 168 0 0 0 424 260H344A88 88 0 0 1 256 348A88 88 0 0 1 168 260Z"/><circle cx="256" cy="260" r="56" fill="#00B87A"/></svg></span>
       <div>
         <span class="auth-eyebrow">Cuenta de la guía</span>
         <h2 id="authTitle">Iniciar sesión</h2>
@@ -3141,6 +3295,48 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
     var count = Object.keys(gameFound).length;
     gameCount.textContent = count + ' / 6 encontrados' + (count === 6 ? ' · ¡inspección completa!' : '');
   }
+  // En escritorio la maqueta mantiene las posiciones originales del diseno.
+  hotspots.forEach(function(h){
+    h.dataset.origLeft = h.style.left;
+    h.dataset.origTop = h.style.top;
+  });
+
+  function positionHotspots(){
+    var mock = document.getElementById('gameMock');
+    if (!mock) return;
+    if (window.innerWidth > 860) {
+      hotspots.forEach(function(h){
+        h.style.left = h.dataset.origLeft || '';
+        h.style.top = h.dataset.origTop || '';
+      });
+      return;
+    }
+    var base = mock.getBoundingClientRect();
+    if (!base.width || !base.height) return;
+    hotspots.forEach(function(h){
+      var target = mock.querySelector('[data-mark="' + h.dataset.issue + '"]');
+      if (!target) return;
+      var box = target.getBoundingClientRect();
+      // A la derecha del elemento senalado, sin salirse de la maqueta.
+      var px = box.right - base.left + 4;
+      var py = box.top + box.height / 2 - base.top;
+      px = Math.max(18, Math.min(base.width - 18, px));
+      h.style.left = (px / base.width * 100) + '%';
+      h.style.top = Math.max(3, Math.min(97, py / base.height * 100)) + '%';
+    });
+  }
+
+  // La maqueta vive en una vista que puede estar oculta al cargar:
+  // se reposicionan los puntos cuando vuelve a tener tamano.
+  var mockEl = document.getElementById('gameMock');
+  if (mockEl && typeof ResizeObserver === 'function') {
+    new ResizeObserver(positionHotspots).observe(mockEl);
+  }
+  window.addEventListener('resize', positionHotspots);
+  window.addEventListener('load', positionHotspots);
+  setTimeout(positionHotspots, 60);
+  setTimeout(positionHotspots, 500);
+
   hotspots.forEach(function(h){
     h.addEventListener('click', function(){ revealIssue(parseInt(h.dataset.issue, 10)); });
   });
@@ -3188,12 +3384,26 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
       opts:['Decir “ese usuario no existe” para ser claro','Mostrar un mensaje genérico y no confirmar si la cuenta existe','Pedir la contraseña dos veces','Desactivar la cuenta tras un intento'],
       correct:1,
       exp:'Un mensaje específico le confirma a un atacante qué cuentas son válidas. Autentica sin filtrar información.'
+    },
+    {
+      module:'interfaces',
+      q:'¿Cuál NO es un tipo de interfaz de la guía?',
+      opts:['Menús','Formularios','Base de datos','Lenguaje natural'],
+      correct:2,
+      exp:'Los cinco tipos son: lenguaje natural, pregunta y respuesta, menús, formularios y lenguaje de comandos. La base de datos es almacenamiento, no interfaz.'
+    },
+    {
+      module:'interfaces',
+      q:'Los permisos de acceso se asignan mejor…',
+      opts:['A cada persona, para acomodar sus preferencias','A los roles, no a las personas','A todo el personal, sin excepciones','A quien lo solicite'],
+      correct:1,
+      exp:'La gente cambia de cargo y se va. Si el permiso vive en el rol, se administra una vez; si vive en la persona, cada cambio es una lotería.'
     }
   ];
   var quizModuleMeta = {
     entradas: {eyebrow:'09 · Cierre de entradas', title:'Comprueba lo de entradas.', sub:'Dos preguntas sobre captura, llaves y formularios.'},
     salidas: {eyebrow:'09 · Cierre de salidas', title:'Comprueba lo de salidas.', sub:'Una pregunta sobre el propósito de una salida.'},
-    interfaces: {eyebrow:'09 · Cierre de interfaces', title:'Comprueba lo de interfaces.', sub:'Dos preguntas sobre pantallas y acceso.'}
+    interfaces: {eyebrow:'09 · Cierre de interfaces', title:'Comprueba lo de interfaces.', sub:'Cuatro preguntas sobre tipos, pantallas y acceso.'}
   };
   var quizList = document.getElementById('quizList');
   var quizScoreText = document.getElementById('quizScoreText');
@@ -3284,8 +3494,8 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
     },
     interfaces: {
       num:'03', kicker:'Interfaz y experiencia', title:'Diseño de interfaces',
-      desc:'Ordena la pantalla para que se entienda sin manual: navegación, jerarquía visual y estados claros.',
-      points:['Respeta la anatomía: encabezado, cuerpo, mensajes y ayuda.','Usa jerarquía, contraste y espacio para guiar la mirada.','Diseña estados accesibles que no dependan solo del color.'],
+      desc:'La interfaz es la frontera con el usuario: decide la eficiencia y los errores. Cinco tipos, cuatro reglas y un login que se diseña como cualquier pantalla.',
+      points:['Una interfaz es la frontera: ordenar y facilitar.','Cinco tipos: elige según el usuario y la tarea.','Reglas: sencillez, tres zonas, iconos y color.','Login: autenticar ≠ autorizar. Todo se valida en la mano del usuario.'],
       link:'#uxui', linkLabel:'Recorrer interfaces', next:'entradas', nextLabel:'Entradas'
     }
   };
@@ -3340,7 +3550,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
   }
   function moduleForHash(hash){
     if (hash === 'salidas') return 'salidas';
-    if (['pantalla', 'uxui', 'login', 'reto'].indexOf(hash) !== -1) return 'interfaces';
+    if (['pantalla', 'uxui', 'login', 'reto', 'tipos', 'proceso'].indexOf(hash) !== -1) return 'interfaces';
     if (['ruta', 'entradas', 'formularios'].indexOf(hash) !== -1) return 'entradas';
     return null;
   }
