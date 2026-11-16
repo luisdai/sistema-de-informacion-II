@@ -681,6 +681,71 @@ ul.mini-list li::before{content:"•";color:currentColor;opacity:.55;font-weight
 .method-result h4{font-size:.95rem;color:#063028;margin-bottom:.15rem}
 .method-result p{font-size:.83rem;color:#095544}
 
+/* Laboratorio de consultas */
+.query-lab{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px}
+.query-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+.query-head .kicker{display:block;margin-bottom:.35rem;color:var(--brand);font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.query-head h3{font-size:1.15rem;margin-bottom:.25rem}
+.query-head p{font-size:.86rem;color:var(--muted);max-width:72ch}
+.query-source{font-size:.7rem;font-weight:750;color:var(--brand-dark);background:var(--brand-soft);border:1px solid #c9e9e1;border-radius:999px;padding:.3rem .65rem;white-space:nowrap}
+.query-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:15px 0 12px}
+.query-tab{border:1px solid var(--line-strong);background:var(--surface-2);color:var(--ink-soft);border-radius:999px;padding:.45rem .75rem;font:inherit;font-size:.76rem;font-weight:700;transition:background .2s,border-color .2s,color .2s}
+.query-tab:hover{border-color:var(--brand);color:var(--brand)}
+.query-tab.is-active{background:var(--brand);border-color:var(--brand);color:#fff}
+.query-tab:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.query-body{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:14px;align-items:stretch}
+.query-sql{background:#021b1a;border-radius:14px;overflow:hidden;color:#d7f5ec;display:flex;flex-direction:column;min-width:0}
+.query-sql-head{display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid rgba(167,243,208,.16);color:#a7f3d0;font-size:.64rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.query-sql pre{margin:0;padding:14px;overflow:auto;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.76rem;line-height:1.6}
+.query-result{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px;min-width:0}
+.query-result-head{display:flex;justify-content:space-between;align-items:center;gap:.75rem;flex-wrap:wrap}
+.query-result-head h4{font-size:.92rem}
+.query-result-head span{font-size:.7rem;color:var(--muted);font-weight:700}
+.query-note{font-size:.76rem;color:var(--muted);margin:.25rem 0 .7rem}
+.query-table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:9px;background:#fff}
+.query-table{width:100%;border-collapse:collapse;font-size:.77rem;min-width:360px}
+.query-table th{padding:.5rem .6rem;text-align:left;background:var(--brand-soft);color:var(--brand-dark);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.query-table td{padding:.5rem .6rem;border-top:1px solid var(--line);color:var(--ink-soft);white-space:nowrap}
+.query-table tbody tr:nth-child(even){background:#f7fcfa}
+.query-table td:last-child,.query-table th:last-child{text-align:right}
+.query-json{margin:0;padding:12px;border:1px solid var(--line);border-radius:9px;background:#021b1a;color:#d7f5ec;overflow:auto;max-height:250px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.72rem;line-height:1.55}
+.query-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.query-other{margin-top:12px;font-size:.78rem;color:var(--muted)}
+.query-other b{color:var(--ink-soft)}
+
+@media (max-width:860px){
+  .query-head{gap:.6rem}
+  .query-source{white-space:normal}
+  .query-body{grid-template-columns:1fr}
+  .query-sql pre{font-size:.72rem}
+}
+
+@media (max-width:640px){
+  .query-lab{padding:18px}
+  .query-result{padding:12px}
+  .query-table{min-width:0;font-size:.72rem}
+  .query-table th,.query-table td{padding:.45rem .35rem;white-space:normal}
+  .query-table th{font-size:.58rem;letter-spacing:.03em}
+  .query-table td:last-child,.query-table th:last-child{white-space:nowrap}
+  .query-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .query-actions .btn{padding:.55rem .55rem;font-size:.8rem;justify-content:center;text-align:center}
+  .query-actions .btn:last-child{grid-column:1/-1}
+}
+
+@media (max-width:380px){
+  .query-tab{width:100%;text-align:center}
+  .query-table-wrap{border:0;background:transparent;overflow:visible}
+  .query-table{display:block}
+  .query-table thead{display:none}
+  .query-table tbody,.query-table tr,.query-table td{display:block;width:100%}
+  .query-table tr{border:1px solid var(--line);border-radius:9px;background:#fff;padding:.35rem .55rem;margin-bottom:6px}
+  .query-table td{display:flex;justify-content:space-between;gap:.75rem;border:0;padding:.28rem 0;text-align:right;white-space:normal}
+  .query-table td::before{content:attr(data-label);font-size:.6rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);text-align:left}
+  .query-table tbody tr:nth-child(even){background:#fff}
+  .query-actions{grid-template-columns:1fr}
+  .query-actions .btn:last-child{grid-column:auto}
+}
+
 /* ============================================================
    9. UI vs UX
    ============================================================ */
@@ -1492,7 +1557,6 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <div class="hero-badge"><span class="dot"></span> Sistemas de Información II · Módulo III</div>
         <h1>Diseñar antes de programar:<br><em>entradas, salidas y pantallas</em> que se entienden solas.</h1>
         <p class="lead">Esta guía interactiva del Módulo III de Sistemas de Información II reúne criterios, ejemplos y comparaciones para tomar mejores decisiones de diseño.</p>
         <div class="hero-meta">
@@ -1522,11 +1586,11 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
 <section class="section" id="ruta" data-module-section="entradas">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">01 · Antes de tocar código</span>
+      <span class="eyebrow">01 · Diseño de entradas</span>
       <h2>¿Qué es una entrada?</h2>
       <p>Una <strong>entrada</strong> es todo dato que el sistema recibe para trabajar. Puede escribirse, elegirse, capturarse con un dispositivo o llegar automáticamente desde otra fuente. Reconocer el tipo ayuda a elegir el control adecuado y a no pedir datos que ya existen.</p>
     </div>
-
+    <span class="eyebrow"> · Tipos de entradas</span>
     <div class="input-map">
       <section class="input-family" aria-labelledby="softwareInputs">
         <div class="input-family-head">
@@ -1584,7 +1648,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
 <section class="section section-alt" id="entradas" data-module-section="entradas">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">02 · Diseño de entradas</span>
+      <span class="eyebrow">02 · ¿Como se captura?</span>
       <h2>Capturar no es lo mismo que ingresar.</h2>
       <p><strong>Captura</strong> es tomar el dato donde ocurre; <strong>ingreso</strong> es traducirlo para la computadora. Una pantalla clara pide la <strong>llave</strong> y los datos que <strong>cambian</strong>; lo demás lo <strong>recupera</strong> el sistema. Regla de oro: <span class="hl">captura lo que cambia o identifica; lo demás se recupera</span>.</p>
     </div>
@@ -1890,7 +1954,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
       <details class="lab-fold">
   <summary>
     <span class="fold-ico" aria-hidden="true">📊</span>
-    <span class="fold-txt"><b>Laboratorio de reportes</b><small>Mismos datos, dos versiones y el recomendador de salida.</small></span>
+    <span class="fold-txt"><b>Laboratorio de reportes y consultas</b><small>Mismos datos, dos versiones y consultas sobre la base.</small></span>
     <span class="fold-cta"><span class="when-closed">Abrir</span><span class="when-open">Cerrar</span><span class="chev" aria-hidden="true">▾</span></span>
   </summary>
   <div class="fold-body">
@@ -1923,40 +1987,50 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
       </div>
     </div>
 
-    <div class="method">
-      <h3>¿Impreso, en pantalla o documento web?</h3>
-      <p>Tres factores bastan para decidir.</p>
-      <div class="method-grid">
-        <div class="method-field">
-          <label for="mWho">¿Quién la usa?</label>
-          <select id="mWho">
-            <option value="externo">Cliente o proveedor externo</option>
-            <option value="interno">Equipo interno</option>
-            <option value="jefe">Una sola persona que decide</option>
-          </select>
+    <div class="query-lab" aria-labelledby="queryTitle">
+      <div class="query-head">
+        <div>
+          <span class="kicker">Base de datos · consulta SQL</span>
+          <h3 id="queryTitle">De la tabla a una salida útil</h3>
+          <p>Elige una consulta, revisa el SQL y observa el resultado. La misma lógica sirve en una base de datos real.</p>
         </div>
-        <div class="method-field">
-          <label for="mNeed">¿Debe conservarse o firmarse?</label>
-          <select id="mNeed">
-            <option value="no">No, es consulta</option>
-            <option value="archivo">Sí, para archivo o auditoría</option>
-            <option value="legal">Sí, lo exige una norma</option>
-          </select>
-        </div>
-        <div class="method-field">
-          <label for="mFreq">¿Con qué frecuencia?</label>
-          <select id="mFreq">
-            <option value="diaria">Diaria o en tiempo real</option>
-            <option value="semanal">Semanal o mensual</option>
-            <option value="ocasional">Ocasional</option>
-          </select>
-        </div>
-        <button type="button" class="btn btn-primary sim-submit" id="mCalc">Recomendar</button>
+        <span class="query-source">BD Ventas · datos de muestra</span>
       </div>
-      <div class="method-result" id="methodResult" role="status">
-        <span class="mr-ic" aria-hidden="true">💡</span>
-        <div><h4>Elige las tres respuestas</h4><p>Y te diré qué método conviene, con el criterio de la guía.</p></div>
+
+      <div class="query-tabs" role="tablist" aria-label="Consultas de ejemplo">
+        <button type="button" class="query-tab is-active" role="tab" aria-selected="true" data-query="vendedores">Ventas por vendedor</button>
+        <button type="button" class="query-tab" role="tab" aria-selected="false" tabindex="-1" data-query="stock">Stock bajo</button>
+        <button type="button" class="query-tab" role="tab" aria-selected="false" tabindex="-1" data-query="ultimos">Últimos movimientos</button>
       </div>
+
+      <div class="query-body">
+        <div class="query-sql">
+          <div class="query-sql-head"><span>SQL</span><span>consulta</span></div>
+          <pre><code id="queryCode"></code></pre>
+        </div>
+
+        <div class="query-result" role="tabpanel" aria-live="polite">
+          <div class="query-result-head">
+            <h4 id="queryResultTitle">Ventas por vendedor</h4>
+            <span id="queryResultCount"></span>
+          </div>
+          <p class="query-note" id="queryNote"></p>
+          <div class="query-table-wrap" id="queryTableWrap">
+            <table class="query-table">
+              <thead id="queryHead"></thead>
+              <tbody id="queryRows"></tbody>
+            </table>
+          </div>
+          <pre class="query-json" id="queryJson" hidden></pre>
+          <div class="query-actions">
+            <button type="button" class="btn btn-primary btn-sm" data-output="table" aria-pressed="true">Pantalla</button>
+            <button type="button" class="btn btn-ghost btn-sm" data-output="csv">Descargar CSV</button>
+            <button type="button" class="btn btn-ghost btn-sm" data-output="json" aria-pressed="false">Ver JSON</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="query-other"><b>Otras salidas:</b> PDF o impresión, panel en vivo, API externa o correo. Cambia el formato, no el dato.</p>
     </div>
   </div>
 </details>
@@ -2299,7 +2373,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
   <div class="wrap">
     <div>
       <b>Diseño de entradas, salidas e interfaz</b>
-      <div class="f-note">Material didáctico interactivo basado en la Guía del Módulo III, <em>Sistemas de Información II</em> (diseño de sistemas, captura y entrada de datos, salidas, interfaces y pantallas).</div>
+      <div class="f-note">Creado por: Luis Miguel y Jose Mora, <em>Guia práctica</em> de diseño de sistemas, captura y entrada de datos, salidas, interfaces y pantallas.</div>
     </div>
     <div class="f-links">
       <a href="?view=modulos#ruta">Proceso</a>
@@ -2771,43 +2845,165 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
   });
   buildBadReport();
 
-  /* ---- Selector de método de salida ---- */
-  var mWho = document.getElementById('mWho');
-  var mNeed = document.getElementById('mNeed');
-  var mFreq = document.getElementById('mFreq');
-  var methodResult = document.getElementById('methodResult');
+  /* ============================================================
+     G. SALIDAS: CONSULTAS SOBRE UNA BASE DE DATOS
+     ============================================================ */
+  var querySales = [
+    { fecha: '2026-11-10', cliente: 'Ana Ruiz', vendedor: 'Luis', total: 64.00 },
+    { fecha: '2026-11-10', cliente: 'Marta Sosa', vendedor: 'Ana', total: 149.50 },
+    { fecha: '2026-11-09', cliente: 'Carlos Pérez', vendedor: 'Luis', total: 32.00 },
+    { fecha: '2026-11-09', cliente: 'Elena Gil', vendedor: 'Ana', total: 298.00 },
+    { fecha: '2026-11-08', cliente: 'José Díaz', vendedor: 'Luis', total: 18.50 },
+    { fecha: '2026-11-08', cliente: 'Lucía Mora', vendedor: 'María', total: 96.00 },
+    { fecha: '2026-11-07', cliente: 'Pedro Rivas', vendedor: 'Ana', total: 32.00 },
+    { fecha: '2026-11-07', cliente: 'Sofía León', vendedor: 'María', total: 75.00 }
+  ];
 
-  function updateMethod(){
-    var who = mWho.value, need = mNeed.value, freq = mFreq.value;
-    var title = '', text = '', icon = '💡';
+  var queryInventory = [
+    { producto: 'Mouse inalámbrico', stock: 7, minimo: 10 },
+    { producto: 'Teclado USB', stock: 12, minimo: 10 },
+    { producto: 'Monitor 24"', stock: 3, minimo: 5 },
+    { producto: 'Base para laptop', stock: 18, minimo: 10 },
+    { producto: 'Cable HDMI', stock: 9, minimo: 10 },
+    { producto: 'Webcam HD', stock: 4, minimo: 6 }
+  ];
 
-    if (need === 'legal'){
-      icon = '🖨️';
-      title = 'Documento impreso controlado (o PDF firmado equivalente)';
-      text = 'Una norma exige el formato y su conservación. La guía recuerda que la ley puede dictar la tecnología de salida: no la sustituyas por una pantalla. Diseña el formulario pensando en que debe imprimirse y archivarse correctamente.';
-    } else if (who === 'externo'){
-      icon = '🌐';
-      title = 'Documento web o PDF descargable';
-      text = 'Va hacia clientes o proveedores, probablemente muchos y en distintos lugares. Un documento web con el logotipo y los colores de la empresa llega a todos y cada quien decide si lo imprime. Para un comprobante puntual, la factura impresa sigue siendo válida.';
-    } else if (freq === 'diaria'){
-      icon = '🖥️';
-      title = 'Salida en pantalla (panel en línea)';
-      text = 'Se consulta con urgencia y muchas veces al día. La pantalla en línea permite ver el dato actualizado, filtrar y actuar. Complementa con exportación a PDF solo cuando alguien necesite archivar.';
-    } else if (freq === 'ocasional'){
-      icon = '📄';
-      title = 'Reporte bajo demanda (pantalla o PDF)';
-      text = 'Pocos usuarios y baja frecuencia. No hace falta imprimir por defecto ni mantener un panel permanente: genera el reporte cuando se pida, con filtros claros y fecha de corte. Revisa si conviene conservarlo por normativa.';
-    } else {
-      icon = '📊';
-      title = 'Reporte periódico en pantalla, con opción de imprimir';
-      text = 'Uso interno y frecuencia semanal o mensual. Preséntalo en pantalla con resumen primero y detalle después; ofrece impresión o PDF para juntas. La guía insiste en no producir más papel del necesario.';
-    }
-
-    methodResult.innerHTML = '<span class="mr-ic" aria-hidden="true">' + icon + '</span><div><h4>' + title + '</h4><p>' + text + '</p></div>';
+  function formatQueryMoney(value){
+    return '$' + value.toFixed(2).replace('.', ',');
   }
-  [mWho, mNeed, mFreq].forEach(function(sel){ sel.addEventListener('change', updateMethod); });
-  document.getElementById('mCalc').addEventListener('click', updateMethod);
-  updateMethod();
+
+  var queryCatalog = {
+    vendedores: {
+      title: 'Ventas por vendedor',
+      columns: ['Vendedor', 'Operaciones', 'Total'],
+      sql: 'SELECT vendedor,\n       COUNT(*) AS operaciones,\n       SUM(total) AS total\nFROM ventas\nGROUP BY vendedor\nORDER BY total DESC;',
+      note: 'Agrupa las ventas por vendedor y suma el total. Es una salida resumida para decidir, no una lista de todas las facturas.',
+      rows: function(){
+        var groups = {};
+        querySales.forEach(function(sale){
+          if (!groups[sale.vendedor]) groups[sale.vendedor] = { vendedor: sale.vendedor, operaciones: 0, total: 0 };
+          groups[sale.vendedor].operaciones += 1;
+          groups[sale.vendedor].total += sale.total;
+        });
+        return Object.keys(groups).map(function(key){ return groups[key]; })
+          .sort(function(a, b){ return b.total - a.total; })
+          .map(function(group){ return [group.vendedor, group.operaciones, formatQueryMoney(group.total)]; });
+      }
+    },
+    stock: {
+      title: 'Productos con stock bajo',
+      columns: ['Producto', 'Stock', 'Mínimo', 'Reponer'],
+      sql: 'SELECT producto, stock, stock_minimo,\n       stock_minimo - stock AS reponer\nFROM inventario\nWHERE stock < stock_minimo\nORDER BY stock ASC;',
+      note: 'Filtra solo los productos que necesitan reposición. La condición deja fuera el resto de la tabla y evita una salida llena de datos que nadie va a usar.',
+      rows: function(){
+        return queryInventory.filter(function(item){ return item.stock < item.minimo; })
+          .sort(function(a, b){ return a.stock - b.stock; })
+          .map(function(item){ return [item.producto, item.stock, item.minimo, item.minimo - item.stock]; });
+      }
+    },
+    ultimos: {
+      title: 'Últimos movimientos',
+      columns: ['Fecha', 'Cliente', 'Vendedor', 'Total'],
+      sql: 'SELECT fecha, cliente, vendedor, total\nFROM ventas\nORDER BY fecha DESC\nLIMIT 5;',
+      note: 'Ordena de lo más reciente a lo más antiguo y corta en cinco filas. Así se consulta el pulso del día sin revisar todo el histórico.',
+      rows: function(){
+        return querySales.slice()
+          .sort(function(a, b){ return b.fecha.localeCompare(a.fecha); })
+          .slice(0, 5)
+          .map(function(sale){ return [sale.fecha, sale.cliente, sale.vendedor, formatQueryMoney(sale.total)]; });
+      }
+    }
+  };
+
+  var activeQuery = 'vendedores';
+  var queryTabs = Array.prototype.slice.call(document.querySelectorAll('.query-tab'));
+  var queryOutputButtons = Array.prototype.slice.call(document.querySelectorAll('[data-output]'));
+  var queryHead = document.getElementById('queryHead');
+  var queryRows = document.getElementById('queryRows');
+  var queryCode = document.getElementById('queryCode');
+  var queryNote = document.getElementById('queryNote');
+  var queryResultTitle = document.getElementById('queryResultTitle');
+  var queryResultCount = document.getElementById('queryResultCount');
+  var queryTableWrap = document.getElementById('queryTableWrap');
+  var queryJson = document.getElementById('queryJson');
+
+  function renderQuery(key){
+    var query = queryCatalog[key];
+    if (!query) return;
+    activeQuery = key;
+    var rows = query.rows();
+
+    queryTabs.forEach(function(tab){
+      var active = tab.getAttribute('data-query') === key;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-selected', String(active));
+      tab.setAttribute('tabindex', active ? '0' : '-1');
+    });
+
+    queryResultTitle.textContent = query.title;
+    queryResultCount.textContent = rows.length + (rows.length === 1 ? ' fila' : ' filas');
+    queryCode.textContent = query.sql;
+    queryNote.textContent = query.note;
+    queryHead.innerHTML = '<tr>' + query.columns.map(function(column){ return '<th scope="col">' + column + '</th>'; }).join('') + '</tr>';
+    queryRows.innerHTML = rows.map(function(row){
+      return '<tr>' + row.map(function(cell, index){ return '<td data-label="' + query.columns[index] + '">' + cell + '</td>'; }).join('') + '</tr>';
+    }).join('');
+    setQueryOutput('table');
+  }
+
+  function setQueryOutput(mode){
+    var showingJson = mode === 'json';
+    queryTableWrap.hidden = showingJson;
+    queryJson.hidden = !showingJson;
+    if (showingJson){
+      var query = queryCatalog[activeQuery];
+      var rows = query.rows();
+      var objects = rows.map(function(row){
+        var item = {};
+        query.columns.forEach(function(column, index){ item[column] = row[index]; });
+        return item;
+      });
+      queryJson.textContent = JSON.stringify({ consulta: activeQuery, sql: query.sql, filas: objects }, null, 2);
+    }
+    queryOutputButtons.forEach(function(button){
+      if (button.getAttribute('data-output') === 'csv') return;
+      var active = button.getAttribute('data-output') === mode;
+      button.setAttribute('aria-pressed', String(active));
+      button.classList.toggle('btn-primary', active);
+      button.classList.toggle('btn-ghost', !active);
+    });
+  }
+
+  function downloadQueryCsv(){
+    var query = queryCatalog[activeQuery];
+    var rows = query.rows();
+    var csv = [query.columns].concat(rows).map(function(row){
+      return row.map(function(cell){ return '"' + String(cell).replace(/"/g, '""') + '"'; }).join(',');
+    }).join('\r\n');
+    var blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = 'consulta-' + activeQuery + '.csv';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  }
+
+  queryTabs.forEach(function(tab){
+    tab.addEventListener('click', function(){ renderQuery(tab.getAttribute('data-query')); });
+  });
+
+  queryOutputButtons.forEach(function(button){
+    button.addEventListener('click', function(){
+      var output = button.getAttribute('data-output');
+      if (output === 'csv'){ downloadQueryCsv(); return; }
+      setQueryOutput(output);
+    });
+  });
+
+  renderQuery(activeQuery);
 
   /* ============================================================
      H. UI / UX: QUITAR LA CAPA VISUAL
