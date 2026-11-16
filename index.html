@@ -876,6 +876,10 @@ ul.mini-list li::before{content:"•";color:currentColor;opacity:.55;font-weight
 .quiz-opt.wrong .qo-letter{background:var(--bad);color:#fff}
 .quiz-exp{font-size:.76rem;color:var(--ink-soft);margin-top:.45rem;padding:.5rem .6rem;background:var(--surface-2);border-left:3px solid var(--brand);border-radius:0 7px 7px 0;display:none}
 .quiz-exp.show{display:block}
+.quiz-layout{width:100%}
+.quiz-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px;align-items:start;margin-top:4px}
+.quiz-list .quiz-q{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--surface-2)}
+.quiz-list .quiz-q:first-of-type{border-top:1px solid var(--line);padding-top:16px}
 .quiz-actions{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
 
 .checklist{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-xl);padding:24px}
@@ -1662,26 +1666,6 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
         </form>
       </div>
 
-      <div class="classifier" aria-labelledby="classifierTitle">
-        <div class="classifier-head">
-          <div>
-            <span class="kicker">Práctica guiada</span>
-            <h3 id="classifierTitle">Clasifica cada dato</h3>
-          </div>
-          <span class="class-score" id="classScore">0 de 6 aciertos</span>
-        </div>
-        <p class="classifier-lede">Elige el tipo de cada dato. No se guarda nada.</p>
-        <div class="classifier-quick" aria-label="Ejemplos rápidos">
-          <span class="q-variable"><b>Variable</b> 3 cajas · cambia</span>
-          <span class="q-ident"><b>Identificación</b> cliente 204 · llave</span>
-          <span class="q-recovered"><b>Recuperado</b> stock: 12 · ya existe</span>
-        </div>
-        <div class="class-rows" id="classRows"></div>
-        <div class="classifier-foot">
-          <button type="button" class="btn btn-ghost btn-sm" id="classReset">Reiniciar clasificación</button>
-          <p class="class-feedback" id="classFeedback" role="status" aria-live="polite">Elige una opción en cada fila.</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -2283,7 +2267,7 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
   </div>
 </section>
 
-<!-- ================= QUIZ + CHECKLIST ================= -->
+<!-- ================= QUIZ ================= -->
 <section class="section" id="quiz">
   <div class="wrap">
     <div class="section-head">
@@ -2292,34 +2276,16 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
       <p id="quizSub">Dos preguntas sobre captura, llaves y formularios.</p>
     </div>
 
-    <div class="split">
+    <div class="quiz-layout">
       <div class="quiz">
         <div class="quiz-top">
           <h3 id="quizCardTitle">Preguntas del módulo</h3>
           <div class="quiz-score"><span id="quizScoreText">0 de 2</span><span class="qs-bar"><i id="quizBar"></i></span></div>
         </div>
-        <div id="quizList"></div>
+        <div class="quiz-list" id="quizList"></div>
         <div class="quiz-actions">
           <span class="lede" style="font-size:.78rem">Cada respuesta queda bloqueada al elegir.</span>
           <button type="button" class="btn btn-ghost btn-sm" id="quizReset">Reiniciar</button>
-        </div>
-      </div>
-
-      <div class="checklist">
-        <h3>Checklist antes de construir</h3>
-        <p>Marca lo que ya está resuelto en tu proyecto.</p>
-        <div class="check-progress"><span class="cp-bar"><i id="checkBar"></i></span><span id="checkText">0 / 10</span></div>
-        <div class="check-items">
-          <label class="check-item"><input type="checkbox" class="check-input"><span>Definí qué datos son variables, cuáles identifican y cuáles se recuperan.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>Cada campo tiene etiqueta visible y un ejemplo de formato.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>Los campos obligatorios están marcados y explicados.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>La validación dice qué corregir, junto al campo.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>Hay una sola acción primaria por pantalla.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>La pantalla respeta encabezado, cuerpo, mensajes y ayuda.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>La salida tiene título, periodo, unidades y totales.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>Eliminé columnas y datos que nadie usa para decidir.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>El login oculta la contraseña y no revela si la cuenta existe.</span></label>
-          <label class="check-item"><input type="checkbox" class="check-input"><span>Probé el flujo con una persona real antes de programarlo.</span></label>
         </div>
       </div>
     </div>
@@ -2620,88 +2586,6 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
       simBtn.disabled = false;
     }, FLOW_STEP_MS * (sequence.length + 1)));
   });
-
-  /* ============================================================
-     D. CLASIFICADOR: VARIABLE / IDENTIFICACIÓN / RECUPERADO
-     ============================================================ */
-  var classItems = [
-    {icon:'🔢', label:'Cantidad', sub:'5 unidades', type:'variable', exp:'Cambia en cada venta.'},
-    {icon:'🏷️', label:'Código del artículo', sub:'ART-101', type:'ident', exp:'Es la llave del artículo.'},
-    {icon:'💲', label:'Precio del artículo', sub:'$18,50', type:'recovered', exp:'Ya está en el catálogo.'},
-    {icon:'📞', label:'Teléfono del cliente', sub:'ya está en su ficha', type:'recovered', exp:'Ya está en la ficha del cliente.'},
-    {icon:'📅', label:'Fecha de la venta', sub:'09/11/2026', type:'variable', exp:'Cambia en cada venta.'},
-    {icon:'📦', label:'Nombre del artículo', sub:'Teclado USB', type:'recovered', exp:'Ya está en el catálogo.'}
-  ];
-  var classLabels = {variable:'Variable', ident:'Identificación', recovered:'Recuperado'};
-  var classDescriptions = {
-    variable:'cambia en cada venta',
-    ident:'es la llave del artículo o del cliente',
-    recovered:'ya está guardado en el sistema'
-  };
-  var classSolved = {};
-  var classRows = document.getElementById('classRows');
-  var classScoreEl = document.getElementById('classScore');
-  var classFeedbackEl = document.getElementById('classFeedback');
-
-  function renderClassifier(){
-    classRows.innerHTML = '';
-    classSolved = {};
-    classScoreEl.textContent = '0 de 6 aciertos';
-    classFeedbackEl.className = 'class-feedback';
-    classFeedbackEl.textContent = 'Elige una opción en cada fila.';
-    classItems.forEach(function(item, idx){
-      var row = document.createElement('div');
-      row.className = 'class-row';
-      row.dataset.idx = idx;
-      row.innerHTML =
-        '<div class="field-desc"><i aria-hidden="true">' + item.icon + '</i>' +
-          '<span>' + item.label + '<small>' + item.sub + '</small></span></div>' +
-        '<div class="class-opts">' +
-          ['variable','ident','recovered'].map(function(t){
-            return '<button type="button" class="class-opt" data-type="' + t + '" title="' + classDescriptions[t] + '" aria-label="' + classLabels[t] + ': ' + classDescriptions[t] + '" aria-pressed="false">' + classLabels[t] + '</button>';
-          }).join('') +
-        '</div>';
-      classRows.appendChild(row);
-    });
-  }
-
-  classRows.addEventListener('click', function(e){
-    var btn = e.target.closest('.class-opt');
-    if (!btn) return;
-    var row = btn.closest('.class-row');
-    var idx = parseInt(row.dataset.idx, 10);
-    var item = classItems[idx];
-    if (classSolved[idx]) return;
-
-    if (btn.dataset.type === item.type){
-      classSolved[idx] = true;
-      row.classList.add('solved');
-      row.querySelectorAll('.class-opt').forEach(function(b){ b.disabled = true; b.classList.remove('wrong'); });
-      btn.classList.add('correct');
-      btn.textContent = '✓ ' + classLabels[item.type];
-      btn.setAttribute('aria-label', classLabels[item.type] + ': correcta. ' + item.exp);
-      btn.setAttribute('aria-pressed', 'true');
-      row.querySelector('.field-desc small').textContent = '✓ ' + item.exp;
-      row.querySelector('.field-desc small').style.color = 'var(--good)';
-      var count = Object.keys(classSolved).length;
-      classScoreEl.textContent = count + ' de 6 aciertos' + (count === 6 ? ' · ¡completo!' : '');
-      classFeedbackEl.className = 'class-feedback ok';
-      classFeedbackEl.textContent = 'Correcto. ' + item.label + ' es ' + classLabels[item.type] + '. ' + item.exp + (count === 6 ? ' ¡Completo!' : '');
-    } else {
-      btn.classList.add('wrong');
-      btn.textContent = '✕ ' + classLabels[btn.dataset.type];
-      btn.setAttribute('aria-label', classLabels[btn.dataset.type] + ': incorrecta');
-      classFeedbackEl.className = 'class-feedback bad';
-      classFeedbackEl.textContent = 'No es esa opción. ' + item.label + ' es ' + classLabels[item.type] + ': ' + item.exp;
-      setTimeout(function(){
-        btn.classList.remove('wrong');
-        btn.textContent = classLabels[btn.dataset.type];
-        btn.setAttribute('aria-label', classLabels[btn.dataset.type] + ': ' + classDescriptions[btn.dataset.type]);
-      }, 900);
-    }
-  });
-  document.getElementById('classReset').addEventListener('click', renderClassifier);
-  renderClassifier();
 
   /* ============================================================
      E. ANATOMÍA DE LA PANTALLA
@@ -3285,24 +3169,6 @@ html[data-view="modules"] #modulesView.is-ready{visibility:visible}
   if (document.readyState === 'complete') applyModuleFromHash();
   else window.addEventListener('load', applyModuleFromHash, {once:true});
   window.addEventListener('hashchange', applyModuleFromHash);
-
-  /* ============================================================
-     L. CHECKLIST
-     ============================================================ */
-  var checkInputs = Array.prototype.slice.call(document.querySelectorAll('.check-input'));
-  var checkBar = document.getElementById('checkBar');
-  var checkText = document.getElementById('checkText');
-  function updateChecklist(){
-    var done = checkInputs.filter(function(c){ return c.checked; }).length;
-    checkBar.style.width = (done / checkInputs.length * 100) + '%';
-    checkText.textContent = done + ' / ' + checkInputs.length + (done === checkInputs.length ? ' · listo' : '');
-    checkInputs.forEach(function(c){
-      var label = c.closest('.check-item');
-      if (label) label.classList.toggle('done', c.checked);
-    });
-  }
-  checkInputs.forEach(function(c){ c.addEventListener('change', updateChecklist); });
-  updateChecklist();
 
   /* ============================================================
      M. CUENTA REAL: LOGIN Y REGISTRO (ALMACENAMIENTO LOCAL)
